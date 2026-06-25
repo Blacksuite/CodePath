@@ -1,0 +1,105 @@
+{
+  "id": "p6-s3-states",
+  "phaseId": "phase-6",
+  "order": 3,
+  "slug": "states",
+  "title": "Loading, empty & error states",
+  "canDo": "handle loading, empty and error UI states",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/conditional-rendering",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "conditional rendering"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Demo apps always have data. Real apps don't — not yet, not always, not without things going wrong. The gap between a demo and a shipped product is usually three missing branches: a spinner while the fetch runs, a friendly message when the list comes back empty, and a clear error when something breaks. Users who hit a blank screen or a silent crash just leave. Handle all three states and your app feels professional."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "handle loading, empty and error UI states",
+      "estMinutes": 45,
+      "md": "By the end of this session you will be able to: name the three states any data fetch can be in, write conditional rendering for each one, and explain why an empty state is worth the extra five lines of code."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "Every data fetch lives in exactly one of three states at any moment:\n\n- **LOADING** — the request is in flight. Show a spinner or skeleton so the user knows something is happening.\n- **EMPTY** — the request succeeded but returned no items. Show a friendly message (\"No results yet — add one!\") rather than a blank list.\n- **ERROR** — the request failed. Show a human-readable message; never let it silently crash or leave a blank screen.\n\nConditional rendering handles all three. Track the state with two pieces of state — `isLoading` (boolean) and `error` (string | null) — alongside your data. Then return the right JSX for each branch:\n\n```jsx\nif (isLoading) return <Spinner />;\nif (error)     return <p>Something went wrong: {error}</p>;\nif (!items.length) return <p>Nothing here yet.</p>;\nreturn <ItemList items={items} />;\n```\n\nOrder matters: check loading first, then error, then empty, then the happy path."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Read **Conditional Rendering** on react.dev. It covers `if` statements, the ternary operator, and `&&` short-circuit rendering — the three tools you need to branch on loading, error, and empty.",
+      "url": "https://react.dev/learn/conditional-rendering",
+      "source": "react.dev",
+      "label": "Conditional Rendering — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Come back once you've read the resource.** The quiz below confirms the three states clicked — it takes about 5 minutes."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What are the three states every data fetch should handle?",
+          "options": [
+            "Loading, empty, and error",
+            "Pending, fulfilled, and rejected",
+            "Start, progress, and done",
+            "Fetching, cached, and stale"
+          ],
+          "answerIndex": 0,
+          "explanation": "Loading (request in flight), empty (success but no items), and error (request failed) are the three branches your UI must cover so users are never left with a blank screen."
+        },
+        {
+          "question": "Why is rendering an empty state worth the extra code?",
+          "options": [
+            "It satisfies a React lint rule that prevents blank renders",
+            "It tells the user the fetch worked but there is nothing to show yet, preventing confusion",
+            "It avoids re-renders when the data array is empty",
+            "It is only needed when the list has more than ten items"
+          ],
+          "answerIndex": 1,
+          "explanation": "A blank list looks broken. An explicit empty state reassures the user that everything is working — there just isn't any data to display yet."
+        },
+        {
+          "question": "You have `isLoading`, `error`, and `items` in state. Which rendering order is correct?",
+          "options": [
+            "items → error → isLoading",
+            "error → isLoading → items",
+            "isLoading → error → empty check → items",
+            "empty check → isLoading → error → items"
+          ],
+          "answerIndex": 2,
+          "explanation": "Check loading first so you don't flash an empty or error state while the request is still in flight. Check error next, then empty, and finally render the data on the happy path."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- Every fetch has three states: **loading**, **empty**, and **error** — handle all three.\n- Track them with `isLoading` (boolean) and `error` (string | null) alongside your data.\n- Conditional rendering (`if`, ternary, `&&`) is all you need to branch between them.\n- Order your checks: loading → error → empty → happy path.\n- An explicit empty state tells users the app is working, not broken.",
+      "bullets": [
+        "Three fetch states: loading, empty, error",
+        "isLoading + error flags cover all branches",
+        "Conditional rendering handles every branch",
+        "Check loading first, then error, then empty",
+        "Empty state prevents a confusing blank screen"
+      ],
+      "nextLessonId": "p6-s4-testing",
+      "nextLessonTitle": "Testing your components"
+    }
+  ]
+}

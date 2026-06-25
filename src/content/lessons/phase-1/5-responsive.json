@@ -1,0 +1,28 @@
+{
+  "id": "p1-s5-responsive",
+  "phaseId": "phase-1",
+  "order": 5,
+  "slug": "responsive",
+  "title": "Responsive design",
+  "canDo": "make layouts adapt to any screen size",
+  "estMinutes": 90,
+  "fade": "curated",
+  "sources": [
+    { "name": "Kevin Powell — Conquering Responsive Layouts (free course)", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "license": "free (account)", "reviewed": "2026-06-23", "topic": "responsive design" },
+    { "name": "MDN — Responsive design", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "license": "CC-BY-SA-2.5", "reviewed": "2026-06-23", "topic": "media queries" }
+  ],
+  "blocks": [
+    { "type": "prose", "role": "hook", "md": "Your page has to look right on a phone *and* a giant monitor. Responsive design is how one layout adapts to any screen — and it's a skill that instantly makes your work look professional." },
+    { "type": "prose", "role": "objective", "canDo": "make layouts adapt to any screen size", "estMinutes": 90 },
+    { "type": "prose", "role": "concept", "md": "**What to focus on:**\n\n- **Mobile-first**: write your base styles for small screens, then *add* styles for bigger screens.\n- **Media queries**: `@media (min-width: 700px) { ... }` applies rules only above a certain width.\n- Relative units (`%`, `rem`, `fr`) over fixed pixels so things can flex.\n- The viewport `<meta>` tag (you'll see it on every page).\n\nThe big mindset shift: don't design for one screen and patch the rest — start simple and enhance." },
+    { "type": "prose", "role": "resource", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "source": "Kevin Powell", "label": "▶ Do this: Kevin Powell's free \"Conquering Responsive Layouts\" — a 21-day mini-course, one short challenge a day. The daily-bite format is perfect for building the habit." },
+    { "type": "prose", "role": "resource", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "source": "MDN", "label": "📖 MDN's responsive-design page for the reference version of media queries and units." },
+    { "type": "prose", "role": "callout", "variant": "tip", "md": "Test responsiveness by dragging your browser window narrow/wide, or open dev tools (F12) and toggle the device toolbar. Watch where the layout breaks — that's where a media query goes." },
+    { "type": "quiz", "passThreshold": 0.7, "questions": [
+      { "question": "In a mobile-first workflow, which type of media query do you use to apply styles for larger screens?", "options": ["@media (max-width: ...)", "@media (min-width: ...)", "@media (orientation: landscape)", "@media print"], "answerIndex": 1, "explanation": "Mobile-first means base styles target small screens, and `min-width` queries layer on enhancements as the viewport grows wider." },
+      { "question": "What does the `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">` tag do?", "options": ["It sets the page background color on mobile browsers", "It tells the browser to match the layout width to the device screen width instead of using a desktop-sized virtual viewport", "It disables zooming on touchscreen devices permanently", "It loads a separate mobile stylesheet automatically"], "answerIndex": 1, "explanation": "Without this tag, mobile browsers render the page at a wide virtual viewport and then scale it down, breaking responsive layouts." },
+      { "question": "Why are relative units like `rem`, `%`, and `fr` preferred over fixed `px` values in responsive layouts?", "options": ["They render faster than pixel values on modern GPUs", "They scale with the user's settings or the container size, so layouts adapt naturally to different screens", "Browsers ignore `px` units on mobile devices", "They automatically add media queries to your stylesheet"], "answerIndex": 1, "explanation": "Relative units flex with the viewport or parent container, reducing the number of breakpoints needed and making layouts inherently more adaptable." }
+    ] },
+    { "type": "prose", "role": "recap", "md": "You can make layouts adapt to any screen. Last step of this phase: put it all together on real projects.", "nextLessonId": "p1-s6-build", "nextLessonTitle": "Build real projects" }
+  ]
+}

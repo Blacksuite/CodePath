@@ -1,0 +1,113 @@
+{
+  "id": "p4-s2-react-ts",
+  "phaseId": "phase-4",
+  "order": 2,
+  "slug": "react-ts",
+  "title": "TypeScript with React",
+  "canDo": "type React props and state",
+  "estMinutes": 75,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/typescript",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Using TypeScript with React"
+    },
+    {
+      "name": "React TypeScript Cheatsheet",
+      "url": "https://react-typescript-cheatsheet.netlify.app/",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "Typing props, state, hooks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You write a component, pass it a prop — and TypeScript immediately flags a red squiggle under the name you mistyped. No runtime crash, no browser console hunting: the error is right there, at the line where you made it. That instant feedback loop is why nearly every professional React codebase today is written in TypeScript. Adding types to React is a small investment; the return is components that document themselves and refactors that never silently break."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "type React props and state",
+      "estMinutes": 75,
+      "md": "By the end of this session you will be able to **type a React component's props with an interface**, **annotate `useState` when TypeScript cannot infer the type**, and **read a TypeScript error calmly** instead of pasting it straight into a search engine. The two curated resources below cover everything — read them actively, try the snippets, then come back for the quiz."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Three things to lock in before you open the resources:**\n\n1. **`.tsx` is the React TypeScript extension.** Plain `.ts` files have no JSX support. Any file that returns JSX must end in `.tsx`.\n\n2. **Type props with an interface.** Define an `interface` (or `type`) above the component, list every prop with its type, then add `: Props` after the destructured parameter. TypeScript will then catch missing or wrong-typed props at the call site — not at runtime.\n\n3. **`useState` infers, but annotate when the initial value is misleading.** `useState(0)` gives you `number` automatically. `useState([])` gives you `never[]` — useless. Write `useState<Habit[]>([])` so TypeScript knows the array will hold `Habit` objects. When in doubt: if the initial value is `null`, `[]`, or `{}`, add the explicit type argument."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### react.dev — Using TypeScript\n\nThe official guide walks you through `.tsx` files, typing props with interfaces, typing hooks (`useState`, `useReducer`, `useContext`), and handling DOM events. **Read the whole page** (about 30 min) — it is short, practical, and current. Every code snippet is runnable in the browser. Come back here after you finish it.",
+      "url": "https://react.dev/learn/typescript",
+      "source": "react.dev",
+      "label": "Open react.dev — Using TypeScript"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### React TypeScript Cheatsheet\n\nA community-maintained reference that answers every \"how do I type *this* in React?\" question. **Read the Getting Started → Basic Cheatsheet section** (about 20 min): it covers function component props, `useState`, event handlers, and common gotchas. Bookmark it — you will return to it for months.",
+      "url": "https://react-typescript-cheatsheet.netlify.app/",
+      "source": "React TypeScript Cheatsheet",
+      "label": "Open React TypeScript Cheatsheet"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Reading TS errors without panic.** TypeScript error messages look long but always follow the same pattern: *what* went wrong → *where* → *what was expected* vs *what was received*. Start at the bottom of the error chain — that is usually the real problem. The words `Type 'X' is not assignable to type 'Y'` mean: \"you gave me an `X` but I need a `Y`.\" Nine times out of ten the fix is either adding the missing prop or widening the type."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is the correct way to type the props of a React function component in TypeScript?",
+          "options": [
+            "Define an interface above the component and add it as a type annotation on the props parameter: `function Card({ title }: CardProps)`",
+            "Use `PropTypes.shape()` imported from the 'prop-types' package",
+            "Add a `static propTypes` property inside the function body",
+            "TypeScript infers all prop types automatically — no annotation is needed"
+          ],
+          "answerIndex": 0,
+          "explanation": "The idiomatic TypeScript pattern is to define an interface (e.g. `interface CardProps { title: string }`) and annotate the destructured parameter. This catches missing or wrong-typed props at the call site."
+        },
+        {
+          "question": "Why write `useState<Habit[]>([])` instead of just `useState([])`?",
+          "options": [
+            "It runs faster because TypeScript skips runtime type checks",
+            "Without the type argument, TypeScript infers the type as `never[]`, so it will reject any item you try to add",
+            "React requires an explicit type argument whenever the state is an array",
+            "`useState([])` throws a syntax error in `.tsx` files"
+          ],
+          "answerIndex": 1,
+          "explanation": "TypeScript infers `[]` as `never[]` — an array that can never hold anything. Providing the generic `<Habit[]>` tells TypeScript the array will contain `Habit` objects, so push/map/filter all work correctly."
+        },
+        {
+          "question": "You create a new file to hold a React component that returns JSX. What extension must it have?",
+          "options": [
+            ".ts — TypeScript files always work with JSX",
+            ".jsx — JSX is not allowed in TypeScript files",
+            ".tsx — React TypeScript files that contain JSX must use this extension",
+            ".js — modern bundlers handle the conversion automatically"
+          ],
+          "answerIndex": 2,
+          "explanation": "Any file that contains JSX syntax must end in `.tsx`. Plain `.ts` files do not support JSX and the compiler will error. `.js`/`.jsx` files skip TypeScript's type checking entirely."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now know the three moves that cover 90 % of TypeScript-in-React situations: name your files `.tsx`, type props with an interface, and annotate `useState` whenever the initial value is empty or `null`. TypeScript errors are just the compiler pointing at the line — read from the bottom up and you will usually spot the fix in seconds. Next up: React hooks in depth, where TypeScript's inference starts saving you even more keystrokes.",
+      "nextLessonId": "p4-s3-hooks",
+      "nextLessonTitle": "React Hooks in Depth"
+    }
+  ]
+}

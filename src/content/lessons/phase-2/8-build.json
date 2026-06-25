@@ -1,0 +1,92 @@
+{
+  "id": "p2-s8-build",
+  "phaseId": "phase-2",
+  "order": 8,
+  "slug": "build",
+  "title": "Build: a real JavaScript app",
+  "canDo": "build an interactive app with vanilla JavaScript",
+  "estMinutes": 180,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Web Dev Simplified",
+      "url": "https://www.youtube.com/watch?v=riDzcEQbX6k",
+      "license": "YouTube / standard",
+      "reviewed": "2026-06-25",
+      "topic": "Vanilla JS quiz app — DOM rendering, event handling, score tracking"
+    },
+    {
+      "name": "MDN Web Docs — localStorage",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-25",
+      "topic": "localStorage API"
+    },
+    {
+      "name": "MDN Web Docs — Event delegation",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-25",
+      "topic": "Event bubbling and delegation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You've learned the DOM, events, arrays, and functions as separate skills. Now you use them all at once. A quiz app sounds simple — and that's the point. Simple enough to finish in one sitting; complex enough to force every technique to work together. By the end of this session you'll have a real, working app that lives in your own editor, tracks scores, and reveals correct answers."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build an interactive app with vanilla JavaScript",
+      "estMinutes": 180,
+      "md": "By the end of this session you will be able to **build an interactive app with vanilla JavaScript** — storing data in arrays of objects, rendering that data to the DOM, handling user interactions with event listeners, and tracking state across multiple questions."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "Every interactive app — however large — follows the same core loop:\n\n1. **Data first.** Keep your questions in a plain array of objects. The DOM is just a mirror of that data.\n2. **Render from data.** Write one `showQuestion(index)` function that builds the current question's HTML from the array. Call it to advance the quiz.\n3. **Track state explicitly.** Use plain variables — `let currentIndex = 0; let score = 0;` — to record where the user is and how they're doing.\n4. **Respond to events.** Attach click listeners to the answer buttons; check the selection against `question.correct`, update the score, and call `showQuestion` for the next item.\n\nNail these four patterns and you can build almost any front-end feature."
+    },
+    {
+      "type": "video",
+      "title": "Build A Quiz App With JavaScript",
+      "url": "https://www.youtube.com/watch?v=riDzcEQbX6k",
+      "source": "youtube",
+      "startSeconds": 0,
+      "minutes": 20,
+      "note": "Watch this build-along first (~20 min) to see all the patterns in motion, then close the video and build your own version from scratch below."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Getting stuck is the learning.** When nothing shows up, open DevTools (F12) and check the Console for errors. When a click does nothing, add a `console.log(event.target)` inside your listener and see what element you're actually hitting. Debugging is not a sign you're doing it wrong — it's the job."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "**Build a multiple-choice quiz app from scratch in your own editor.**\n\nCreate an `index.html` file and a linked `app.js` file (no frameworks, no libraries). Your app must:\n\n1. **Define questions** — store at least 5 questions as an array of objects, each with a `question` string, an `options` array of 4 strings, and a `correct` index.\n2. **Show one question at a time** — display the current question text and render the 4 answer buttons from the data.\n3. **Handle selection** — clicking an answer highlights it correct (green) or wrong (red), reveals the right answer if the user was wrong, and disables all buttons so the user can't change their choice.\n4. **Advance** — a \"Next\" button appears after selection; clicking it loads the next question.\n5. **Show a score screen** — after the last question, hide the quiz and show \"You scored X / Y\" with a Restart button that resets state and starts over.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
+      "definitionOfDone": "All 5+ questions display one at a time. Selecting a right answer turns it green; a wrong answer turns it red and highlights the correct one. After the last question a score screen appears. Clicking Restart takes you back to question 1 with score reset to 0.",
+      "hints": [
+        "**Data + render pattern.** Start with a `questions` array: `const questions = [{ question: 'What does HTML stand for?', options: ['...','...','...','...'], correct: 0 }, ...]`. Write a `showQuestion(index)` function that sets the question text and calls `options.forEach` to create a button for each choice and appends them to a container. Call `showQuestion(0)` on load to verify things render before adding any click logic.",
+        "**Handle selection and feedback.** In your answer-button click handler, compare `clickedIndex === questions[currentIndex].correct`. Add a CSS class `correct` or `wrong` to the clicked button. If wrong, also add `correct` to the button at the right index. Then disable all answer buttons (`btn.disabled = true`) and show a hidden \"Next\" button. This prevents double-clicking and gives clear feedback.",
+        "**Track state and show the final score.** Keep `let currentIndex = 0; let score = 0;` at the top. In the answer handler, increment `score` when correct. In the Next handler, increment `currentIndex`; if `currentIndex >= questions.length`, hide the quiz container and show a results div with `You scored ${score} / ${questions.length}`. Add a Restart button that resets both variables to 0 and calls `showQuestion(0)` again."
+      ],
+      "gatedSolution": true,
+      "solutionUrl": "https://www.youtube.com/watch?v=riDzcEQbX6k"
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just built a complete, working JavaScript application — storing data in arrays, rendering dynamically to the DOM, responding to user events, tracking state across multiple steps, and showing a final result screen — without a single framework. Every React, Vue, or Svelte component you write later is doing this same loop under the hood; the framework just automates the re-render.\n\n**Phase 2 is complete.** You know the fundamentals, arrays and objects, the DOM, events, functions, and now how to tie them all together in a real project.",
+      "bullets": [
+        "Keep state in plain variables and data structures; the DOM is just a reflection of them.",
+        "A single render function that rebuilds from data is easier to reason about than patching the DOM in place.",
+        "Track quiz progress with simple index and score counters — state machines don't have to be complex.",
+        "Disable interactive elements after action to prevent double-submissions and give clear feedback.",
+        "DevTools console is your first debugging move every time."
+      ],
+      "nextLessonTitle": "Phase 2 quiz"
+    }
+  ]
+}

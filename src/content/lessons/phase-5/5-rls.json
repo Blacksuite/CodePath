@@ -1,0 +1,104 @@
+{
+  "id": "p5-s5-rls",
+  "phaseId": "phase-5",
+  "order": 5,
+  "slug": "rls",
+  "title": "Row Level Security",
+  "canDo": "secure data so users only see their own",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Supabase Docs",
+      "url": "https://supabase.com/docs/guides/auth/row-level-security",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Row Level Security"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You spent hours building a slick notes app. Users sign up, log in, create notes — everything works. Then a friend pokes around and discovers they can read *every user's notes* just by tweaking a query. Row Level Security (RLS) is the one Supabase feature that silently makes or breaks real apps. Miss it and you ship a data leak. Get it right and your database enforces privacy for you, automatically, on every single query."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "secure data so users only see their own",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to enable RLS on a Supabase table, write a `SELECT` policy using `auth.uid() = user_id`, and explain what happens when RLS is on but no policy exists."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**RLS is an automatic WHERE clause.** When you enable RLS on a table, Postgres silently appends your policy's `USING` expression to every query against that table — no matter who runs it or how.\n\nThe most common policy looks like this:\n\n```sql\nCREATE POLICY \"own rows only\"\nON notes\nFOR SELECT\nUSING (auth.uid() = user_id);\n```\n\n`auth.uid()` returns the UUID of the currently authenticated Supabase user. So `auth.uid() = user_id` means: *only return rows where the row's `user_id` column matches the logged-in user*. Nobody else's rows are ever returned — the database refuses them before your app code even sees them.\n\nTwo steps are always required: **enable RLS on the table**, then **add one policy per operation** (SELECT, INSERT, UPDATE, DELETE). Missing either step breaks everything."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Read the official Supabase RLS guide. It covers enabling RLS in the dashboard, writing policies, and testing them with the SQL editor.",
+      "label": "Supabase — Row Level Security",
+      "url": "https://supabase.com/docs/guides/auth/row-level-security",
+      "source": "Supabase Docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "mistake",
+      "md": "**Common mistake: enabling RLS without adding any policies.**\n\nWhen RLS is enabled and no policies exist, Postgres defaults to *deny all*. Every query returns zero rows — even for the table owner. Your app appears to work (no errors) but silently returns empty data. Always add at least one policy for each operation your app uses after enabling RLS, and test immediately in the Supabase SQL editor with `SELECT * FROM your_table`."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does enabling Row Level Security (RLS) on a Supabase table do?",
+          "options": [
+            "It automatically appends your policy's USING expression as a WHERE clause on every query",
+            "It encrypts the data at rest so only admins can read it",
+            "It logs every query to the Supabase dashboard for review",
+            "It requires users to re-authenticate before each database read"
+          ],
+          "answerIndex": 0,
+          "explanation": "RLS acts as an automatic WHERE clause — Postgres silently applies your policy to every query against the table."
+        },
+        {
+          "question": "What does the policy expression `auth.uid() = user_id` mean in practice?",
+          "options": [
+            "Only the Supabase service-role key can read rows with a matching user_id",
+            "The query will return only rows where the row's user_id column matches the currently logged-in user's UUID",
+            "It grants the user admin access to all rows in the table",
+            "It checks that the user_id column is not null before returning a row"
+          ],
+          "answerIndex": 1,
+          "explanation": "`auth.uid()` resolves to the signed-in user's UUID; the policy returns only rows where that UUID matches the row's user_id column."
+        },
+        {
+          "question": "You enable RLS on your `todos` table but add no policies. What happens when a logged-in user queries the table?",
+          "options": [
+            "All rows are returned because the user is authenticated",
+            "An error is thrown saying 'RLS policy missing'",
+            "Zero rows are returned — Postgres denies all access by default when no policy exists",
+            "Only rows created in the last 24 hours are returned"
+          ],
+          "answerIndex": 2,
+          "explanation": "With RLS enabled and no policies defined, Postgres defaults to deny-all. The query silently returns an empty result with no error."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "RLS is the single most important security layer in a Supabase app. Remember the two-step rule: **enable RLS on the table**, then **add a policy for every operation you need**. The expression `auth.uid() = user_id` is the building block for per-user data isolation — Postgres runs it automatically so your app never has to filter manually. An enabled table with no policies returns nothing; always verify with a quick SQL editor test after setup.",
+      "bullets": [
+        "RLS adds an automatic WHERE clause to every query — no app-side filtering needed",
+        "`auth.uid() = user_id` restricts rows to the currently signed-in user",
+        "Two required steps: enable RLS on the table, then add policies per operation",
+        "No policies + RLS enabled = zero rows returned (silent deny-all)"
+      ],
+      "nextLessonId": "p5-s6-build",
+      "nextLessonTitle": "Build: Authenticated Notes App"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body, #root { height: 100%; }
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+  background-image:
+    radial-gradient(60rem 60rem at 110% -10%, rgba(109,108,240,0.12), transparent 60%),
+    radial-gradient(50rem 50rem at -10% 110%, rgba(22,199,154,0.10), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* thin custom scrollbar */
+* { scrollbar-width: thin; scrollbar-color: #272c4d transparent; }
+*::-webkit-scrollbar { width: 9px; height: 9px; }
+*::-webkit-scrollbar-thumb { background: #272c4d; border-radius: 99px; }
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/10 bg-ink-900/70 backdrop-blur-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary { @apply btn bg-brand-500 text-white hover:bg-brand-600 shadow-glow; }
+  .btn-ghost { @apply btn border border-white/10 text-slate-200 hover:bg-white/5; }
+  .pill { @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold; }
+}
+
+/* Lesson prose: tuned react-markdown / tailwind-typography for dark reading */
+.prose-lesson {
+  @apply prose prose-invert max-w-none
+    prose-headings:font-bold prose-headings:tracking-tight
+    prose-h1:text-3xl prose-h2:text-2xl prose-h2:mt-10 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-2
+    prose-h3:text-xl prose-h3:text-brand-400
+    prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline
+    prose-strong:text-white
+    prose-code:text-mint-400 prose-code:before:content-none prose-code:after:content-none
+    prose-pre:bg-ink-950 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
+    prose-blockquote:border-l-brand-500 prose-blockquote:bg-ink-850/50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:not-italic prose-blockquote:text-slate-300
+    prose-table:text-sm prose-th:text-white prose-td:align-top
+    prose-li:marker:text-brand-400;
+}
+.prose-lesson details {
+  @apply my-3 rounded-lg border border-white/10 bg-ink-850/60 px-4 py-2;
+}
+.prose-lesson summary {
+  @apply cursor-pointer font-semibold text-mint-400;
+}

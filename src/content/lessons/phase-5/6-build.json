@@ -1,0 +1,76 @@
+{
+  "id": "p5-s6-build",
+  "phaseId": "phase-5",
+  "order": 6,
+  "slug": "build",
+  "title": "Build: a full-stack app",
+  "canDo": "build a full-stack app with auth and a database",
+  "estMinutes": 180,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/news/supabase-for-beginners/",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Supabase for Beginners — full walkthrough of auth, database, and RLS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your React app works great — but close the tab and everything disappears. That is the last thing standing between you and a real product. This session closes that gap for good. You will build a notes app that is genuinely full-stack: a cloud database that persists every note, sign-up and login so each user gets their own account, and Row Level Security so the database itself enforces that users only ever see their own data. No backend code to deploy, no server to maintain. Just your React app talking directly to Supabase."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build a full-stack app with auth and a database",
+      "estMinutes": 180,
+      "md": "**By the end of this session you will be able to:** connect a React app to Supabase, implement email/password sign-up and login, store and retrieve rows in a database table scoped to the logged-in user, and enable Row Level Security so that a second account cannot see the first account's data — all verified live in the browser."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Your build plan — keep this open as you code:**\n\n1. **Create a Supabase project** — sign up at supabase.com, create a project, copy the project URL and `anon` key into a `.env` file as `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`.\n2. **Install the client** — `npm install @supabase/supabase-js`, then create `src/supabaseClient.ts` that calls `createClient(url, key)` and exports it.\n3. **Create your table** — in the Supabase SQL editor, create a table (e.g. `items`) with columns `id uuid primary key default gen_random_uuid()`, `user_id uuid references auth.users not null`, `title text not null`, `created_at timestamptz default now()`.\n4. **Wire auth** — use `supabase.auth.signUp`, `signInWithPassword`, `signOut`, and `onAuthStateChange` to track the session in React state.\n5. **CRUD via the JS client** — `supabase.from('items').select()`, `.insert()`, `.update()`, `.delete()` — always filter by `user_id` in queries until RLS takes over.\n6. **Enable RLS** — in Supabase dashboard, turn on RLS for your table and add a policy: `auth.uid() = user_id` for SELECT, INSERT, UPDATE, DELETE."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Full walkthrough — do this first, then come back for the challenge**\n\nThe freeCodeCamp 'Supabase for Beginners' course covers project setup, the JS client, auth, database queries, and RLS end-to-end. Watch or read through it, build along, then apply the same patterns to your own app below.",
+      "url": "https://www.freecodecamp.org/news/supabase-for-beginners/",
+      "source": "freeCodeCamp",
+      "label": "Supabase for Beginners — freeCodeCamp full walkthrough"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip — enable RLS before you ship, not after.** It is tempting to get CRUD working first and add Row Level Security later, but every row you insert before RLS is on has no policy protecting it. Do it in this order: create table → enable RLS → add policies → then insert data. That way the database enforces your rules from the very first row and you cannot accidentally leak a user's data during testing."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "Build a **full-stack notes app** from scratch (or adapt your weather/quiz app): a React frontend where signed-in users can create, read, update, and delete personal notes stored in Supabase.\n\nYour app must:\n\n- Have a Supabase table `notes` with at minimum `id`, `user_id`, `title`, `body`, and `created_at` columns.\n- Read the Supabase URL and anon key from `.env` using `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` — never hard-code them.\n- Implement **sign-up and log-in** with email + password using `supabase.auth`.\n- Implement **sign-out** and reflect the auth state in the UI (show the notes app when logged in, show the auth form when logged out).\n- Implement full **CRUD** (create, read, update, delete) that reads from and writes to the Supabase table — notes must survive a page refresh.\n- Enable **Row Level Security** on your table with a policy that restricts all operations to `auth.uid() = user_id`.\n- Verify RLS is working: sign up a second account and confirm it sees zero notes from the first account.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
+      "definitionOfDone": "You can sign up, log in, add notes with a title and body, edit and delete them, and they persist in the cloud after a page refresh. Logging in as a second account shows only that account's notes — the first account's rows are completely invisible. RLS is the enforcer, not just a client-side filter.",
+      "hints": [
+        "**Create the table, client, and env keys first.** In the Supabase SQL editor run: `create table notes (id uuid primary key default gen_random_uuid(), user_id uuid references auth.users not null, title text not null, body text not null default '', created_at timestamptz default now());`. Then add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to your `.env` file, create `src/supabaseClient.ts` with `import { createClient } from '@supabase/supabase-js'; export const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);`, and verify `supabase` logs without errors before touching auth or CRUD.",
+        "**Wire auth (sign-up, log-in, session).** Add a `session` state variable initialised from `await supabase.auth.getSession()`. Subscribe to changes with `supabase.auth.onAuthStateChange((_event, session) => setSession(session))` inside a `useEffect` (remember to call the returned `subscription.unsubscribe()` in cleanup). Build a simple form that calls `supabase.auth.signUp({ email, password })` or `supabase.auth.signInWithPassword({ email, password })` depending on mode, and a Sign Out button that calls `supabase.auth.signOut()`. Conditionally render the auth form when `session` is null and the main app when it is not.",
+        "**Add CRUD and enable RLS.** Fetch notes with `supabase.from('notes').select('*').order('created_at')` inside a `useEffect` that re-runs when `session` changes. Insert with `.insert([{ title, body, user_id: session.user.id }])`, delete with `.delete().eq('id', id)`, update with `.update({ title, body }).eq('id', id)`. Once CRUD works, go to the Supabase dashboard, open your table, toggle Row Level Security ON, and add four policies (SELECT / INSERT / UPDATE / DELETE) each with the check expression `auth.uid() = user_id`. Now remove any manual `user_id` filters from your queries — RLS handles it — and verify a second account sees no notes."
+      ],
+      "gatedSolution": true,
+      "solutionUrl": "https://www.youtube.com/watch?v=1AR_iiKXNcU"
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just built a full-stack app — a real one, with cloud persistence, user accounts, and a database that enforces access control at the row level. That is not a tutorial project any more; that is the architecture pattern behind most production SaaS apps you use every day.\n\nLet that land for a second. You started this course not knowing HTML. You now build React apps with TypeScript, fetch live APIs, manage auth sessions, write to a cloud database, and lock it down with Row Level Security. Phase 5 is complete.",
+      "bullets": [
+        "Store Supabase keys in `.env` using the `VITE_` prefix — never hard-code them",
+        "Track auth state with `onAuthStateChange` so the UI always reflects the real session",
+        "Enable RLS before inserting data — policies protect every row from the first write",
+        "`auth.uid() = user_id` is the single most important policy you will write — it scopes every user to their own data at the database level"
+      ],
+      "nextLessonTitle": "Phase 5 quiz"
+    }
+  ]
+}

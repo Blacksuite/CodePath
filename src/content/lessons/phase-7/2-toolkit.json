@@ -1,0 +1,157 @@
+{
+  "id": "p7-s2-toolkit",
+  "phaseId": "phase-7",
+  "order": 2,
+  "slug": "toolkit",
+  "title": "Learn-when-needed toolkit",
+  "canDo": "know which tools to reach for next",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "TanStack Query docs",
+      "url": "https://tanstack.com/query",
+      "license": "TanStack Docs",
+      "reviewed": "2026-06-23",
+      "topic": "server-state fetching and caching"
+    },
+    {
+      "name": "Tailwind CSS docs",
+      "url": "https://tailwindcss.com",
+      "license": "Tailwind Docs",
+      "reviewed": "2026-06-23",
+      "topic": "utility-first CSS framework"
+    },
+    {
+      "name": "Next.js docs",
+      "url": "https://nextjs.org",
+      "license": "Next.js Docs",
+      "reviewed": "2026-06-23",
+      "topic": "full-stack React framework with routing and server rendering"
+    },
+    {
+      "name": "Hono docs",
+      "url": "https://hono.dev",
+      "license": "Hono Docs",
+      "reviewed": "2026-06-23",
+      "topic": "lightweight web framework for custom backends"
+    },
+    {
+      "name": "Express docs",
+      "url": "https://expressjs.com",
+      "license": "Express Docs",
+      "reviewed": "2026-06-23",
+      "topic": "minimal Node.js web framework for custom backends"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every tool in this session is genuinely useful — and that's exactly the trap. The temptation is to spend a week learning each one before your next project, so you feel \"ready\". Developers who do that usually end up overloaded and under-built. The better move: finish projects with what you know, and pull in a new tool the moment a real pain point appears. Pain is the signal. No pain, no need. This session is a map, not a curriculum — you're reading it so you recognise the right moment to pick up each tool, not so you can study them now."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "know which tools to reach for next",
+      "estMinutes": 45,
+      "md": "By the end of this session you will be able to: name four tools in the modern JS/React ecosystem, describe the specific pain point each one solves, and decide — for a given situation — whether it is time to add that tool yet."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "The question is never \"is this tool good?\" It is \"does my project hurt badly enough to justify the learning cost right now?\"\n\nEach tool below solves one concrete pain point. Until that pain appears, the tool adds complexity for no benefit. Once the pain is real, the tool pays for itself within hours.\n\n**The rule: finish something small first, then reach for the tool that removes the biggest friction.**"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**TanStack Query** — async server-state management for React.\n\nReach for this when: you are writing the same fetch-loading-error-refetch pattern in multiple components, you want automatic background re-fetching or cache invalidation, or your `useEffect`/`useState` fetch code is growing hard to follow.\n\nIt replaces manual fetch boilerplate with `useQuery` and `useMutation`, and handles caching, stale-while-revalidate, and retries out of the box.",
+      "url": "https://tanstack.com/query",
+      "source": "TanStack Query docs",
+      "label": "TanStack Query — tanstack.com/query"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Tailwind CSS** — utility-first CSS framework.\n\nReach for this when: hand-writing CSS is slowing down your UI iteration, you keep copying the same inline-style patterns, or you want a consistent design system without maintaining a custom stylesheet.\n\nInstead of naming classes and writing separate CSS, you compose small utility classes directly in JSX — `className=\"flex items-center gap-4 rounded-lg bg-blue-500 text-white p-3\"`. Fast to prototype, easy to keep consistent.",
+      "url": "https://tailwindcss.com",
+      "source": "Tailwind CSS docs",
+      "label": "Tailwind CSS — tailwindcss.com"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Next.js** — full-stack React framework.\n\nReach for this when: you want file-based routing, server-side rendering (for SEO or faster first loads), and a backend API all living in one project without configuring them separately.\n\nNext.js wraps React with a convention-based structure: pages are files, API routes sit next to UI code, and server and client components give you fine-grained control over what renders where. It is the standard choice when a Vite SPA + separate backend starts feeling like too many moving parts.",
+      "url": "https://nextjs.org",
+      "source": "Next.js docs",
+      "label": "Next.js — nextjs.org"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Hono or Express** — custom backend frameworks.\n\nReach for this when: you want a real custom backend that Supabase Edge Functions or Next.js API routes cannot cleanly handle — for example, a long-running process, a complex authentication flow, a third-party webhook handler, or a background job queue.\n\n**Hono** is modern, tiny, and runs on Cloudflare Workers, Deno, Bun, and Node — good default for new projects. **Express** is the battle-tested Node classic with the largest ecosystem of middleware. Either one gives you full control over routing, middleware, and request handling.",
+      "url": "https://hono.dev",
+      "source": "Hono docs",
+      "label": "Hono — hono.dev"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**You do not need to read the docs for all four tools right now.** Skim the landing page of any tool that sparked curiosity — just enough to recognise its name in the wild. Come back and go deep when a project actually needs it."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "When is the right time to add a new tool to your project?",
+          "options": [
+            "Before starting any new project so you are fully prepared",
+            "When a real, recurring pain point in your current project makes the tool's benefit obvious",
+            "As soon as the tool appears on a blog post or tutorial you read",
+            "Only after completing an official certification course for that tool"
+          ],
+          "answerIndex": 1,
+          "explanation": "Tools add complexity. Pull one in when the pain it solves is concrete and recurring in your current project — not pre-emptively. Pain is the signal."
+        },
+        {
+          "question": "What specific problem does TanStack Query solve?",
+          "options": [
+            "It replaces your CSS with utility classes so you can style components faster",
+            "It provides file-based routing and server-side rendering for React apps",
+            "It manages server-state fetching, caching, background refetching, and retries so you do not have to wire them manually",
+            "It gives you a Node.js server with full control over routing and middleware"
+          ],
+          "answerIndex": 2,
+          "explanation": "TanStack Query replaces the repetitive fetch-loading-error-refetch boilerplate with useQuery and useMutation, and handles caching and stale-data logic automatically."
+        },
+        {
+          "question": "What makes Next.js different from a plain Vite + React setup?",
+          "options": [
+            "Next.js only works with TypeScript, while Vite supports plain JavaScript",
+            "Next.js bundles routing, server-side rendering, and backend API routes into one framework, removing the need to configure them separately",
+            "Next.js automatically installs TanStack Query and Tailwind CSS",
+            "Next.js replaces React with its own component model"
+          ],
+          "answerIndex": 1,
+          "explanation": "Next.js adds file-based routing, server and client components, and API routes on top of React — all in one project. A Vite SPA has none of that by default; you configure each piece yourself."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- Add tools in response to real pain, not pre-emptively — complexity has a cost.\n- **TanStack Query**: reach for it when manual fetch/cache/refetch patterns get repetitive or messy.\n- **Tailwind CSS**: reach for it when hand-writing CSS is slowing down your UI iteration.\n- **Next.js**: reach for it when you want routing, server rendering, and a backend in one framework.\n- **Hono or Express**: reach for them when you need a fully custom backend beyond what Supabase or API routes provide.",
+      "bullets": [
+        "Add tools when pain is real, not pre-emptively",
+        "TanStack Query removes fetch/cache boilerplate",
+        "Tailwind replaces hand-written CSS with utility classes",
+        "Next.js unifies routing, SSR, and backend in one framework",
+        "Hono/Express for a fully custom Node backend"
+      ],
+      "nextLessonId": "p7-s3-portfolio",
+      "nextLessonTitle": "Build your portfolio"
+    }
+  ]
+}

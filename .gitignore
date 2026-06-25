@@ -1,0 +1,8 @@
+node_modules
+dist
+data
+*.log
+.DS_Store
+
+# Claude internal tracking doc (historical) — software only in the repo
+COURSE-REDESIGN-SPEC.md

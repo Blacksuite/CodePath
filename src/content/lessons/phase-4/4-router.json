@@ -1,0 +1,119 @@
+{
+  "id": "p4-s4-router",
+  "phaseId": "phase-4",
+  "order": 4,
+  "slug": "router",
+  "title": "React Router",
+  "canDo": "add multiple pages with React Router",
+  "estMinutes": 75,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "reactrouter.com",
+      "url": "https://reactrouter.com/start/declarative/installation",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "React Router v8 declarative installation"
+    },
+    {
+      "name": "reactrouter.com",
+      "url": "https://reactrouter.com/start/declarative/routing",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "React Router v8 declarative routing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Right now your habit tracker lives on one screen. But real apps have pages — a daily view, a stats page, a detail page for each habit. Users expect URLs like `/today` and `/habit/3` that they can bookmark and share. React Router gives you that in a few lines of JSX — no server required."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "add multiple pages with React Router",
+      "estMinutes": 75,
+      "md": "By the end of this session you will be able to wrap your app in `<BrowserRouter>`, declare pages with `<Routes>` and `<Route>`, link between them with `<Link>`, and read URL parameters like `/habit/3` with `useParams`."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**React Router (v8) in a nutshell**\n\nWrap your app once in `<BrowserRouter>` — that's the history engine. Inside it, `<Routes>` scans its children and renders the first `<Route>` whose `path` matches the current URL. Navigation uses `<Link to=\"/stats\">` instead of `<a href>` so the page never hard-reloads.\n\nURL parameters let one route match many URLs: `path=\"/habit/:id\"` captures whatever sits at `:id`. Inside that component, `useParams()` returns `{ id: \"3\" }` so you can fetch or filter by that value.\n\n**v8 freshness note:** import everything from `\"react-router\"` — the old `\"react-router-dom\"` package is merged in v8."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Official docs — Declarative installation**\nInstall the package, add `<BrowserRouter>`, and confirm the dev server works.",
+      "url": "https://reactrouter.com/start/declarative/installation",
+      "source": "reactrouter.com",
+      "label": "Read: Declarative installation"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Official docs — Routing**\nDefine `<Routes>` / `<Route>` trees, use `<Link>`, and read URL params with `useParams`.",
+      "url": "https://reactrouter.com/start/declarative/routing",
+      "source": "reactrouter.com",
+      "label": "Read: Declarative routing"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Do this, then come back.** Work through both docs pages above in your project before attempting the quiz. The install doc takes about 5 minutes; the routing page takes 15–20. Come back when you can answer: what does `useParams` return for the path `/habit/7` matched against `\"/habit/:id\"`?"
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Why should you use `<Link to=\"/stats\">` instead of `<a href=\"/stats\">` in a React Router app?",
+          "options": [
+            "`<Link>` updates the URL and re-renders only what changed, without a full page reload",
+            "`<a>` tags are not valid JSX and will throw a compile error",
+            "`<Link>` is required by the browser's history API and `<a>` is deprecated in React 18",
+            "`<Link>` automatically prefetches the next page's data while `<a>` does not"
+          ],
+          "answerIndex": 0,
+          "explanation": "`<Link>` uses the client-side history API so the browser never reloads the page, keeping React state alive and navigation instant."
+        },
+        {
+          "question": "You define a route with `path=\"/habit/:id\"`. A user visits `/habit/42`. What does `useParams()` return inside that component?",
+          "options": [
+            "{ id: \"42\" }",
+            "{ habit: 42 }",
+            "[ \"habit\", \"42\" ]",
+            "\"42\""
+          ],
+          "answerIndex": 0,
+          "explanation": "`useParams()` returns an object whose keys match the `:name` segments in the route path, always as strings."
+        },
+        {
+          "question": "In React Router v8, which import is correct?",
+          "options": [
+            "import { BrowserRouter, Routes, Route, Link } from \"react-router\"",
+            "import { BrowserRouter, Routes, Route, Link } from \"react-router-dom\"",
+            "import { BrowserRouter } from \"react-router-dom\" and import { Routes, Route } from \"react-router\"",
+            "import ReactRouter from \"@react-router/core\""
+          ],
+          "answerIndex": 0,
+          "explanation": "React Router v8 merges the old `react-router-dom` package; all exports now come from `\"react-router\"`."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you learned**\n\n- Wrap your app once in `<BrowserRouter>` to enable client-side routing\n- Declare pages with `<Routes>` + `<Route path=\"...\" element={<Page />} />`\n- Navigate without reloads using `<Link to=\"...\">` instead of `<a>`\n- Capture dynamic segments like `/habit/:id` and read them with `useParams()`\n- In v8 every import comes from `\"react-router\"` — not `\"react-router-dom\"`",
+      "bullets": [
+        "BrowserRouter + Routes + Route = your page map",
+        "Link keeps React alive — no full reload",
+        "useParams reads :segments from the URL",
+        "v8: import from \"react-router\""
+      ],
+      "nextLessonId": "p4-s5-state",
+      "nextLessonTitle": "Sharing State Across Pages"
+    }
+  ]
+}

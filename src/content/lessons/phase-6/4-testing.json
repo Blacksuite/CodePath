@@ -1,0 +1,118 @@
+{
+  "id": "p6-s4-testing",
+  "phaseId": "phase-6",
+  "order": 4,
+  "slug": "testing",
+  "title": "Testing basics",
+  "canDo": "write basic tests with Vitest and React Testing Library",
+  "estMinutes": 90,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Vitest",
+      "url": "https://vitest.dev/guide/",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "Vitest getting started"
+    },
+    {
+      "name": "Testing Library",
+      "url": "https://testing-library.com/docs/react-testing-library/intro/",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "React Testing Library intro"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You add a feature, everything works — then two weeks later a different change quietly breaks it and you don't notice until a user reports it. Automated tests are the safety net that catches those regressions before they ship. Once they're in place, you can refactor or extend your code with confidence: if the tests pass, the behaviour you care about still works."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "write basic tests with Vitest and React Testing Library",
+      "estMinutes": 90,
+      "md": "By the end of this session you'll be able to write basic tests with Vitest and React Testing Library."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Vitest** is the test runner built for Vite projects. It picks up any file ending in `.test.ts` (or `.spec.ts`), runs your `describe`/`it`/`expect` blocks, and reports pass/fail — no separate config needed in a Vite app.\n\n**React Testing Library (RTL)** renders a component into a real-ish DOM and lets you query it the way a user would — by visible text, by ARIA role, by label text — not by CSS class or component internals. You fire events (`userEvent.click`) and then assert on what the user would see.\n\nThe guiding principle: **test behaviour, not implementation.** Don't test that a function was called or that a piece of state changed internally. Test that clicking \"Submit\" shows a success message. Test important logic (calculations, conditionals) and key interactions (form submit, button click). Don't chase 100 % coverage — a test that checks trivial rendering adds noise, not safety."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Vitest — Getting Started**\nThe official guide: install, config, and your first `test()` call. Start here to understand the test runner.",
+      "url": "https://vitest.dev/guide/",
+      "source": "Vitest",
+      "label": "Read the Vitest Getting Started guide, then come back."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**React Testing Library — Introduction**\nExplains the guiding philosophy (test like a user), the query priority order, and how to render and assert on components.",
+      "url": "https://testing-library.com/docs/react-testing-library/intro/",
+      "source": "Testing Library",
+      "label": "Read the RTL intro, then come back."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Query priority cheat-sheet:** prefer `getByRole` → `getByLabelText` → `getByPlaceholderText` → `getByText`. Reach for `getByTestId` only as a last resort — it couples your test to implementation details rather than user-visible structure."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is Vitest's primary job in a Vite project?",
+          "options": [
+            "It bundles your app for production",
+            "It runs your test files and reports pass/fail results",
+            "It renders React components in the browser",
+            "It generates TypeScript types for your components"
+          ],
+          "answerIndex": 1,
+          "explanation": "Vitest is a test runner — it finds your `.test.ts` files, executes the assertions, and tells you which pass or fail."
+        },
+        {
+          "question": "React Testing Library encourages you to query elements the way a user would. Which query best reflects that principle?",
+          "options": [
+            "container.querySelector('.submit-btn')",
+            "getByTestId('submit-button')",
+            "getByRole('button', { name: /submit/i })",
+            "findByClassName('btn-primary')"
+          ],
+          "answerIndex": 2,
+          "explanation": "getByRole mirrors how assistive technology and real users perceive the UI — by semantic role and accessible name — rather than by CSS details or test IDs."
+        },
+        {
+          "question": "Which of the following is the best candidate for an automated test?",
+          "options": [
+            "That a static heading renders the text 'Welcome'",
+            "That a checkout total recalculates correctly when quantity changes",
+            "That a component's internal useState variable updates after a click",
+            "That every component achieves 100 % line coverage"
+          ],
+          "answerIndex": 1,
+          "explanation": "Important logic (like a price calculation) and key user interactions are the highest-value tests. Trivial rendering and internal state details add noise without catching real bugs."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- Vitest is the Vite-native test runner — zero extra config, just write `.test.ts` files.\n- React Testing Library renders components and lets you query them by role and text, the way a real user would interact.\n- Write tests for important logic and key interactions; skip trivial rendering and internal implementation details.\n\nNext up: making your app accessible so screen readers and keyboard users can use it just as easily.",
+      "bullets": [
+        "Vitest runs your tests — Vite-native, no extra config",
+        "RTL queries by role/text, not CSS classes or test IDs",
+        "Test behaviour (what users see) not implementation (internal state)"
+      ],
+      "nextLessonId": "p6-s5-a11y",
+      "nextLessonTitle": "Accessibility basics"
+    }
+  ]
+}

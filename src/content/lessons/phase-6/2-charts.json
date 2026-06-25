@@ -1,0 +1,103 @@
+{
+  "id": "p6-s2-charts",
+  "phaseId": "phase-6",
+  "order": 2,
+  "slug": "charts",
+  "title": "Charts with Recharts",
+  "canDo": "visualize data with charts",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Recharts",
+      "url": "https://recharts.github.io/en-US/guide/getting-started/",
+      "license": "public",
+      "reviewed": "2026-06-23",
+      "topic": "Recharts Getting Started"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Numbers in a table tell you something. A bar shooting up for a 7-day streak *shows* you something. Charts turn raw progress data — daily XP, lesson counts, streak lengths — into a picture your brain believes. That moment when a learner sees their own growth rendered visually is one of the biggest motivators in a gamified app. In this session you'll wire Recharts into your portal and make that moment real."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "visualize data with charts",
+      "estMinutes": 45,
+      "md": "By the end of this session you will be able to install Recharts, build a `<BarChart>` and a `<LineChart>` from composable sub-components, add axes and a tooltip, and wrap the whole thing in `<ResponsiveContainer>` so it resizes cleanly on any screen."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Charts make data feel real.** Streaks, daily totals, and cumulative XP are far more motivating when visualised than listed.\n\nRecharts is a React charting library built on SVG and D3. Its big idea is **composition**: you build a chart by nesting components, not configuring a monolithic object.\n\n```jsx\n<ResponsiveContainer width=\"100%\" height={300}>\n  <BarChart data={data}>\n    <XAxis dataKey=\"day\" />\n    <YAxis />\n    <Tooltip />\n    <Bar dataKey=\"xp\" fill=\"#6366f1\" />\n  </BarChart>\n</ResponsiveContainer>\n```\n\n`<ResponsiveContainer>` is the wrapper that reads the parent element's width at runtime and rescales the SVG — essential for dashboards that must work on both a phone and a wide monitor. Inside it you choose a chart type (`BarChart`, `LineChart`, `AreaChart`, …) and drop in the pieces you need."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Read the **Getting Started / Installation** section, install Recharts in your project, then come back.",
+      "label": "Recharts — Getting Started",
+      "url": "https://recharts.github.io/en-US/guide/getting-started/",
+      "source": "Recharts"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Install once, use everywhere.** Run `npm install recharts` in your project root. Recharts ships its own TypeScript types — no `@types/recharts` needed. If you're on Vite and see a peer-dep warning about React 19, add `--legacy-peer-deps` and it resolves cleanly."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is Recharts?",
+          "options": [
+            "A React charting library that lets you compose charts from SVG-based components",
+            "A CSS utility for drawing bar charts without JavaScript",
+            "A built-in React hook for rendering data grids",
+            "A wrapper around the native HTML <canvas> element"
+          ],
+          "answerIndex": 0,
+          "explanation": "Recharts is a React-first charting library built on SVG and D3 where you compose charts from individual components."
+        },
+        {
+          "question": "What is `<ResponsiveContainer>` for in Recharts?",
+          "options": [
+            "It provides accessible ARIA labels for screen readers",
+            "It wraps a chart so it fills its parent's width and resizes automatically",
+            "It lazy-loads chart data from an API endpoint",
+            "It applies a responsive CSS grid to multiple charts on the page"
+          ],
+          "answerIndex": 1,
+          "explanation": "`<ResponsiveContainer>` reads the parent element's dimensions at runtime and rescales the SVG chart to fit, making it work on any screen size."
+        },
+        {
+          "question": "How are Recharts charts constructed?",
+          "options": [
+            "By calling a single `createChart()` function with a large config object",
+            "By writing raw SVG elements and wiring up D3 scales manually",
+            "By composing multiple React components such as `<BarChart>`, `<XAxis>`, `<Tooltip>`, and `<Bar>`",
+            "By importing a JSON chart definition and passing it to a `<Chart>` renderer"
+          ],
+          "answerIndex": 2,
+          "explanation": "Recharts uses composition — you nest specialized components inside a chart-type component, adding only the pieces (axes, tooltip, legend, data series) that you need."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now know why charts matter in a gamified learning portal and how Recharts makes them easy to build in React. The key ideas:\n\n- Charts turn numbers into motivating visuals — streaks and totals land harder as bars or lines.\n- Recharts composes a chart from small, focused components (`<BarChart>`, `<XAxis>`, `<YAxis>`, `<Tooltip>`, `<Bar>`).\n- `<ResponsiveContainer>` wraps the chart so it adapts to any screen width automatically.\n\nNext up you'll wire these charts to real user-state data.",
+      "bullets": [
+        "Charts visualise streaks and totals so learners feel their progress.",
+        "Recharts is React-based, SVG-powered, and built by composition.",
+        "`<ResponsiveContainer>` makes every chart responsive with zero extra CSS."
+      ],
+      "nextLessonId": "p6-s3-states",
+      "nextLessonTitle": "Managing State Across the Portal"
+    }
+  ]
+}

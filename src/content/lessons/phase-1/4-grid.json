@@ -1,0 +1,27 @@
+{
+  "id": "p1-s4-grid",
+  "phaseId": "phase-1",
+  "order": 4,
+  "slug": "grid",
+  "title": "CSS Grid",
+  "canDo": "build two-dimensional layouts with CSS Grid",
+  "estMinutes": 60,
+  "fade": "curated",
+  "sources": [
+    { "name": "Kevin Powell — Learn CSS Grid the easy way", "url": "https://www.youtube.com/watch?v=rg7Fvvl3taU", "license": "YouTube (standard)", "reviewed": "2026-06-23", "topic": "CSS Grid" },
+    { "name": "Grid Garden", "url": "https://cssgridgarden.com/", "license": "free game", "reviewed": "2026-06-23", "topic": "Grid practice" }
+  ],
+  "blocks": [
+    { "type": "prose", "role": "hook", "md": "Flexbox is great for one direction (a row *or* a column). Grid is for two directions at once — rows **and** columns — like a real page layout or a calendar of days." },
+    { "type": "prose", "role": "objective", "canDo": "build two-dimensional layouts with CSS Grid", "estMinutes": 60 },
+    { "type": "prose", "role": "concept", "md": "**What to focus on:**\n\n- `display: grid` turns a container into a grid.\n- `grid-template-columns` defines the columns — `repeat(3, 1fr)` makes 3 equal columns (`fr` = a fraction of free space).\n- `gap` — space between cells.\n- Spanning cells across multiple columns/rows.\n\nUse Flexbox when content flows in one line; reach for Grid when you're placing things into a real 2-D structure." },
+    { "type": "video", "title": "Learn CSS Grid the easy way", "url": "https://www.youtube.com/watch?v=rg7Fvvl3taU", "source": "youtube", "minutes": 37, "note": "~37 min. Same teacher, same clear style — follow along in your own editor." },
+    { "type": "prose", "role": "resource", "url": "https://cssgridgarden.com/", "source": "Grid Garden", "label": "🥕 Play all 28 levels of Grid Garden to lock it in. ~30 min." },
+    { "type": "quiz", "passThreshold": 0.7, "questions": [
+      { "question": "What does `grid-template-columns: repeat(3, 1fr)` produce?", "options": ["Three columns where the first takes up 3 times the space of the others", "Three equal-width columns that share the available space", "Three columns each exactly 1 pixel wide", "One column repeated across 3 rows"], "answerIndex": 1, "explanation": "`1fr` is one fraction of the free space, so `repeat(3, 1fr)` creates three columns that each receive an equal share of the container width." },
+      { "question": "Which CSS property do you use to control the space between grid cells (rows and columns)?", "options": ["padding", "margin", "gap", "grid-spacing"], "answerIndex": 2, "explanation": "The `gap` property (formerly `grid-gap`) sets the gutter between rows and columns in a grid container." },
+      { "question": "A grid item needs to span across two columns. Which declaration achieves that?", "options": ["grid-column: span 2", "column-span: 2", "flex-grow: 2", "grid-area: 1 / 1 / 1 / 3"], "answerIndex": 0, "explanation": "`grid-column: span 2` tells the item to occupy two consecutive column tracks from wherever it is placed." }
+    ] },
+    { "type": "prose", "role": "recap", "md": "You can build 2-D layouts with Grid. Next: making any layout work on every screen size.", "nextLessonId": "p1-s5-responsive", "nextLessonTitle": "Responsive design" }
+  ]
+}

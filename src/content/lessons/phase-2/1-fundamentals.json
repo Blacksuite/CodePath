@@ -1,0 +1,120 @@
+{
+  "id": "p2-s1-fundamentals",
+  "phaseId": "phase-2",
+  "order": 1,
+  "slug": "fundamentals",
+  "title": "JavaScript fundamentals",
+  "canDo": "use variables, types, functions, conditionals and loops",
+  "estMinutes": 300,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "freeCodeCamp JavaScript Certification (v9)",
+      "url": "https://www.freecodecamp.org/learn/javascript-v9",
+      "license": "free",
+      "reviewed": "2026-06-25",
+      "topic": "JavaScript fundamentals interactive curriculum"
+    },
+    {
+      "name": "javascript.info — First steps",
+      "url": "https://javascript.info/first-steps",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "JavaScript variables, types, functions, conditionals, loops"
+    },
+    {
+      "name": "MDN Web Docs — JavaScript",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "JavaScript language reference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "JavaScript is the one language that runs everywhere: in the browser, on the server, and in every framework you'll ever use. Before any of that matters, you need a solid grip on the four constructs that make up 90% of real code — variables, functions, conditionals, and loops. This session doesn't try to teach you those things from scratch. Instead, it points you at two of the best free resources that already do it brilliantly, tells you exactly what to focus on, and checks that it stuck."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "use variables, types, functions, conditionals and loops",
+      "estMinutes": 300,
+      "md": "By the end of this session you will be able to declare variables with `let` and `const`, work with the core JS types, write functions with parameters and return values (including arrow functions), branch with `if/else` and strict equality, and iterate with `for` and `for...of`."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**What to focus on — and what to skip for now.**\n\n`let` vs `const`: use `const` by default; reach for `let` only when you need to reassign. Forget `var` — it has confusing scoping rules and no modern code uses it.\n\n**Types that matter right now:** `string`, `number`, `boolean`, `undefined`, and `null`. Arrays and objects come in the next session.\n\n**Functions:** understand named functions *and* arrow functions — they look different but behave the same for everything you'll do in Phase 2. Focus on params, return values, and the fact that a function without `return` returns `undefined`.\n\n**Conditionals:** always use `===` (triple equals), never `==`. The difference bites everyone once — learn it now.\n\n**Loops:** `for` for counted loops; `for...of` when iterating over an array. Skip `while` and `do...while` for now."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "## freeCodeCamp — JavaScript Certification (v9)\n\nThis is your **primary hands-on workout**. Complete these two projects in order:\n\n1. **Learn Introductory JavaScript by Building a Pyramid Generator** (109 steps) — covers variables (`let`/`const`), strings, numbers, functions, loops, and arrays. This is the foundation.\n2. **Learn Basic JavaScript by Building a Role Playing Game** (~168 steps) — reinforces functions, `if/else`, loops, and introduces objects and DOM basics.\n\nBoth projects teach by having you write real code step-by-step with instant feedback. Expect **4–5 hours** across these two projects at a comfortable beginner pace — break it into multiple sittings.\n\n**Stop after the Role Playing Game** — the next lesson covers arrays and objects in depth.",
+      "url": "https://www.freecodecamp.org/learn/javascript-v9",
+      "source": "freeCodeCamp",
+      "label": "Open freeCodeCamp JS curriculum — do this, then come back"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "## javascript.info — First Steps (reference while you work)\n\nKeep this open as a **reference tab** while you do freeCodeCamp. When something feels fuzzy — arrow function syntax, what `===` actually does, how `for...of` works — look it up here. The explanations are concise and accurate.\n\nMost useful pages: *Variables*, *Data types*, *Functions*, *Arrow functions*, *Comparisons*, *Conditional branching*, *Loops: while and for*.",
+      "url": "https://javascript.info/first-steps",
+      "source": "javascript.info",
+      "label": "javascript.info First Steps — use as reference"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**MDN is always there.** If freeCodeCamp or javascript.info doesn't answer a specific question, search `mdn <topic>` in your browser. MDN (developer.mozilla.org) is the authoritative JS reference — it's dense but precise. You don't need to read it end-to-end; use it to look things up."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Which declaration should you reach for by default in modern JavaScript?",
+          "options": [
+            "var — it has function scope, which is most predictable",
+            "let — it allows reassignment whenever needed",
+            "const — use it by default; switch to let only when you need to reassign",
+            "Either let or var — they behave identically in strict mode"
+          ],
+          "answerIndex": 2,
+          "explanation": "const signals that a binding won't be reassigned, making code easier to reason about; let is for the minority of cases where reassignment is genuinely needed."
+        },
+        {
+          "question": "What does the following function return when called as add(3, 4)?\n\nconst add = (a, b) => a + b;",
+          "options": [
+            "undefined, because arrow functions don't have an implicit return",
+            "7, because concise arrow functions return the expression automatically",
+            "NaN, because the + operator requires explicit Number() conversion",
+            "A function reference, because the parentheses are missing"
+          ],
+          "answerIndex": 1,
+          "explanation": "A concise arrow function (no curly braces) implicitly returns the single expression — here, a + b evaluates to 7."
+        },
+        {
+          "question": "Why should you prefer === over == when comparing values in JavaScript?",
+          "options": [
+            "=== is faster at runtime because it skips coercion",
+            "== is deprecated and will be removed in a future ECMAScript version",
+            "=== checks both value and type without type coercion, making the result predictable",
+            "They behave identically for all primitive types, so it is purely a style choice"
+          ],
+          "answerIndex": 2,
+          "explanation": "== performs type coercion before comparing (e.g. 0 == false is true), which creates hard-to-spot bugs; === compares value and type without coercion."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You've now been through the core building blocks that every JavaScript program is made of. The goal wasn't to memorise syntax from a textbook — it was to *use* it in a real interactive environment and build the muscle memory. Keep javascript.info bookmarked; you'll reach for it constantly.\n\nNext up: **Arrays and Objects** — the two data structures you'll use in practically every program you write.",
+      "nextLessonId": "p2-s2-arrays-objects",
+      "nextLessonTitle": "Arrays and Objects"
+    }
+  ]
+}

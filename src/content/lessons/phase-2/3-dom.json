@@ -1,0 +1,121 @@
+{
+  "id": "p2-s3-dom",
+  "phaseId": "phase-2",
+  "order": 3,
+  "slug": "dom",
+  "title": "The DOM",
+  "canDo": "select and change page elements with JavaScript",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Web Dev Simplified",
+      "url": "https://www.youtube.com/watch?v=y17RuWkWdn8",
+      "license": "YouTube / standard",
+      "reviewed": "2026-06-23",
+      "topic": "DOM manipulation"
+    },
+    {
+      "name": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "DOM introduction"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your HTML file is a blueprint. Once the browser reads it, it builds a **live object tree** in memory called the DOM — and JavaScript can reach into that tree to read, change, add, or remove anything on the page, right now, without a reload. That's the entire magic trick behind every interactive website you've ever used."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "select and change page elements with JavaScript",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to **select and change page elements with JavaScript** — grabbing nodes with `querySelector`, updating text with `textContent`, toggling styles with `classList`, and creating or removing elements on the fly."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "The **Document Object Model** is the browser's in-memory representation of your HTML as a tree of *nodes*. Every tag becomes an element node; every piece of text becomes a text node. `document` is the root.\n\nFour operations cover almost every real-world task:\n\n- **Select** — `document.querySelector('#id')` returns the first matching element; `querySelectorAll` returns a list.\n- **Read/write text** — `element.textContent` gets or sets the element's plain text.\n- **Toggle classes** — `element.classList.add/remove/toggle('class')` lets CSS do the visual work.\n- **Create/remove** — `document.createElement('tag')`, `parent.append(child)`, `element.remove()`.\n\nThe DOM is *live*: the moment you change it, the browser repaints."
+    },
+    {
+      "type": "video",
+      "title": "Learn DOM Manipulation In 18 Minutes",
+      "url": "https://www.youtube.com/watch?v=y17RuWkWdn8",
+      "source": "youtube",
+      "startSeconds": 0,
+      "minutes": 18,
+      "note": "Watch the full 18 minutes, then come back to test yourself with the quiz below."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**MDN: Introduction to the DOM** — the definitive reference for every property and method you just saw. Bookmark it; you'll return to it constantly.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction",
+      "source": "MDN Web Docs",
+      "label": "MDN — Introduction to the DOM"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**`innerHTML` vs `textContent`** — `textContent` only sets plain text and is safe from injection attacks. Reserve `innerHTML` for when you genuinely need to insert HTML markup, and always sanitize user-supplied strings before using it."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Which method returns the *first* element that matches a CSS selector?",
+          "options": [
+            "document.querySelector(selector)",
+            "document.getElementById(selector)",
+            "document.querySelectorAll(selector)",
+            "document.getElement(selector)"
+          ],
+          "answerIndex": 0,
+          "explanation": "querySelector returns the first matching element; querySelectorAll returns a NodeList of all matches."
+        },
+        {
+          "question": "You have a button element stored in `btn`. Which line *toggles* the CSS class `active` on it?",
+          "options": [
+            "btn.classList.switch('active')",
+            "btn.class = 'active'",
+            "btn.classList.toggle('active')",
+            "btn.setAttribute('class', 'active')"
+          ],
+          "answerIndex": 2,
+          "explanation": "classList.toggle adds the class if absent and removes it if present — one method for both states."
+        },
+        {
+          "question": "What is the correct sequence to create a new `<li>` and add it inside an existing `<ul id=\"list\">`?",
+          "options": [
+            "let li = document.createElement('li'); document.querySelector('#list').append(li);",
+            "let li = new HTMLElement('li'); list.add(li);",
+            "document.querySelector('#list').innerHTML += '<li>';",
+            "let li = document.makeElement('li'); li.appendTo('#list');"
+          ],
+          "answerIndex": 0,
+          "explanation": "createElement creates the node; append inserts it as the last child of the target parent."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now know how to navigate the DOM tree, select elements with `querySelector`, update text via `textContent`, toggle classes with `classList`, and build or remove nodes programmatically. These four tools unlock virtually all static-page interactivity.\n\nNext up: **Events** — making the page respond to what the user actually does.",
+      "bullets": [
+        "The DOM is a live object tree the browser builds from your HTML.",
+        "`querySelector` / `querySelectorAll` select elements using CSS selectors.",
+        "`textContent` reads and writes an element's plain text safely.",
+        "`classList.add/remove/toggle` applies and removes CSS classes at runtime.",
+        "`createElement` + `append` / `remove` add and delete nodes dynamically."
+      ],
+      "nextLessonId": "p2-s4-events",
+      "nextLessonTitle": "Events"
+    }
+  ]
+}

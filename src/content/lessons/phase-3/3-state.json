@@ -1,0 +1,112 @@
+{
+  "id": "p3-s3-state",
+  "phaseId": "phase-3",
+  "order": 3,
+  "slug": "state",
+  "title": "State & events",
+  "canDo": "add state with useState and handle events",
+  "estMinutes": 180,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/adding-interactivity",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "useState and event handling"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your components so far are static — they render the same output every time. Real UIs respond to the user: a counter ticks up, a form captures input, a toggle switches on and off. React's answer to all of that is **state**. Once you understand `useState`, you have the key to every interactive component you'll ever build."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "add state with useState and handle events",
+      "estMinutes": 180,
+      "md": "By the end of this session you will be able to: add a piece of state to a component with `useState`, update it through an event handler, and explain *why* you must call the setter instead of mutating the variable directly."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "`useState` is a React Hook that lets a component \"remember\" a value between renders.\n\n```jsx\nconst [count, setCount] = useState(0);\n```\n\nIt returns an array of exactly two items — **the current value** and **a setter function** — which you destructure. When you call the setter (`setCount(1)`), React schedules a re-render and the component runs again with the new value.\n\n**Never mutate state directly** (`count = count + 1` does nothing — React never sees the change). Always go through the setter.\n\nWhen the new value depends on the old one, use the **functional updater** form so React always gives you the latest value:\n\n```jsx\nsetCount(prev => prev + 1);\n```\n\nAttach handlers to DOM events with camelCase props: `onClick`, `onChange`, `onSubmit`, etc."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Work through **Adding Interactivity** on react.dev. It covers responding to events, state as a snapshot, queueing state updates, and updating objects/arrays in state — all the ground you need for this phase.",
+      "url": "https://react.dev/learn/adding-interactivity",
+      "source": "react.dev",
+      "label": "Adding Interactivity — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "If you prefer a code-along format, use **Section 3: React State** in Scrimba's *Learn React* course (taught by Bob Ziroll). It is the third section of six — skip past Section 1 (Static Pages) and Section 2 (Data-Driven React) if you have already covered those, or work through the whole course in order. Section 3 is the single longest block (57 lessons, ~5 hours) and covers lifting state, controlled inputs, and re-renders — everything in this lesson and more. Use it alongside or instead of the react.dev reading, whichever format clicks better for you.",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "source": "Scrimba",
+      "label": "Learn React — Section 3: React State (Scrimba, Bob Ziroll)"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Come back here once you've finished the resource.** The quiz below checks that the key ideas landed — it takes about 5 minutes."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does `useState(0)` return?",
+          "options": [
+            "An array containing the current state value and a setter function",
+            "The number 0",
+            "An object with `value` and `update` properties",
+            "A setter function only"
+          ],
+          "answerIndex": 0,
+          "explanation": "useState returns a two-item array: [currentValue, setterFunction], which you typically destructure."
+        },
+        {
+          "question": "You have `const [score, setScore] = useState(0)`. A user clicks a button and you want to increase the score. Which of the following is correct?",
+          "options": [
+            "score = score + 1",
+            "score++",
+            "setScore(score + 1)",
+            "useState(score + 1)"
+          ],
+          "answerIndex": 2,
+          "explanation": "You must always use the setter function. Directly mutating the variable skips React's re-render cycle, so the UI never updates."
+        },
+        {
+          "question": "When should you use the functional updater form `setCount(prev => prev + 1)` instead of `setCount(count + 1)`?",
+          "options": [
+            "Never — both forms are identical",
+            "Only inside useEffect",
+            "When the new value depends on the previous value, to guarantee you read the latest state",
+            "Only when count is a string"
+          ],
+          "answerIndex": 2,
+          "explanation": "React may batch multiple state updates. The functional updater receives the guaranteed latest value, avoiding stale-closure bugs when the new value derives from the old one."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- `useState(initialValue)` returns `[value, setter]` — destructure both.\n- Call the setter to update state; React re-renders the component with the new value.\n- Never mutate state directly — the UI will not update.\n- Use `setX(prev => ...)` when the new value depends on the old one.\n- Wire up events with camelCase props: `onClick`, `onChange`, etc.",
+      "bullets": [
+        "useState returns a two-item array: current value + setter",
+        "Calling the setter triggers a re-render",
+        "Direct mutation bypasses React — always use the setter",
+        "Functional updater form guards against stale state"
+      ],
+      "nextLessonId": "p3-s4-lists",
+      "nextLessonTitle": "Lists & keys"
+    }
+  ]
+}

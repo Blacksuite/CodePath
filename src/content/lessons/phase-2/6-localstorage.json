@@ -1,0 +1,95 @@
+{
+  "id": "p2-s6-localstorage",
+  "phaseId": "phase-2",
+  "order": 6,
+  "slug": "localstorage",
+  "title": "localStorage & JSON",
+  "canDo": "save and load data that survives a refresh",
+  "estMinutes": 45,
+  "fade": "curated",
+  "sources": [
+    { "name": "javascript.info — localStorage, sessionStorage", "url": "https://javascript.info/localstorage", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "localStorage" }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You build a to-do list — it works great, you add five items — then you hit refresh and everything vanishes. `localStorage` fixes that. It's the browser's built-in key-value store that sticks around between page loads, and learning it unlocks every \"remember my data\" feature you'll ever want to ship."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "save and load data that survives a refresh",
+      "estMinutes": 45
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**What to focus on:**\n\n- **localStorage only stores strings.** `localStorage.setItem('key', 'value')` saves a string; `localStorage.getItem('key')` reads it back.\n- **Arrays and objects must be serialised.** Use `JSON.stringify(data)` before saving, and `JSON.parse(stored)` after reading.\n- **The null-on-first-load gotcha.** `getItem` returns `null` when the key doesn't exist yet — always provide a fallback:\n  ```js\n  const saved = localStorage.getItem('todos');\n  const todos = saved ? JSON.parse(saved) : [];\n  ```\n- **setItem / getItem / removeItem** — that's the whole API you need right now."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "url": "https://javascript.info/localstorage",
+      "source": "javascript.info",
+      "label": "▶ Do this: read the javascript.info localStorage chapter — it covers setItem/getItem, JSON serialisation, storage events, and the sessionStorage difference. Work through all the examples in the browser console as you go."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "Open DevTools → Application → Local Storage while you experiment. You can see every key-value pair live, edit them, and delete them — invaluable for debugging why your data isn't loading correctly."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "You run `localStorage.setItem('count', 5)` then `localStorage.getItem('count')`. What do you get back?",
+          "options": [
+            "The number 5",
+            "The string \"5\"",
+            "undefined",
+            "null"
+          ],
+          "answerIndex": 1,
+          "explanation": "localStorage stores everything as a string, so the number 5 becomes the string \"5\" automatically."
+        },
+        {
+          "question": "Why do you need `JSON.stringify` before saving an array to localStorage?",
+          "options": [
+            "To compress the array and save storage space",
+            "Because localStorage can only store strings, not arrays",
+            "To sort the array before saving",
+            "JSON.stringify is not needed — arrays save fine as-is"
+          ],
+          "answerIndex": 1,
+          "explanation": "localStorage only holds strings. JSON.stringify converts the array to a JSON string; JSON.parse converts it back when you read it."
+        },
+        {
+          "question": "On the very first page load, `localStorage.getItem('prefs')` returns what?",
+          "options": [
+            "An empty object {}",
+            "An empty string \"\"",
+            "null",
+            "undefined"
+          ],
+          "answerIndex": 2,
+          "explanation": "getItem returns null when the key has never been set, so always guard with a fallback like `JSON.parse(saved) ?? defaultValue`."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "localStorage stores strings only — use `JSON.stringify` to save objects/arrays and `JSON.parse` to restore them; guard against the `null` on first load with a fallback. Your data now survives a refresh. Next up: talking to servers asynchronously.",
+      "bullets": [
+        "localStorage.setItem / getItem / removeItem",
+        "JSON.stringify to save, JSON.parse to read",
+        "Null-on-first-load → always provide a fallback"
+      ],
+      "nextLessonId": "p2-s7-async",
+      "nextLessonTitle": "Async & fetch"
+    }
+  ]
+}

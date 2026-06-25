@@ -1,0 +1,119 @@
+{
+  "id": "p2-s5-array-methods",
+  "phaseId": "phase-2",
+  "order": 5,
+  "slug": "array-methods",
+  "title": "Array methods",
+  "canDo": "transform data with map, filter, forEach and find",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/",
+      "license": "CC-BY-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "map, filter, forEach"
+    },
+    {
+      "name": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "Array reference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have a list of products. You want prices only. You want only the in-stock ones. You want to run a side effect for each. This is the daily bread of JavaScript — and four array methods do almost all of it: `forEach`, `map`, `filter`, and `find`. Master these and you stop writing manual `for` loops forever."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "transform data with map, filter, forEach and find",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to use `forEach` to iterate, `map` to transform every item into something new, `filter` to keep only matching items, and `find` to locate the first match — and know which one to reach for in any situation."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**The four workhorses**\n\n- **`forEach(fn)`** — calls `fn` for every item; returns `undefined`. Use it for side effects (logging, DOM updates). It does *not* build a new array.\n- **`map(fn)`** — calls `fn` for every item and *collects the return values* into a new array of the same length. Use it to transform: prices → discounted prices, objects → JSX elements.\n- **`filter(fn)`** — calls `fn` for every item and keeps only items where `fn` returns truthy. The result array is the same length *or shorter*.\n- **`find(fn)`** — returns the *first* item where `fn` returns truthy, or `undefined` if nothing matches. Stops as soon as it finds one.\n\nAll four receive the same callback signature: `(item, index, array)` — though you rarely need all three arguments. None of them mutate the original array."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Read this freeCodeCamp article — it walks through `map`, `filter`, and `reduce` with clear before/after examples. Focus on the `map` and `filter` sections; skim `reduce` for now.",
+      "url": "https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/",
+      "source": "freeCodeCamp",
+      "label": "JavaScript Map, Reduce, and Filter — Explained with Examples"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Bookmark the MDN Array reference for when you need the exact signature of any method. Use the left sidebar to jump straight to `forEach`, `map`, `filter`, or `find`.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "source": "MDN Web Docs",
+      "label": "Array — JavaScript | MDN"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Pick the right tool**\n\n| Goal | Method |\n|---|---|\n| Run a side effect for each item | `forEach` |\n| Build a new array of the same length | `map` |\n| Build a shorter array of matching items | `filter` |\n| Get one matching item | `find` |\n\nIf you find yourself calling `map` but ignoring the return value, switch to `forEach`. If you find yourself filtering and then mapping, you can chain: `arr.filter(…).map(…)`."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does `[1, 2, 3].map(x => x * 2)` return?",
+          "options": [
+            "[2, 4, 6]",
+            "undefined",
+            "[1, 2, 3]",
+            "6"
+          ],
+          "answerIndex": 0,
+          "explanation": "`map` returns a new array of the same length where each item is the result of the callback — so each number is doubled."
+        },
+        {
+          "question": "You call `[10, 20, 30].filter(n => n > 15)`. What do you get?",
+          "options": [
+            "[20, 30]",
+            "[10]",
+            "true",
+            "[10, 20, 30]"
+          ],
+          "answerIndex": 0,
+          "explanation": "`filter` keeps only items for which the callback returns truthy. 20 and 30 are both greater than 15, so they are kept; 10 is dropped."
+        },
+        {
+          "question": "Which method should you use when you want to log every item in an array but do NOT need a new array back?",
+          "options": [
+            "forEach",
+            "map",
+            "filter",
+            "find"
+          ],
+          "answerIndex": 0,
+          "explanation": "`forEach` is designed for side effects. It always returns `undefined`, so it signals clearly that you are not building a new array."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now have the four array methods that cover the vast majority of real-world data work in JavaScript.",
+      "bullets": [
+        "`forEach` — iterate for side effects, returns nothing",
+        "`map` — transform every item, returns a new array of the same length",
+        "`filter` — keep matching items, returns a shorter (or equal-length) array",
+        "`find` — locate the first match, returns one item or `undefined`"
+      ],
+      "nextLessonId": "p2-s6-localstorage",
+      "nextLessonTitle": "localStorage"
+    }
+  ]
+}

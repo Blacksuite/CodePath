@@ -1,0 +1,107 @@
+{
+  "id": "p5-s1-fullstack",
+  "phaseId": "phase-5",
+  "order": 1,
+  "slug": "fullstack",
+  "title": "How full-stack works",
+  "canDo": "explain how frontend, API and database fit together",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Fireship – Supabase in 100 Seconds",
+      "url": "https://www.youtube.com/watch?v=zBZgdTb-dns",
+      "license": "YouTube Standard",
+      "reviewed": "2026-06-23",
+      "topic": "full-stack architecture, Supabase"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have React components that look great — but where does the data come from? Right now everything lives inside your JavaScript. The moment you refresh the page, it's gone. Real apps need a place to *store* data permanently and a way for the browser to talk to that store. That's full-stack: the browser (frontend) + a server (API) + a database — three layers that each do one job. This session maps out how those layers connect, then hands you the fastest on-ramp to building all three yourself."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "md": "By the end of this session you will be able to **explain how frontend, API and database fit together** — well enough to sketch the data flow on a whiteboard and choose the right layer for a piece of code.",
+      "canDo": "explain how frontend, API and database fit together",
+      "estMinutes": 45
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Three layers, three jobs.**\n\n- **Frontend** — React running in the browser. Shows UI, captures clicks. Has *no permanent memory*: every refresh starts fresh.\n- **API** — code running on a server (Node, Python, etc.). Acts as a gatekeeper: it receives requests from the browser, enforces rules (\"is this user logged in?\"), then reads or writes data.\n- **Database** — where data lives *permanently*. It never forgets. A relational database (like Postgres) stores data in tables you can query with SQL.\n\nThe browser *never* talks directly to the database — that would expose your data to anyone. It always goes through the API.\n\n**Supabase** packages a Postgres database + an auto-generated REST/realtime API + built-in auth behind a single hosted service, so one developer can wire up all three layers in an afternoon."
+    },
+    {
+      "type": "video",
+      "title": "Supabase in 100 Seconds",
+      "url": "https://www.youtube.com/watch?v=zBZgdTb-dns",
+      "source": "youtube",
+      "startSeconds": 0,
+      "minutes": 2,
+      "note": "Watch the full clip (≈100 s), then come back. Pay attention to how Supabase sits between your React app and the Postgres database."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Supabase docs — how it works**",
+      "url": "https://supabase.com/docs/guides/getting-started/architecture",
+      "source": "Supabase",
+      "label": "Architecture overview (skim the diagram)"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Mental model check:** when you click \"Save\" in a React form, the journey is: *React component → fetch/axios call → API route → database INSERT → response back up the chain → React re-renders with new data*. Each arrow is a network request or a SQL query. Supabase auto-generates the middle two steps for you."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is the primary purpose of a database in a full-stack app?",
+          "options": [
+            "To render HTML to the user",
+            "To store data permanently so it survives page refreshes and server restarts",
+            "To validate form inputs before the user submits them",
+            "To style components with CSS"
+          ],
+          "answerIndex": 1,
+          "explanation": "A database stores data persistently — unlike in-memory JavaScript state, it survives refreshes, deploys, and restarts."
+        },
+        {
+          "question": "In a typical full-stack architecture, which layer does the browser communicate with directly?",
+          "options": [
+            "The database, via a direct SQL connection",
+            "The API (backend server), which then talks to the database",
+            "A CDN that caches all database rows",
+            "The operating system file system"
+          ],
+          "answerIndex": 1,
+          "explanation": "The browser always talks to the API, never directly to the database — keeping credentials and business rules safely on the server."
+        },
+        {
+          "question": "What does Supabase provide out of the box for a solo developer?",
+          "options": [
+            "A React component library and CSS framework",
+            "A Postgres database, auto-generated API, and built-in auth — all hosted",
+            "A Node.js runtime you must configure and deploy yourself",
+            "A Git repository with CI/CD pipelines"
+          ],
+          "answerIndex": 1,
+          "explanation": "Supabase bundles Postgres + a REST/realtime API + auth into one hosted platform, letting one person build all three layers quickly."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You can now describe the three-layer full-stack model: the **frontend** (React in the browser) sends requests to an **API** (server-side code), which reads and writes a **database** (permanent storage). Supabase collapses the API and database into a single managed service, making full-stack solo-developer projects practical.\n\nNext up: **p5-s2-supabase — Setting up Supabase** — you'll create a project, inspect the auto-generated API, and connect it to your React app for the first time.",
+      "nextLessonId": "p5-s2-supabase",
+      "nextLessonTitle": "Setting up Supabase"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "p4-s6-fetch",
+  "phaseId": "phase-4",
+  "order": 6,
+  "slug": "fetch",
+  "title": "Fetching a typed API",
+  "canDo": "fetch and type data from a public API",
+  "estMinutes": 75,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "fetching data inside useEffect"
+    },
+    {
+      "name": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "fetch API — Response, res.ok, JSON parsing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You paste a URL into your browser and data appears instantly. Under the hood your app is doing the same thing every time it loads: sending an HTTP request, waiting for a response, and turning raw JSON into something React can render. This session is about doing that yourself — with TypeScript types so the shape of that data is never a mystery."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "fetch and type data from a public API",
+      "estMinutes": 75,
+      "md": "By the end of this session you will be able to call a public JSON API with `fetch` and `async/await`, check `res.ok` before parsing, define a TypeScript interface for the response, and manage the three states every data-fetching component needs: loading, error, and data."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**A public API returns JSON when you request a URL.**\n\nUse `fetch` inside a `useEffect` to kick off the request after the component mounts. Because `fetch` is asynchronous, write a nested `async` function and call it immediately — you cannot make the effect callback itself `async`.\n\n**Always check `res.ok` before calling `res.json()`.** A server can respond with status 404 or 500 and still resolve the `fetch` promise — only a network failure rejects it. If `res.ok` is false, throw an error so your catch block handles it.\n\n**Type the response with an interface.** Cast the parsed JSON with `as YourType` (or use a type-safe parser) so TypeScript knows the shape of your data downstream.\n\n**Every fetch component has three states** — you must handle all three or users see broken UIs:\n- `loading` — request is in flight; show a spinner or skeleton.\n- `error` — something went wrong; show a message.\n- `data` — success; render the result."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Primary reading — react.dev\n\nRead the **\"Synchronizing with Effects\"** page on react.dev, focusing on the *\"Fetching data\"* section. It shows the correct async-function-inside-effect pattern, explains why cleanup matters for fetch, and covers the race-condition problem you will hit in real apps. Plan 35–40 minutes. Come back here when you're done.",
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "source": "react.dev",
+      "label": "Synchronizing with Effects — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Reference — MDN fetch\n\nBrowse the **`Window: fetch()`** reference on MDN. Pay attention to the `Response` object properties (`ok`, `status`, `json()`) and the note that `fetch` only rejects on network failure — not on 4xx/5xx responses. This is the most common source of silent bugs when calling APIs. Skim it in 10 minutes, then return.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch",
+      "source": "MDN",
+      "label": "Window: fetch() — MDN Web Docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "mistake",
+      "md": "**The most common fetch mistake: forgetting `res.ok`.**\n\nThis code looks correct but swallows every server error silently:\n\n```ts\nconst res = await fetch(url);\nconst data = await res.json(); // runs even on 404 or 500!\n```\n\nAlways guard it:\n\n```ts\nconst res = await fetch(url);\nif (!res.ok) throw new Error(`HTTP ${res.status}`);\nconst data = await res.json();\n```"
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does `fetch(url)` return?",
+          "options": [
+            "The parsed JSON data from the server, ready to use",
+            "A Promise that resolves to a Response object",
+            "A Promise that resolves to the parsed JSON directly",
+            "An EventEmitter that fires when data arrives"
+          ],
+          "answerIndex": 1,
+          "explanation": "`fetch` returns a Promise that resolves to a `Response` object. You still need to call `res.json()` (which is itself a Promise) to get the parsed body."
+        },
+        {
+          "question": "Why should you check `res.ok` before calling `res.json()`?",
+          "options": [
+            "Because `res.json()` crashes the browser if the server is slow",
+            "Because `fetch` only rejects its Promise on a network failure — a 404 or 500 still resolves, so `res.ok` is the only way to detect those errors",
+            "Because `res.ok` converts the response to JSON more efficiently than `res.json()`",
+            "Because TypeScript requires `res.ok` to be checked before any async call"
+          ],
+          "answerIndex": 1,
+          "explanation": "`fetch` resolves successfully even when the server returns a 4xx or 5xx status. Without checking `res.ok`, you would silently try to parse an error response as valid data."
+        },
+        {
+          "question": "Which three state variables does a well-written data-fetching component need?",
+          "options": [
+            "pending, resolved, rejected",
+            "loading, error, data",
+            "idle, fetching, done",
+            "start, success, failure"
+          ],
+          "answerIndex": 1,
+          "explanation": "The canonical trio is `loading` (request in flight), `error` (something went wrong), and `data` (successful result). Every user-facing async component should handle all three."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- A public API returns JSON when you request a URL; use `fetch` + `async/await` inside `useEffect` to load it after mount.\n- `fetch` only rejects on a network failure — always check `res.ok` before parsing so server errors don't go silent.\n- Define a TypeScript interface and cast the parsed JSON so TypeScript knows your data's shape downstream.\n- Every data-fetching component has three states — `loading`, `error`, and `data` — and all three need to be rendered.",
+      "bullets": [
+        "fetch + async/await inside useEffect to load data after mount",
+        "Check res.ok before res.json() — fetch resolves even on 4xx/5xx",
+        "Type the response with a TypeScript interface",
+        "Always handle loading, error, and data states"
+      ],
+      "nextLessonId": "p4-s7-build",
+      "nextLessonTitle": "Build project"
+    }
+  ]
+}

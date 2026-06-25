@@ -1,0 +1,113 @@
+{
+  "id": "p6-s1-deploy",
+  "phaseId": "phase-6",
+  "order": 1,
+  "slug": "deploy",
+  "title": "Deploy to the web",
+  "canDo": "deploy a React app to Vercel from GitHub",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Vercel – Vite on Vercel",
+      "url": "https://vercel.com/docs/frameworks/frontend/vite",
+      "license": "Vercel Docs",
+      "reviewed": "2026-06-23",
+      "topic": "deploying a Vite/React app on Vercel"
+    },
+    {
+      "name": "Vercel – Environment Variables",
+      "url": "https://vercel.com/docs/environment-variables",
+      "license": "Vercel Docs",
+      "reviewed": "2026-06-23",
+      "topic": "managing environment variables in Vercel dashboard"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your app works on your laptop — but a URL you can paste into a group chat doesn't exist yet. Deployment is the step that turns a local project into a public URL that anyone on the planet can visit. The good news: Vercel has automated almost all of it. You push to GitHub, Vercel notices, and within about 30 seconds your app is live. Every future push does the same thing automatically. This session walks you through that pipeline end to end and covers one sharp edge: which parts of your `.env` file are safe to hand to Vercel — and which are not."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "md": "By the end of this session you will be able to **deploy a React app to Vercel from GitHub** — push code, import the repo into Vercel, configure environment variables correctly, and understand why `VITE_` prefixed variables are not secret.",
+      "canDo": "deploy a React app to Vercel from GitHub",
+      "estMinutes": 60
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**How Vercel deployment works.**\n\n1. Push your project to a GitHub repository.\n2. In the Vercel dashboard, click **Add New → Project**, then import that repository. Vercel detects Vite automatically.\n3. Every subsequent `git push` to your main branch triggers a new deployment — no extra steps.\n\n**Environment variables** live in *Settings → Environment Variables* in the Vercel dashboard — never in committed code.\n\n**The `VITE_` prefix rule:** Vite only exposes variables whose names start with `VITE_` to your frontend bundle (e.g. `VITE_SUPABASE_PUBLISHABLE_KEY`). Anything without that prefix stays server-side and is invisible to the browser. That prefix is your contract: name a variable `VITE_*` and you are promising it can be public."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Vercel docs — Vite on Vercel**",
+      "url": "https://vercel.com/docs/frameworks/frontend/vite",
+      "source": "Vercel",
+      "label": "Read the quick-start section, then come back"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Vercel docs — Environment Variables**",
+      "url": "https://vercel.com/docs/environment-variables",
+      "source": "Vercel",
+      "label": "Focus on the dashboard UI and the VITE_ prefix note"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "mistake",
+      "md": "**Common mistake: treating `VITE_` variables as secrets.**\n\nBecause `VITE_SUPABASE_PUBLISHABLE_KEY` sounds like a secret key, developers sometimes try to hide it — but they can't. Vite inlines every `VITE_*` variable directly into the JavaScript bundle that is sent to the browser. Anyone who opens DevTools → Sources can read it.\n\nThat is intentional design: the Supabase *publishable* key is safe to expose because Supabase's Row Level Security policies control what each user can access. **Never put a real secret (a service-role key, a private API key, a password) in a `VITE_` variable.** If a value must stay private, it belongs in a server-side function — not in your Vite frontend."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "How does Vercel deploy a new version of your app after the initial setup?",
+          "options": [
+            "You upload a ZIP file through the Vercel dashboard each time",
+            "You run `vercel deploy` in your terminal for every release",
+            "Every `git push` to your connected repository triggers an automatic deployment",
+            "You manually click a 'Rebuild' button inside Vercel after each commit"
+          ],
+          "answerIndex": 2,
+          "explanation": "Once a GitHub repo is imported, Vercel watches for pushes and deploys automatically — no manual step needed after each commit."
+        },
+        {
+          "question": "A Vite project has two environment variables: `VITE_API_URL` and `DB_PASSWORD`. Which one is bundled into the JavaScript the browser downloads?",
+          "options": [
+            "`DB_PASSWORD`, because it needs to reach the database",
+            "`VITE_API_URL`, because only variables with the `VITE_` prefix are exposed to the frontend bundle",
+            "Both, because Vite includes all `.env` variables for convenience",
+            "Neither — environment variables are always kept server-side by Vite"
+          ],
+          "answerIndex": 1,
+          "explanation": "Vite's build step only inlines variables whose names start with `VITE_`. `DB_PASSWORD` has no prefix, so it stays invisible to the browser."
+        },
+        {
+          "question": "Why is a `VITE_` prefixed variable NOT considered a secret, even though it is listed in your Vercel environment variables?",
+          "options": [
+            "Because Vercel encrypts it with AES-256 before sending it to the browser",
+            "Because Vite strips the value at build time and replaces it with a hash",
+            "Because Vite inlines it into the JavaScript bundle, so anyone who opens DevTools can read it",
+            "Because environment variables are only readable by Node.js, not the browser"
+          ],
+          "answerIndex": 2,
+          "explanation": "Vite replaces `import.meta.env.VITE_*` references with their literal values during the build, embedding them in the public bundle — nothing stays hidden from a browser inspection."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now know the deployment pipeline: **push to GitHub → Vercel auto-builds and publishes**. Environment variables go in *Settings → Environment Variables* in the Vercel dashboard. Variables prefixed `VITE_` are bundled into the browser's JavaScript and are therefore **public** — use them only for values that are safe to expose (like a Supabase publishable key). Real secrets belong in server-side code, never in a `VITE_` variable.\n\nNext up: **p6-s2-charts** — Adding charts to your dashboard.",
+      "nextLessonId": "p6-s2-charts",
+      "nextLessonTitle": "Adding charts to your dashboard"
+    }
+  ]
+}

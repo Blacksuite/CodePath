@@ -1,0 +1,104 @@
+{
+  "id": "p5-s4-auth",
+  "phaseId": "phase-5",
+  "order": 4,
+  "slug": "auth",
+  "title": "Authentication",
+  "canDo": "add signup and login with Supabase Auth",
+  "estMinutes": 90,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Supabase",
+      "url": "https://supabase.com/docs/guides/auth/passwords",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Supabase Auth signup, login, and session management in React"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Right now anyone who visits your app can see everything — there are no users, no accounts, no personal data. Authentication changes that. It is the gate that turns an anonymous visitor into a known person with their own id, their own rows in the database, and their own private data. Supabase does the hard part — hashing passwords, issuing tokens, refreshing sessions — so you can add real accounts in an afternoon."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "add signup and login with Supabase Auth",
+      "estMinutes": 90,
+      "md": "By the end of this session you will be able to wire up Supabase Auth in a React app: build a signup form, build a login form using `supabase.auth.signInWithPassword(...)`, read the active session to know who is logged in, and get the logged-in user's `id` to attach to their database rows."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Authentication = letting users prove who they are.**\n\nSupabase Auth handles signup, login, and sessions for you. When a user signs up with email + password, Supabase stores a hashed credential and returns a **session** — a short-lived access token the client sends with every request. A session tells Supabase (and your app) *this request comes from user X*.\n\nA logged-in user has a unique **`id`** (a UUID). You store that `id` as the `user_id` on every row that belongs to them — that is how you later query \"show me only this user's data\".\n\n**v2 SDK method names:** older tutorials used `supabase.auth.signIn()` — that method is gone. The current v2 call is `supabase.auth.signInWithPassword({ email, password })`. Use `supabase.auth.signUp({ email, password })` to create an account and `supabase.auth.signOut()` to end the session."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Primary reference — Supabase docs\n\nRead the **\"Password-based Auth\"** guide in the Supabase docs. It covers creating an account with `signUp`, logging in with `signInWithPassword`, reading the active session, and signing out. Work through the code examples in your own project. Come back here when you have a working signup and login flow.",
+      "url": "https://supabase.com/docs/guides/auth/passwords",
+      "source": "Supabase",
+      "label": "Password-based Auth — Supabase Docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "mistake",
+      "md": "**v2 rename trap: `signIn` no longer exists.**\n\nIf you copy-paste from an older blog post or YouTube video you will likely see:\n\n```ts\n// OLD — v1 SDK, does not exist in v2\nawait supabase.auth.signIn({ email, password });\n```\n\nThis silently fails (or throws `signIn is not a function`). The correct v2 call is:\n\n```ts\n// CORRECT — v2 SDK\nconst { data, error } = await supabase.auth.signInWithPassword({ email, password });\n```\n\nSame rule applies to the env variable: use `VITE_SUPABASE_PUBLISHABLE_KEY`, not `VITE_SUPABASE_ANON_KEY`, in Vite projects."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does authentication give each user that you attach to their database rows?",
+          "options": [
+            "A username string you choose when creating the account",
+            "A unique UUID called `id` that identifies them across all their data",
+            "A row number auto-incremented by the database",
+            "An email-derived hash that serves as a primary key"
+          ],
+          "answerIndex": 1,
+          "explanation": "Supabase Auth gives every user a UUID `id`. You store that value as `user_id` on their rows so you can later query only their data."
+        },
+        {
+          "question": "What is a session in Supabase Auth?",
+          "options": [
+            "A browser tab that stays open while the user is active",
+            "A server-side database table that stores the user's current page",
+            "A short-lived access token returned after login that proves the user's identity on each request",
+            "A cookie that stores the user's password so they don't have to re-enter it"
+          ],
+          "answerIndex": 2,
+          "explanation": "A session is an access token (plus a refresh token) issued when the user logs in. The Supabase client attaches it automatically to every request, telling Supabase which user is making the call."
+        },
+        {
+          "question": "Which is the correct Supabase v2 SDK call to log a user in with email and password?",
+          "options": [
+            "supabase.auth.signIn({ email, password })",
+            "supabase.auth.login({ email, password })",
+            "supabase.auth.signInWithPassword({ email, password })",
+            "supabase.auth.authenticate({ email, password })"
+          ],
+          "answerIndex": 2,
+          "explanation": "`signInWithPassword` is the v2 method. The old `signIn` was removed in the v2 SDK — using it will throw a runtime error."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- Authentication lets users prove who they are; Supabase Auth handles hashing, tokens, and session refresh for you.\n- Every logged-in user gets a UUID `id` — store it as `user_id` on their rows to scope queries to that user.\n- A session is a short-lived access token the client sends automatically; reading `supabase.auth.getSession()` tells you whether someone is logged in.\n- The v2 SDK renamed `signIn` to `signInWithPassword({ email, password })` — older tutorials use the old name.",
+      "bullets": [
+        "Auth = Supabase manages signup, login, and sessions for you",
+        "Logged-in user has a UUID id — attach it to their database rows",
+        "Session = access token that proves identity on every request",
+        "v2 login call: supabase.auth.signInWithPassword({ email, password })"
+      ],
+      "nextLessonId": "p5-s5-rls",
+      "nextLessonTitle": "Row Level Security"
+    }
+  ]
+}

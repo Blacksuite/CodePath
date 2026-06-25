@@ -1,0 +1,92 @@
+{
+  "id": "p3-s7-build",
+  "phaseId": "phase-3",
+  "order": 7,
+  "slug": "build",
+  "title": "Build: a React app",
+  "canDo": "build a React app from scratch",
+  "estMinutes": 180,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "YouTube — Build a Weather App with React",
+      "url": "https://www.youtube.com/watch?v=iTvNpQjsoQg",
+      "license": "YouTube / standard",
+      "reviewed": "2026-06-25",
+      "topic": "React weather app with public API — components, state, useEffect, fetch"
+    },
+    {
+      "name": "Open-Meteo",
+      "url": "https://open-meteo.com/en/docs",
+      "license": "public-free",
+      "reviewed": "2026-06-25",
+      "topic": "Free weather API — no key required"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have learned every core piece of React — components, props, state, lists, forms, and useEffect. Now it is time to stop following along and start building. This session has one job: you open your own Vite project, call a real weather API, and ship a working app end-to-end. No guided examples. Just you, your editor, and the skills you have built up. By the end, your app will show live weather for any city the user searches — and you will know you can build real things."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build a React app from scratch",
+      "estMinutes": 180,
+      "md": "**By the end of this session you will be able to:** build a small React weather app entirely from scratch — a controlled search form, a `useEffect` fetch from a real public API, state for the result and loading/error states, and a card component that displays current conditions."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Your build plan (keep this in view as you code):**\n\n1. **Scaffold** — `npm create vite@latest weather-app -- --template react`, then `npm install && npm run dev`.\n2. **Pick your API** — Open-Meteo (`https://open-meteo.com`) is free and needs no API key. First geocode a city name to lat/lon, then fetch weather. Or use the OpenWeatherMap free tier with a key stored in `.env`.\n3. **State first** — `city` (string input), `weather` (result object or null), `status` ('idle' | 'loading' | 'error' | 'done').\n4. **Fetch in a handler** — write an async `handleSearch` function. Set status to 'loading', fetch, set weather and status to 'done'. Catch errors.\n5. **Render all states** — idle prompt, spinner while loading, error message, and the weather card when done.\n6. **Extract a component** — pull the weather display into a `<WeatherCard>` component that receives weather as a prop."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Free weather API — no sign-up needed**\n\nOpen-Meteo provides current and forecast weather worldwide with no API key. The geocoding API turns a city name into coordinates; the forecast API returns temperature, wind, and weather code.",
+      "url": "https://open-meteo.com/en/docs",
+      "source": "Open-Meteo",
+      "label": "Open-Meteo API docs — free, no key required"
+    },
+    {
+      "type": "video",
+      "title": "Build a Weather App with React (Perfect for Beginners)",
+      "url": "https://www.youtube.com/watch?v=iTvNpQjsoQg",
+      "source": "youtube",
+      "startSeconds": 0,
+      "minutes": 25,
+      "note": "Watch this build-along to see how to wire a React app to a live weather API, then close the video and build your own version from scratch below."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip — write ugly first.** Put everything in `App.jsx` until it works, then extract a `WeatherCard` component. It is much easier to split working code than to debug across files before anything runs."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "Open your own Vite + React project (or create one now: `npm create vite@latest weather-app -- --template react`). Build a **weather app** that does all of the following:\n\n- A **controlled search form** with a city-name input and a Search button. Submitting triggers a fetch.\n- A **loading state** — while the request is in flight, show a spinner or a 'Loading…' message.\n- A **weather card** — when data arrives, show the city name, current temperature, and at least one other piece of information (weather description, wind speed, or humidity).\n- An **error message** — when the city is not found or the fetch fails, show a friendly message instead of crashing.\n- Split into at least **two components**: `App` (owns state and search handler) and `WeatherCard` (receives weather data as a prop and renders it).\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
+      "definitionOfDone": "Type a city name, click Search — a loading indicator appears, then a card with real temperature data. Type gibberish — see a friendly error message. The console has no key-prop warnings and the code is split across at least two components.",
+      "hints": [
+        "**Geocoding + weather fetch with Open-Meteo.** First fetch the coordinates: `https://geocoding-api.open-meteo.com/v1/search?name=CITY&count=1`. Check `results[0]` for `latitude` and `longitude`. Then fetch weather: `https://api.open-meteo.com/v1/forecast?latitude=LAT&longitude=LON&current=temperature_2m,wind_speed_10m&temperature_unit=celsius`. Access `current.temperature_2m` for the temperature. Verify both fetches log the expected shape in the console before touching any state.",
+        "**Wire up state and the search handler.** In `App.jsx` add: `const [city, setCity] = useState('')`, `const [weather, setWeather] = useState(null)`, `const [status, setStatus] = useState('idle')`. Write `async function handleSearch(e) { e.preventDefault(); setStatus('loading'); try { /* fetch */ setWeather(data); setStatus('done'); } catch { setStatus('error'); } }`. Attach it to `<form onSubmit={handleSearch}>`. Test that status transitions correctly before building the card.",
+        "**Render all four states and extract WeatherCard.** In `App.jsx`, use conditional rendering: show nothing (or a prompt) when `status === 'idle'`; a spinner when `status === 'loading'`; an `<p className='error'>` when `status === 'error'`; and `<WeatherCard weather={weather} />` when `status === 'done'`. Create `WeatherCard.jsx` that accepts a `weather` prop and renders the city name, temperature, and one more stat."
+      ],
+      "gatedSolution": true,
+      "solutionUrl": "https://www.youtube.com/watch?v=iTvNpQjsoQg"
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just built a complete React app from a blank project — no starter code, no hand-holding. You wired up a controlled form, fetched live data from a real API, managed loading and error states, and split your code into components. Every concept from Phase 3 showed up in one real app.\n\nThat is Phase 3 complete. The next step is a short quiz to lock in what you have learned before moving on.",
+      "bullets": [
+        "Controlled forms keep input value in state and clear on submit",
+        "Model async UI with a status string — idle, loading, error, done — and branch on it",
+        "Fetch inside an async event handler, not directly inside useEffect, to keep things predictable",
+        "Extract display logic into a child component that receives data as props"
+      ],
+      "nextLessonTitle": "Phase 3 quiz"
+    }
+  ]
+}

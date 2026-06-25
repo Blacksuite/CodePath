@@ -1,0 +1,118 @@
+{
+  "id": "p3-s2-components",
+  "phaseId": "phase-3",
+  "order": 2,
+  "slug": "components",
+  "title": "Components, JSX & props",
+  "canDo": "build components and pass data with props",
+  "estMinutes": 90,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/describing-the-ui",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "components, JSX, props"
+    },
+    {
+      "name": "Scrimba",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "license": "proprietary",
+      "reviewed": "2026-06-23",
+      "topic": "components and props"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every React app is a tree of **components** — the only building block you need to learn once to build anything. A button, a nav bar, an entire page: all the same idea. This session you'll stop reading about components and start *seeing* them clearly, then go build them yourself in the best React course available."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build components and pass data with props",
+      "estMinutes": 90,
+      "md": "By the end of this session you will be able to **write a React component** (a function that returns JSX), follow JSX's syntax rules, and **pass data into a component with props** — understanding that props flow one way and are read-only inside the component."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Components** are plain JavaScript functions whose name starts with a capital letter and whose return value is JSX — a syntax that looks like HTML but lives inside JS.\n\nThree rules cover 90 % of JSX:\n1. **One root element** — wrap siblings in a `<div>` or an empty `<>` fragment.\n2. **Expressions in `{}`** — any JS expression goes inside curly braces; statements do not.\n3. **`className` not `class`** — HTML attributes use camelCase (`onClick`, `htmlFor`, `className`).\n\n**Props** are the arguments you pass *into* a component from its parent: `<Card title=\"Hi\" />`. Inside the component they arrive as a single object (`function Card({ title }) {…}`). Props are **read-only** — a component never mutates its own props. Data always flows **down** the tree (parent → child)."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Primary resource — react.dev\n\nWork through the **\"Describing the UI\"** chapter. It covers: your first component, importing/exporting, JSX rules, passing props, and conditional/list rendering. Each page has interactive sandboxes — do the challenges.\n\n**Estimated time:** 60–70 min · Come back when you finish the chapter.",
+      "url": "https://react.dev/learn/describing-the-ui",
+      "source": "react.dev",
+      "label": "Describing the UI — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Supplementary resource — Scrimba Learn React\n\nIf you want screencasted walkthroughs of the same ideas, jump to the **components** and **props** sections of the Scrimba Learn React course. The interactive scrims let you edit code inside the video — great for kinesthetic learners.\n\n**Estimated time:** 15–20 min · Pick this up after react.dev or instead of it.",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "source": "Scrimba",
+      "label": "Learn React — Scrimba"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**JSX is compiled, not magic.** Under the hood `<Card title=\"Hi\" />` becomes `React.createElement(Card, { title: 'Hi' })`. You never need to call that function directly, but knowing it exists makes the \"one root element\" and \"expressions only\" rules make complete sense."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What must a React component return?",
+          "options": [
+            "JSX (or null)",
+            "A plain string",
+            "An HTML DOM element created with document.createElement",
+            "A JavaScript class instance"
+          ],
+          "answerIndex": 0,
+          "explanation": "A component is a function that returns JSX — React's syntax for describing UI — or null when it renders nothing."
+        },
+        {
+          "question": "Which statement about props is correct?",
+          "options": [
+            "Props flow from parent to child and are read-only inside the receiving component",
+            "A component can mutate its props to update the parent",
+            "Props flow from child to parent so children can control their parents",
+            "Props are only available in class components"
+          ],
+          "answerIndex": 0,
+          "explanation": "Data always flows down the component tree. A component reads its props but never changes them — that one-way constraint keeps React apps predictable."
+        },
+        {
+          "question": "Which of the following is valid JSX?",
+          "options": [
+            "<div className=\"box\">{isActive ? 'On' : 'Off'}</div>",
+            "<div class=\"box\">{if (isActive) { 'On' }}</div>",
+            "<div class=\"box\">{{ label: 'On' }}</div>",
+            "<p>A</p><p>B</p> (two sibling roots, no wrapper)"
+          ],
+          "answerIndex": 0,
+          "explanation": "JSX uses className (not class), allows any JS *expression* inside {}, and requires a single root element. Statements like if blocks are not expressions and cannot go directly in {}."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "### What you covered\n\n- A **component** is a JS function (capital name) that returns JSX.\n- JSX rules: **one root**, `{expressions}`, **`className`** for CSS classes.\n- **Props** pass data *into* a component from the outside; they are always **read-only** inside.",
+      "bullets": [
+        "Components are functions returning JSX",
+        "JSX: one root element, {} for expressions, className not class",
+        "Props flow parent → child and are read-only"
+      ],
+      "nextLessonId": "p3-s3-state",
+      "nextLessonTitle": "State with useState"
+    }
+  ]
+}

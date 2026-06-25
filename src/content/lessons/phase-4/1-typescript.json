@@ -1,0 +1,113 @@
+{
+  "id": "p4-s1-typescript",
+  "phaseId": "phase-4",
+  "order": 1,
+  "slug": "typescript",
+  "title": "TypeScript basics",
+  "canDo": "add types to JavaScript to catch bugs early",
+  "estMinutes": 90,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Total TypeScript",
+      "url": "https://www.totaltypescript.com/tutorials/beginners-typescript",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "Beginner's TypeScript interactive tutorial"
+    },
+    {
+      "name": "Net Ninja",
+      "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "TypeScript Tutorial playlist"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have been writing JavaScript, and it has been working — mostly. But have you ever called a function with the wrong argument type, got `undefined` back, and spent twenty minutes wondering why? TypeScript exists precisely for that moment. It is a *layer on top of JavaScript* that reads your code before it runs and highlights the mistake with a red squiggle right in your editor. The bug never makes it to the browser. Phase 4 starts here because every lesson that follows — typed React props, typed API responses, typed routes — builds on the vocabulary you are about to learn."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "add types to JavaScript to catch bugs early",
+      "estMinutes": 90,
+      "md": "By the end of this session you will be able to **add basic types to variables, function parameters, and return values**, **describe object shapes with interfaces**, and **explain why `any` defeats the purpose of TypeScript**. The learning happens inside the two curated resources below — work through them in order, then come back for the quiz."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Four ideas to hold onto as you work through the resources:**\n\n1. **Compile-time vs runtime.** TypeScript checks types *before* the code runs — that is why you see red squiggles in VS Code instead of `TypeError` in the console at 2 am.\n\n2. **Basic types.** `string`, `number`, `boolean`, and arrays (`string[]` / `number[]`) cover the vast majority of everyday values.\n\n3. **Interfaces describe object shapes.** An `interface User { name: string; age: number }` tells TypeScript exactly what properties an object must have — if you try to access `user.email` and it was not declared, TS flags it immediately.\n\n4. **Avoid `any`.** Using `any` turns off type-checking for that value — it is the escape hatch that lets bugs back in. Prefer `unknown` when the type is genuinely unclear, then narrow it with a type guard."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Total TypeScript — Beginner's TypeScript (free, interactive)\n\nMatt Pocock's interactive tutorial runs entirely in the browser — no local setup needed. Work through **all exercises in the 'Beginner's TypeScript' section** (~50 min). Each exercise is a broken `.ts` file; your job is to fix the type error. The immediate red-squiggle feedback loop is the fastest way to internalise TS syntax.\n\n> Note: the `/tutorials` section is **free**. Pro workshops (listed separately on the site) are paid — you do not need them for this lesson.",
+      "url": "https://www.totaltypescript.com/tutorials/beginners-typescript",
+      "source": "Total TypeScript",
+      "label": "Open Total TypeScript — Beginner's TypeScript"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Net Ninja — TypeScript Tutorial playlist (YouTube, free)\n\nThe Net Ninja playlist gives you a clear talking-head walkthrough of the same concepts with live VS Code demos. Watch **videos 1–10** (~35 min). They cover project setup, basic types, objects, arrays, union types, and interfaces. Use this after the Total TypeScript exercises to solidify what you have seen interactively with a real editor workflow.",
+      "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI",
+      "source": "Net Ninja",
+      "label": "Open Net Ninja TypeScript playlist"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Run TypeScript locally in minutes.** After the Net Ninja setup video, try it yourself:\n```\nnpm create vite@latest my-ts-app -- --template vanilla-ts\ncd my-ts-app\nnpm install\nnpm run dev\n```\nOpen `src/main.ts` and intentionally write `const x: number = 'hello'` — save the file and watch the editor squiggle appear before you even switch to the browser."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "When does TypeScript catch type errors?",
+          "options": [
+            "At runtime in the browser, the same time JavaScript would throw",
+            "Only when you run 'tsc --strict' manually from the terminal",
+            "Before the code runs — during compilation and in the editor as you type",
+            "After the first failing test in your test suite"
+          ],
+          "answerIndex": 2,
+          "explanation": "TypeScript's type-checker runs at compile time (and continuously in VS Code via the language server), so errors appear as red squiggles while you write the code — never reaching the browser."
+        },
+        {
+          "question": "What is a TypeScript interface used for?",
+          "options": [
+            "Defining a reusable CSS class that can be applied to components",
+            "Describing the required shape of an object — what properties it must have and their types",
+            "Declaring an abstract class that other classes must extend",
+            "Wrapping an async function so it returns a typed Promise automatically"
+          ],
+          "answerIndex": 1,
+          "explanation": "An interface (e.g. 'interface User { name: string; age: number }') tells TypeScript exactly which properties and types an object must conform to. Any object passed where a User is expected must satisfy that shape."
+        },
+        {
+          "question": "Why should you avoid using the 'any' type in TypeScript?",
+          "options": [
+            "It makes the code run slower because TypeScript cannot optimise unknown values",
+            "It is a syntax error in strict mode and will prevent compilation",
+            "It disables type-checking for that value, allowing the same bugs TypeScript was meant to catch",
+            "It causes interfaces to be ignored at runtime by the JavaScript engine"
+          ],
+          "answerIndex": 2,
+          "explanation": "Assigning 'any' tells TypeScript 'trust me, I know what this is' — effectively opting out of type safety for that value. Bugs can silently re-enter exactly where you thought you had coverage."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "TypeScript checks your types *before* the code runs, turning silent runtime bugs into visible editor squiggles. You now have the core vocabulary: primitive types (`string`, `number`, `boolean`, arrays), interfaces for object shapes, typed function signatures, and the rule of thumb to avoid `any`. In the next lesson you will carry these skills directly into React — typing component props and hook return values so your UI components become self-documenting and bug-resistant.",
+      "nextLessonId": "p4-s2-react-ts",
+      "nextLessonTitle": "TypeScript with React"
+    }
+  ]
+}

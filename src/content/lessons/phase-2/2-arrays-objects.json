@@ -1,0 +1,148 @@
+{
+  "id": "p2-s2-arrays-objects",
+  "phaseId": "phase-2",
+  "order": 2,
+  "slug": "arrays-objects",
+  "title": "Arrays & Objects",
+  "canDo": "store and access data in arrays and objects",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "javascript.info",
+      "url": "https://javascript.info/array",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Arrays"
+    },
+    {
+      "name": "javascript.info",
+      "url": "https://javascript.info/object",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Objects"
+    },
+    {
+      "name": "freeCodeCamp JavaScript Certification (v9)",
+      "url": "https://www.freecodecamp.org/learn/javascript-v9",
+      "license": "free",
+      "reviewed": "2026-06-25",
+      "topic": "Arrays and Objects"
+    },
+    {
+      "name": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "Array reference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every real app manages lists of things — a to-do list, a shopping cart, a feed of posts. JavaScript gives you two tools for that job: **arrays** (ordered lists) and **objects** (named bags of data). Together they let you model almost any real-world dataset, like a list of tasks where each task has a title, a due date, and a done flag."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "store and access data in arrays and objects",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to create arrays, read and write values by index, add items with `push`, create objects with named properties, access those properties with dot notation, and combine both into an array of objects that models a real list of tasks."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Arrays** store values in order, starting at index `0`. Create one with `[]`, read with `arr[0]`, add to the end with `arr.push(value)`.\n\n**Objects** store key-value pairs. Create one with `{}`, read a value with `obj.key` (dot notation) or `obj[\"key\"]` (bracket notation). Keys are strings; values can be anything.\n\n**Array of objects** is the pattern that powers real data. Each item in the array is an object — e.g. `[{ title: \"Buy milk\", done: false }, { title: \"Write code\", done: true }]`. You iterate with a loop to render, filter, or update each item independently."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Read: Arrays on javascript.info\nThe best concise deep-dive on arrays — covers creation, indexing, `push`/`pop`, and iteration. Read the **Arrays** chapter, then come back.",
+      "url": "https://javascript.info/array",
+      "source": "javascript.info",
+      "label": "javascript.info — Arrays"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Read: Objects on javascript.info\nCovers object literals, dot and bracket access, `for...in`, and nested objects. Read the **Objects** chapter, then come back.",
+      "url": "https://javascript.info/object",
+      "source": "javascript.info",
+      "label": "javascript.info — Objects"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Practice: freeCodeCamp JavaScript Certification (v9)\nWork through the **Basic Data Structures** section (Arrays and Objects) in the freeCodeCamp JavaScript Certification. Complete the interactive exercises, then come back to finish this lesson.",
+      "url": "https://www.freecodecamp.org/learn/javascript-v9",
+      "source": "freeCodeCamp",
+      "label": "freeCodeCamp — JavaScript Certification (v9)"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Reference: MDN Array\nBookmark this for later. Authoritative reference for every array method (`push`, `pop`, `map`, `filter`, `find`, and more).",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+      "source": "MDN",
+      "label": "MDN — Array"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Index starts at 0, not 1.** The first item is always `arr[0]`. Off-by-one errors (trying `arr[1]` for the first item) are the #1 beginner array mistake. When in doubt, `console.log(arr[0])` to check."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Given `const fruits = [\"apple\", \"banana\", \"cherry\"]`, what does `fruits[1]` return?",
+          "options": [
+            "\"apple\"",
+            "\"banana\"",
+            "\"cherry\"",
+            "undefined"
+          ],
+          "answerIndex": 1,
+          "explanation": "Array indices start at 0, so index 1 is the second element: \"banana\"."
+        },
+        {
+          "question": "Which line correctly adds \"mango\" to the end of the `fruits` array?",
+          "options": [
+            "fruits.add(\"mango\")",
+            "fruits[4] = \"mango\"",
+            "fruits.push(\"mango\")",
+            "fruits.append(\"mango\")"
+          ],
+          "answerIndex": 2,
+          "explanation": "`push` is the standard method for appending a value to the end of an array. `append` doesn't exist in JavaScript."
+        },
+        {
+          "question": "Given `const task = { title: \"Walk dog\", done: false }`, how do you read the title?",
+          "options": [
+            "task[0]",
+            "task->title",
+            "task.get(\"title\")",
+            "task.title"
+          ],
+          "answerIndex": 3,
+          "explanation": "Dot notation (`task.title`) is the standard way to access a named property on an object."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now know how to create arrays with `[]`, read items by index (`arr[0]`), and add items with `push`. You can create objects with `{}` and access properties with dot notation (`obj.key`). Most importantly, you can combine both — an **array of objects** — to model real data like a task list. That pattern is the foundation of almost every UI you'll build.",
+      "bullets": [
+        "Arrays: `[]`, index from 0, `push` to add",
+        "Objects: `{}`, named properties, dot access",
+        "Array of objects: the real-data pattern"
+      ],
+      "nextLessonId": "p2-s3-dom",
+      "nextLessonTitle": "DOM Manipulation"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "p2-s4-events",
+  "phaseId": "phase-2",
+  "order": 4,
+  "slug": "events",
+  "title": "Events & delegation",
+  "canDo": "respond to clicks, including on dynamically-added elements",
+  "estMinutes": 60,
+  "fade": "curated",
+  "sources": [
+    { "name": "javascript.info — Introduction to browser events", "url": "https://javascript.info/introduction-browser-events", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "addEventListener, event object" },
+    { "name": "javascript.info — Event delegation", "url": "https://javascript.info/event-delegation", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "event delegation, event.target" }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your page is static until it *listens*. Events are how the browser tells your code that something happened — a click, a keypress, a form submission. Once you can attach a listener and read what was clicked, your pages stop being brochures and start being apps."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "respond to clicks, including on dynamically-added elements",
+      "estMinutes": 60
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Three things to nail this session:**\n\n1. **`addEventListener`** — the right way to attach a handler: `element.addEventListener('click', fn)`. Avoid inline `onclick` attributes.\n2. **The event object** — every handler receives an `event` (or `e`) argument automatically. `event.target` is the *exact* element that was clicked; `event.preventDefault()` stops default behaviour (e.g. form submissions, link navigation).\n3. **Event delegation** — instead of attaching one listener per element, attach *one listener to a parent* and check `event.target` inside it. Because events bubble up the DOM tree, the parent sees every click on its children — including elements added to the DOM *after* the listener was set up. This is how you handle dynamic lists without re-binding listeners every time you add a row."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "url": "https://javascript.info/introduction-browser-events",
+      "source": "javascript.info",
+      "label": "▶ Do this first: javascript.info — \"Introduction to browser events\". Read the page and do the tasks at the bottom. Then come back."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "url": "https://javascript.info/event-delegation",
+      "source": "javascript.info",
+      "label": "▶ Do this second: javascript.info — \"Event delegation\". This is the key pattern for dynamic UIs — read it slowly and run the examples. Come back when you're done."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "The most common mistake is attaching listeners inside a loop — one per item — and then wondering why adding new items breaks things. The delegation pattern (one listener on the parent) sidesteps the whole problem. If you find yourself writing `forEach(item => item.addEventListener(...))`, pause and ask whether a parent listener would be cleaner."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is the preferred way to attach a click handler to a button in modern JavaScript?",
+          "options": [
+            "Set the button's `onclick` attribute in HTML: `<button onclick=\"handler()\">`",
+            "Call `button.addEventListener('click', handler)`",
+            "Assign `button.onclick = handler` inside a `<script>` tag",
+            "Use `button.attachEvent('onclick', handler)` for cross-browser support"
+          ],
+          "answerIndex": 1,
+          "explanation": "`addEventListener` is the standard, flexible approach — it lets you attach multiple listeners to the same element and remove them cleanly, unlike the `onclick` property or HTML attribute."
+        },
+        {
+          "question": "Inside an event handler, what does `event.target` refer to?",
+          "options": [
+            "The element that the `addEventListener` call was made on",
+            "The element that the user actually interacted with (the origin of the event)",
+            "The parent element of the clicked element",
+            "The `document` object, which receives all events"
+          ],
+          "answerIndex": 1,
+          "explanation": "`event.target` is the innermost element the user clicked. `event.currentTarget` is the element the listener is attached to — these differ when delegation is used."
+        },
+        {
+          "question": "You have a `<ul>` that gets new `<li>` items added dynamically. Which approach correctly handles clicks on both existing and future list items?",
+          "options": [
+            "Loop over all current `<li>` elements and call `addEventListener('click', ...)` on each one",
+            "Attach one `addEventListener('click', ...)` to the `<ul>` and check `event.target` inside the handler",
+            "Use `setInterval` to re-attach listeners every second so new items are covered",
+            "Attach the listener to `document.body` and rely on `event.currentTarget` to identify the item"
+          ],
+          "answerIndex": 1,
+          "explanation": "Event delegation — a single listener on the parent `<ul>` — works for current and future children because click events bubble up through the DOM. Looping over existing items misses anything added later."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You can now attach event listeners properly, read the event object, and use delegation to handle dynamically-added elements with a single parent listener. Next up: the array methods that power dynamic lists.",
+      "nextLessonId": "p2-s5-array-methods",
+      "nextLessonTitle": "Array methods"
+    }
+  ]
+}

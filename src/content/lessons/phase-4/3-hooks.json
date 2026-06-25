@@ -1,0 +1,104 @@
+{
+  "id": "p4-s3-hooks",
+  "phaseId": "phase-4",
+  "order": 3,
+  "slug": "hooks",
+  "title": "Custom hooks",
+  "canDo": "extract reusable logic into custom hooks",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/reusing-logic-with-custom-hooks",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "custom hooks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You've got a `useState` + `useEffect` pair that syncs a value to `localStorage`. It works great in your settings panel — so you copy-paste it into your profile page, then again into the theme picker. Three copies of the same logic, three places to fix the next bug. React has a better answer: **custom hooks**. Extract once, use everywhere."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "extract reusable logic into custom hooks",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to: recognise when stateful logic is duplicated across components, extract it into a custom hook, and explain why the `use` prefix is required."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "A **custom hook** is a JavaScript function whose name starts with `use` and that calls other hooks inside it.\n\n```jsx\nfunction useLocalStorage(key, initialValue) {\n  const [value, setValue] = useState(\n    () => JSON.parse(localStorage.getItem(key)) ?? initialValue\n  );\n\n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n\n  return [value, setValue];\n}\n```\n\nThat's it. Any component can now call `useLocalStorage('theme', 'light')` and get back a reactive `[value, setValue]` pair that automatically stays in sync with `localStorage` — no duplication.\n\nThe **`use` prefix is not optional**. React's linter uses it as a signal that this function may call hooks, and enforces the Rules of Hooks inside it. A function named `localStorageState` would silently skip those checks.\n\nCustom hooks can return anything — an array like `useState`, an object, a single value, or nothing at all. They share *logic*, not *state*: every component that calls `useLocalStorage` gets its own independent state."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Work through **Reusing Logic with Custom Hooks** on react.dev. It walks through building `useOnlineStatus` and `useChatRoom` from scratch, explains exactly when extraction is and isn't worth it, and covers the mental model of hooks as event synchronisers.",
+      "url": "https://react.dev/learn/reusing-logic-with-custom-hooks",
+      "source": "react.dev",
+      "label": "Reusing Logic with Custom Hooks — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Come back here once you've finished the resource.** The quiz below takes about 5 minutes and locks in the three things that trip people up most."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Which of the following best describes a custom hook?",
+          "options": [
+            "A built-in React API you import from 'react'",
+            "A JavaScript function whose name starts with `use` and that calls other hooks inside it",
+            "A component that wraps other components to share state",
+            "A higher-order function that returns a component"
+          ],
+          "answerIndex": 1,
+          "explanation": "A custom hook is just a plain JavaScript function with a `use` prefix that can call other hooks — no special API required."
+        },
+        {
+          "question": "Why must a custom hook's name start with `use`?",
+          "options": [
+            "React will throw an error at runtime if the name is wrong",
+            "It is a naming convention with no technical effect",
+            "The linter uses the prefix to enforce the Rules of Hooks inside that function",
+            "It makes the function available as a JSX element"
+          ],
+          "answerIndex": 2,
+          "explanation": "The `use` prefix tells the React linter that this function may call hooks, so it enforces hook rules (call order, no conditionals) inside it. Skip the prefix and those checks are silently skipped."
+        },
+        {
+          "question": "Two components both call `useLocalStorage('theme', 'light')`. What do they share?",
+          "options": [
+            "The same state — updating one automatically updates the other",
+            "Nothing — custom hooks cannot be called more than once",
+            "The same logic but independent state — each component has its own state value",
+            "The same state only if they are siblings in the component tree"
+          ],
+          "answerIndex": 2,
+          "explanation": "Custom hooks share logic, not state. Every call to a custom hook creates its own isolated state. To share state between components you still need to lift it up or use context."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- A custom hook is a `use`-prefixed function that calls other hooks — nothing more.\n- The `use` prefix activates linter enforcement of the Rules of Hooks inside the function.\n- Custom hooks share *logic*, not *state* — each call site gets independent state.\n- Classic extraction trigger: the same `useState` + `useEffect` pattern appearing in more than one component.",
+      "bullets": [
+        "Custom hook = `use`-prefixed function that calls hooks",
+        "The `use` prefix is required — the linter relies on it",
+        "Each component that calls a custom hook gets its own state",
+        "Extract when you see duplicated useState+useEffect combos"
+      ],
+      "nextLessonId": "p4-s4-router",
+      "nextLessonTitle": "Client-side routing"
+    }
+  ]
+}

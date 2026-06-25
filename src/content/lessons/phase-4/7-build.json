@@ -1,0 +1,90 @@
+{
+  "id": "p4-s7-build",
+  "phaseId": "phase-4",
+  "order": 7,
+  "slug": "build",
+  "title": "Build: an API-driven app",
+  "canDo": "build a typed app that fetches live data",
+  "estMinutes": 150,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "TheMealDB",
+      "url": "https://www.themealdb.com/api.php",
+      "license": "public-free",
+      "reviewed": "2026-06-23",
+      "topic": "Recipe search API — free, no key required"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Fetching data with useEffect"
+    },
+    {
+      "name": "TypeScript docs",
+      "url": "https://www.typescriptlang.org/docs/handbook/2/objects.html",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Object types and interfaces"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every app you will ever build talks to the outside world. Real data does not live in `useState` — it comes across a network, arrives asynchronously, and arrives in a shape you have to describe in TypeScript before you can safely use it. This session is the bridge between 'I know the syntax' and 'I can ship a real feature'. You will fetch live recipes from a public API, type every corner of the response, and handle every state the UI can land in — loading, empty, error, and results. When this is done, you will have a pattern you can drop into any future project."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build a typed app that fetches live data",
+      "estMinutes": 150,
+      "md": "**By the end of this session you will be able to:** build a React + TypeScript app that takes a search query, fetches results from a real public API, types the response with an interface, and renders a grid of cards — with distinct loading, empty, and error states. Zero `any` in your own code."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Your build plan — keep this open as you code:**\n\n1. **Scaffold** — `npm create vite@latest recipe-search -- --template react-ts`, then `npm install && npm run dev`.\n2. **Type the API shape** — write a `Meal` interface that matches the fields you will use from the TheMealDB response (`idMeal`, `strMeal`, `strMealThumb`, `strCategory`). The API search endpoint is `https://www.themealdb.com/api/json/v1/1/search.php?s=chicken`.\n3. **State first** — three pieces of state in `App`: `query` (string), `meals` (Meal[]), and `status` ('idle' | 'loading' | 'error' | 'done').\n4. **Fetch** — a `handleSearch` async function that sets status to 'loading', awaits `fetch`, types the JSON, sets `meals`, sets status to 'done'. Wrap in try/catch for the error state.\n5. **Search form** — a controlled `<input>` plus a Search button; on submit call `handleSearch`.\n6. **Results grid** — map over `meals` and render a `<MealCard>` component. Show the right UI for each status value."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**API reference — no sign-up needed**\n\nTheMealDB is a free recipe API. The search endpoint returns a JSON object with a `meals` array (or `null` when nothing matches).",
+      "url": "https://www.themealdb.com/api.php",
+      "source": "TheMealDB",
+      "label": "TheMealDB API docs — free, no key required"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip — type the response, not just the data.** The full JSON shape from TheMealDB is `{ meals: Meal[] | null }`. Model that wrapper type too: `type MealSearchResponse = { meals: Meal[] | null }`. Then you can cast with `const data = await res.json() as MealSearchResponse` and TypeScript knows `data.meals` can be null — which forces you to handle the empty state cleanly."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "Create a new Vite + React + TypeScript project and build a **recipe search app** using TheMealDB (`https://www.themealdb.com/api/json/v1/1/search.php?s=QUERY` — free, no key needed).\n\nYour app must:\n\n- Define a `Meal` interface covering at least `idMeal`, `strMeal`, `strMealThumb`, and `strCategory`.\n- Have a **search form** (controlled input + button) that triggers a fetch when submitted.\n- Show a **loading indicator** while the request is in flight.\n- Render a **grid of `<MealCard>` components** when results arrive — each card shows the meal image, name, and category.\n- Show a friendly **empty message** when the API returns no matches.\n- Show a friendly **error message** when the fetch fails.\n- Contain **zero `any`** in your own source files — TypeScript strict mode must stay on.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
+      "definitionOfDone": "Type a search term (try 'chicken'), see a loading state, then see real recipe cards from the API with image, name, and category. Search for gibberish — see the empty message. The TypeScript compiler reports zero errors and you have no `any` in your own files.",
+      "hints": [
+        "**Set up the fetch and types first.** Create a `Meal` interface and a `MealSearchResponse` type (`{ meals: Meal[] | null }`). Write an async `fetchMeals(query: string): Promise<Meal[]>` function that calls `fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + encodeURIComponent(query))`, casts the JSON with `as MealSearchResponse`, and returns `data.meals ?? []`. Verify it logs results before touching any React state.",
+        "**Wire up the search input and state.** In `App.tsx` add three state variables: `const [query, setQuery] = useState('')`, `const [meals, setMeals] = useState<Meal[]>([])`, and `const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'done'>('idle')`. Write `handleSearch` as an async function: set status to `'loading'`, call `fetchMeals(query)`, set `meals` with the result and status to `'done'`, catch errors and set status to `'error'`. Hook it to a `<form onSubmit>` so pressing Enter or the button fires it.",
+        "**Render the results grid and all UI states.** Create a `MealCard` component that accepts a `meal: Meal` prop and renders the image (`strMealThumb`), name (`strMeal`), and category (`strCategory`) in a card. Back in `App.tsx`, conditionally render: a spinner/text when `status === 'loading'`; the card grid with `meals.map(m => <MealCard key={m.idMeal} meal={m} />)` when `status === 'done' && meals.length > 0`; an empty message when `status === 'done' && meals.length === 0`; an error message when `status === 'error'`."
+      ],
+      "gatedSolution": true,
+      "solutionUrl": "https://www.youtube.com/watch?v=Kff25n75jqA"
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just shipped a typed, API-driven React app from a blank project — a search form, live network requests, a typed response shape, a results grid, and every UI state a real user will hit. You wrote zero `any`, which means TypeScript was working *for* you the whole time.\n\nThat is Phase 4 complete. You know TypeScript, you know how to type React state and props, and you can fetch and display real data safely. The next step is a short quiz to seal it all in.",
+      "bullets": [
+        "Type the full API response shape — including null and wrapper objects — before you touch the data",
+        "Model async UI with a status enum ('idle' | 'loading' | 'error' | 'done') — four states, four branches",
+        "Zero `any` is achievable: cast once at the network boundary, then let types flow through",
+        "A reusable fetch helper keeps your component logic clean and easy to test"
+      ],
+      "nextLessonTitle": "Phase 4 quiz"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "p3-s5-forms",
+  "phaseId": "phase-3",
+  "order": 5,
+  "slug": "forms",
+  "title": "Forms in React",
+  "canDo": "build controlled form inputs",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/reacting-to-input-with-state",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "controlled inputs and state-driven UI"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/reference/react-dom/components/input",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "input component reference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every app eventually needs user input — search boxes, login screens, settings panels. React has one clear pattern for handling them: the **controlled input**. Once you see it, you'll recognise it everywhere."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build controlled form inputs",
+      "estMinutes": 60,
+      "md": "By the end of this session you'll be able to wire up a form input so React is the single source of truth for its value, and handle form submission without a page reload."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Controlled input** = `value={state}` + `onChange={e => setState(e.target.value)}`.\n\nThe browser's native input still fires `onChange` on every keystroke, but React intercepts it and keeps the real value in state. Because `value` is bound to state, the input always reflects exactly what React holds — no divergence.\n\nTo handle submission, attach `onSubmit` to the `<form>` element and call `e.preventDefault()` inside the handler. Without `preventDefault`, the browser would POST the form and reload the page, discarding your app state."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### 1 — Reacting to Input with State\n\nreact.dev's full guide: declarative vs. imperative UI, identifying visual states, and wiring state to inputs. Read through the examples and try the challenges at the bottom.",
+      "url": "https://react.dev/learn/reacting-to-input-with-state",
+      "source": "react.dev",
+      "label": "Reacting to Input with State"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### 2 — `<input>` component reference\n\nThe official React-DOM reference for `<input>`. Pay attention to the **controlled vs. uncontrolled** section and the full list of supported props (`value`, `defaultValue`, `onChange`, `checked`, etc.).",
+      "url": "https://react.dev/reference/react-dom/components/input",
+      "source": "react.dev",
+      "label": "React-DOM <input> reference"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### 3 — Scrimba: React Forms\n\nScrimba's hands-on interactive lesson on React forms. Code along in the embedded editor to reinforce the controlled-input pattern before the quiz.",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "source": "Scrimba",
+      "label": "Scrimba — Learn React (Forms module)"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**One pattern, every input type.** `<textarea>` and `<select>` follow the exact same `value` + `onChange` pattern in React — even though plain HTML treats them differently. Once you know the controlled-input recipe, it applies across all form elements."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What two props together make a React input 'controlled'?",
+          "options": [
+            "`value` bound to state + `onChange` that calls setState",
+            "`defaultValue` bound to state + `onInput` that calls setState",
+            "`value` bound to a ref + `onChange` that mutates the ref",
+            "`name` + `required` attributes on the input element"
+          ],
+          "answerIndex": 0,
+          "explanation": "A controlled input binds `value` to a state variable and uses `onChange` to update that state on every keystroke, making React the single source of truth."
+        },
+        {
+          "question": "Why do you call `e.preventDefault()` in a form's `onSubmit` handler?",
+          "options": [
+            "To stop the browser from reloading the page and discarding React state",
+            "To prevent React from re-rendering the component after submission",
+            "To block the `onChange` event from firing on the inputs",
+            "To clear all input values automatically after submission"
+          ],
+          "answerIndex": 0,
+          "explanation": "Without `e.preventDefault()`, the browser performs its default form-submission behaviour — a GET or POST that reloads the page — which destroys your React app's in-memory state."
+        },
+        {
+          "question": "Given `const [name, setName] = useState('')`, which JSX correctly creates a controlled text input?",
+          "options": [
+            "`<input value={name} onChange={e => setName(e.target.value)} />`",
+            "`<input defaultValue={name} onInput={setName} />`",
+            "`<input value={name} />`",
+            "`<input onChange={e => setName(e.target.value)} />`"
+          ],
+          "answerIndex": 0,
+          "explanation": "Both `value` and `onChange` are required. `value` alone makes the input read-only; `onChange` alone leaves value uncontrolled. Only the combination gives React full control."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered**\n\n- A controlled input binds `value` to state and updates it via `onChange`\n- React becomes the single source of truth — no divergence between the DOM and your app\n- `onSubmit` + `e.preventDefault()` handles submission without a page reload\n- The same pattern applies to `<textarea>` and `<select>`",
+      "bullets": [
+        "Controlled input = `value={state}` + `onChange={e => setState(e.target.value)}`",
+        "`e.preventDefault()` stops the default browser page reload on submit",
+        "All form elements (`input`, `textarea`, `select`) follow the same pattern"
+      ],
+      "nextLessonId": "p3-s6-effects",
+      "nextLessonTitle": "Side Effects with useEffect"
+    }
+  ]
+}

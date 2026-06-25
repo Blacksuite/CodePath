@@ -1,0 +1,22 @@
+{
+  "id": "p1-s6-build",
+  "phaseId": "phase-1",
+  "order": 6,
+  "slug": "build",
+  "title": "Build real projects",
+  "canDo": "build responsive pages from scratch",
+  "estMinutes": 180,
+  "fade": "curated",
+  "sources": [
+    { "name": "freeCodeCamp — Responsive Web Design certification projects", "url": "https://www.freecodecamp.org/learn/responsive-web-design-v9", "license": "BSD-3-Clause / CC-BY-SA", "reviewed": "2026-06-23", "topic": "projects" }
+  ],
+  "blocks": [
+    { "type": "prose", "role": "hook", "md": "Watching and reading only gets you so far. You learn to build by building. This session is where the HTML, CSS, Flexbox, Grid, and responsive skills come together into real pages." },
+    { "type": "prose", "role": "objective", "canDo": "build responsive pages from scratch", "estMinutes": 180 },
+    { "type": "prose", "role": "concept", "md": "**The goal here isn't to follow along — it's to build with the docs/your notes open and get stuck (that's the learning).** freeCodeCamp's Responsive Web Design certification ends with 5 build-it-yourself projects (a tribute page, a survey form, a product landing page, a technical docs page, and a personal portfolio). Do them — they force you to combine everything." },
+    { "type": "prose", "role": "resource", "url": "https://www.freecodecamp.org/learn/responsive-web-design-v9", "source": "freeCodeCamp", "label": "🛠 Do this: freeCodeCamp → Responsive Web Design → the certification projects. Build at least the Tribute Page and the Personal Portfolio." },
+    { "type": "prose", "role": "callout", "variant": "tip", "md": "Stuck is normal and good. When you are: re-read the relevant MDN page, check your HTML structure first, then your CSS. Resist copying a finished solution — wrestling with it is what makes it stick." },
+    { "type": "nowYouTry", "task": "Build your **Personal Portfolio page** — a single responsive page with a header/nav, an \"about me\" section, a projects section laid out with Flexbox or Grid, and a footer. Make it look decent on both phone and desktop.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.", "definitionOfDone": "A single page that: uses semantic HTML; is styled with CSS; lays out at least one section with Flexbox or Grid; and adapts (via a media query) so it's readable on a narrow phone width and a wide desktop. You'd be happy to show it to someone.", "hints": ["Start with the HTML structure only — header, main with 2–3 sections, footer — before any CSS. Get the skeleton right first.", "Style mobile-first: make it look good narrow, then add one `@media (min-width: …)` to improve the wide layout (e.g. projects side-by-side).", "Use Flexbox for the nav and the projects row, and a media query to switch the projects from stacked (mobile) to a row/grid (desktop)."], "gatedSolution": true, "solutionUrl": "https://www.youtube.com/watch?v=ldwlOzRvYOU" },
+    { "type": "prose", "role": "recap", "md": "You've built real, responsive pages — that's genuinely the foundation of front-end. Now take the **Phase 1 quiz** to lock it in, then you're ready for JavaScript.", "nextLessonTitle": "Phase 1 quiz" }
+  ]
+}

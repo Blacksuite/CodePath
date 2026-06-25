@@ -1,0 +1,27 @@
+{
+  "id": "p1-s3-flexbox",
+  "phaseId": "phase-1",
+  "order": 3,
+  "slug": "flexbox",
+  "title": "Flexbox",
+  "canDo": "lay out items in a row or column with Flexbox",
+  "estMinutes": 60,
+  "fade": "curated",
+  "sources": [
+    { "name": "Kevin Powell — Learn Flexbox the easy way", "url": "https://www.youtube.com/watch?v=u044iM9xsWU", "license": "YouTube (standard)", "reviewed": "2026-06-23", "topic": "Flexbox" },
+    { "name": "Flexbox Froggy", "url": "https://flexboxfroggy.com/", "license": "free game", "reviewed": "2026-06-23", "topic": "Flexbox practice" }
+  ],
+  "blocks": [
+    { "type": "prose", "role": "hook", "md": "Flexbox is how you put things in a row, space them out, and line them up — you'll reach for it on basically every project. It feels like magic once it clicks." },
+    { "type": "prose", "role": "objective", "canDo": "lay out items in a row or column with Flexbox", "estMinutes": 60 },
+    { "type": "prose", "role": "concept", "md": "**What to focus on** as you watch:\n\n- `display: flex` turns a container into a flex container; its direct children become flex items.\n- `justify-content` — spacing along the main axis (left↔right by default).\n- `align-items` — alignment on the cross axis (top↔bottom by default).\n- `gap` — space between items.\n- `flex-direction: row | column` — flips the main axis.\n\nDon't memorise it — get a feel from the video, then *drill it* in the game below until it's automatic." },
+    { "type": "video", "title": "Learn Flexbox the easy way", "url": "https://www.youtube.com/watch?v=u044iM9xsWU", "source": "youtube", "minutes": 34, "note": "Watch the whole thing (~34 min), pausing to try things. Kevin Powell is the best free CSS teacher there is." },
+    { "type": "prose", "role": "resource", "url": "https://flexboxfroggy.com/", "source": "Flexbox Froggy", "label": "🐸 Now play all 24 levels of Flexbox Froggy — this is where Flexbox actually sticks. ~20 min." },
+    { "type": "quiz", "passThreshold": 0.7, "questions": [
+      { "question": "On a flex container with the default `flex-direction: row`, which property controls alignment along the horizontal axis?", "options": ["align-items", "align-content", "justify-content", "flex-wrap"], "answerIndex": 2, "explanation": "`justify-content` operates on the main axis, which runs horizontally in the default row direction." },
+      { "question": "What single CSS declaration do you add to a parent element to make it a flex container?", "options": ["flex: 1", "position: flex", "display: flex", "layout: flex"], "answerIndex": 2, "explanation": "`display: flex` on the parent turns it into a flex container and makes all direct children flex items." },
+      { "question": "You set `flex-direction: column` on a container. Which axis does `align-items` now control?", "options": ["The vertical axis (top to bottom)", "The horizontal axis (left to right)", "Both axes simultaneously", "It has no effect when direction is column"], "answerIndex": 1, "explanation": "Flipping to `flex-direction: column` makes the vertical direction the main axis, so `align-items` then controls alignment horizontally (the cross axis)." }
+    ] },
+    { "type": "prose", "role": "recap", "md": "You can lay out rows and columns with Flexbox. Next: Grid, for full two-dimensional layouts.", "nextLessonId": "p1-s4-grid", "nextLessonTitle": "CSS Grid" }
+  ]
+}

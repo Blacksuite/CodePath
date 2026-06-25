@@ -1,0 +1,122 @@
+{
+  "id": "p0-s2-git",
+  "phaseId": "phase-0",
+  "order": 2,
+  "slug": "git",
+  "title": "Terminal & Git",
+  "canDo": "use the terminal basics and track code with Git & GitHub",
+  "estMinutes": 90,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "Net Ninja — Git & GitHub Tutorial for Beginners",
+      "url": "https://www.youtube.com/watch?v=3RjQznt-8kE",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "Terminal basics, Git workflow, GitHub remote repos"
+    },
+    {
+      "name": "The Odin Project Foundations — Git",
+      "url": "https://www.theodinproject.com/lessons/foundations-git-basics",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Git setup, core commands, GitHub integration"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Imagine writing a 300-line program, breaking it, and having no way back. That's coding without Git. Every professional developer on the planet uses Git to create save points — they commit after every meaningful change so they can always roll back, collaborate without overwriting each other's work, and ship code to GitHub where the rest of the world can see it. This session won't make you a Git expert; it will make you functional. By the end you'll be pushing real code from your terminal to GitHub like you've done it a hundred times."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "use the terminal basics and track code with Git & GitHub",
+      "estMinutes": 90,
+      "md": "By the end of this session you will be able to navigate your filesystem in the terminal (`cd`, `ls`, `mkdir`), initialise a Git repository, track changes with `git add` and `git commit`, push your code to GitHub with `git push`, pull updates with `git pull`, and check what's happening at any moment with `git status`."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Four ideas that unlock everything.**\n\n**The terminal** is just a text interface to your computer. `ls` lists files. `cd foldername` moves into a folder. `mkdir foldername` creates one. You only need those three to start.\n\n**Git = version control.** It lives on your machine and records snapshots of your code. Think of every `git commit` as a save point in a video game — you can always reload from there.\n\n**The 6 daily commands:** `git clone` (copy a repo), `git status` (what changed?), `git add .` (stage changes), `git commit -m \"message\"` (save a snapshot), `git push` (upload to GitHub), `git pull` (download latest).\n\n**GitHub ≠ Git.** Git is the tool; GitHub is a website where your repos live online. GitHub is where you share code, back it up, and collaborate."
+    },
+    {
+      "type": "video",
+      "title": "Git & GitHub Tutorial for Beginners — Net Ninja",
+      "url": "https://www.youtube.com/watch?v=3RjQznt-8kE",
+      "source": "youtube",
+      "startSeconds": 0,
+      "minutes": 90,
+      "note": "Watch the full playlist (videos 1–12 cover everything above). Pause and follow along in your own terminal. Come back here when you're done."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "## Net Ninja — full Git & GitHub playlist\n\nThe video above is the first in the 12-part Net Ninja series. Use this link to access the complete playlist so you can continue through all 12 videos from one place.",
+      "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR",
+      "source": "Net Ninja",
+      "label": "Git & GitHub Tutorial for Beginners — full playlist"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "## The Odin Project — Git Basics\n\nOdin's written Git lessons are the best companion reference you'll find. After the video, read through the **\"Introduction to Git\"** and **\"Git Basics\"** sections. They reinforce the same commands with clear explanations and exercises you can run in your terminal.\n\nThe link below takes you directly to the Git Basics lesson in the Foundations path.",
+      "url": "https://www.theodinproject.com/lessons/foundations-git-basics",
+      "source": "The Odin Project",
+      "label": "The Odin Project Foundations — Git Basics"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Write commit messages like a teammate will read them.** A message like `\"fix bug\"` is useless in six months. Use the imperative mood and describe *what* changed: `\"Add contact form validation\"` or `\"Remove unused imports from App.js\"`. One sentence is enough — just make it meaningful."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is the key difference between Git and GitHub?",
+          "options": [
+            "They are the same thing — GitHub is just the official name for Git",
+            "Git is a version control tool that runs on your machine; GitHub is a website where repos are hosted online",
+            "Git is a cloud service; GitHub is the desktop app you install locally",
+            "GitHub replaced Git in 2018 and is now the industry standard"
+          ],
+          "answerIndex": 1,
+          "explanation": "Git is the local version control system you install and run in the terminal. GitHub is a remote hosting platform for Git repositories — the two work together but are separate things."
+        },
+        {
+          "question": "What does `git commit -m \"Add login form\"` do?",
+          "options": [
+            "Uploads your changes to GitHub immediately",
+            "Stages all modified files so they are ready to be saved",
+            "Saves a labeled snapshot of all staged changes to your local repository",
+            "Creates a new branch named 'Add login form'"
+          ],
+          "answerIndex": 2,
+          "explanation": "git commit records a snapshot of everything you staged with git add into your local repo history. It does not touch GitHub — that requires a separate git push."
+        },
+        {
+          "question": "Which command sends your committed local changes up to GitHub?",
+          "options": [
+            "git add .",
+            "git commit -m \"message\"",
+            "git pull",
+            "git push"
+          ],
+          "answerIndex": 3,
+          "explanation": "git push uploads your local commits to the remote repository on GitHub. git pull does the opposite — it downloads changes from GitHub to your local machine."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now have the two tools every developer uses every single day: the terminal to navigate and run commands, and Git to track every change you make. The workflow — `add`, `commit`, `push` — becomes automatic within a week. Keep the Net Ninja playlist bookmarked; rewatching specific videos when a command trips you up is totally normal.\n\nNext up: **Deploying your first site** — you'll put real code on the internet.",
+      "nextLessonId": "p0-s3-deploy",
+      "nextLessonTitle": "Deploy your first site"
+    }
+  ]
+}

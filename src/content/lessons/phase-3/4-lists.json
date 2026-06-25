@@ -1,0 +1,119 @@
+{
+  "id": "p3-s4-lists",
+  "phaseId": "phase-3",
+  "order": 4,
+  "slug": "lists",
+  "title": "Lists & conditional rendering",
+  "canDo": "render lists with keys and show UI conditionally",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/rendering-lists",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Rendering lists with map and keys"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/conditional-rendering",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Conditional rendering with && and ternaries"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Almost every real UI renders a list — a feed, a cart, a search result. React makes it simple: transform your array into JSX with `.map()`. But leave out the `key` prop and React can't efficiently update the list, causing bugs you won't see coming. This session also covers the two lines of JSX you'll reach for every time you need to show — or hide — a piece of UI based on some condition."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "render lists with keys and show UI conditionally",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to render an array of data with `.map()`, explain why React needs a `key` on each item and what makes a key stable, and toggle or swap UI using `&&` and the ternary operator."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Rendering lists.** Call `.map()` on your array inside JSX and return a JSX element for each item. React requires a `key` prop on every top-level element in that returned list so it can match old and new items across re-renders. A good key is a stable, unique identifier — typically an `id` from your data. Avoid using the array index as a key when items can be added, removed, or reordered; the index shifts, React gets confused, and you see stale UI or animation glitches.\n\n**Conditional rendering.** Two patterns cover most cases. Use `condition && <Component />` to show something only when the condition is truthy — nothing renders when it's falsy. Use `condition ? <A /> : <B />` to swap between two alternatives. Both work directly inside JSX without extra variables."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Read this first — Rendering Lists.** React.dev's official guide walks you through `.map()`, the `key` rule, and where keys come from. Work through the interactive examples, then come back.",
+      "url": "https://react.dev/learn/rendering-lists",
+      "source": "react.dev",
+      "label": "Rendering Lists — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "**Then read — Conditional Rendering.** Covers `if`, `&&`, and ternaries with runnable sandboxes. Complete the challenges at the bottom before returning.",
+      "url": "https://react.dev/learn/conditional-rendering",
+      "source": "react.dev",
+      "label": "Conditional Rendering — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "mistake",
+      "md": "**Common mistake — index as key.** `items.map((item, i) => <li key={i}>…</li>)` looks harmless but breaks React's reconciliation whenever the list order changes. Always prefer `item.id` or another value that stays with the item, not with its position."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "Why does React require a `key` prop on each element returned from `.map()`?",
+          "options": [
+            "So React can match elements across re-renders and update only what changed",
+            "So the browser can apply CSS styles to list items",
+            "So React knows how many items are in the array",
+            "Keys are optional; React only warns about them for style reasons"
+          ],
+          "answerIndex": 0,
+          "explanation": "React uses keys to identify which items were added, removed, or moved so it can make minimal DOM updates instead of re-rendering the whole list."
+        },
+        {
+          "question": "You have a list of user objects, each with a unique `id`. Your list can be reordered by the user. Which key choice is correct?",
+          "options": [
+            "key={index} — the array index is always available",
+            "key={user.id} — a stable ID that stays with the item regardless of order",
+            "key={Math.random()} — guarantees uniqueness on every render",
+            "No key is needed when the array is stored in state"
+          ],
+          "answerIndex": 1,
+          "explanation": "A stable, data-sourced id survives reordering. Index keys shift when order changes, and random keys force React to unmount and remount every element on every render."
+        },
+        {
+          "question": "Which JSX snippet correctly renders `<Badge />` only when `isNew` is `true`, and renders nothing otherwise?",
+          "options": [
+            "{isNew && <Badge />}",
+            "{isNew ? <Badge /> : null}",
+            "Both A and B are correct",
+            "if (isNew) { return <Badge /> }"
+          ],
+          "answerIndex": 2,
+          "explanation": "Both `&&` and the ternary with `null` produce identical output. The `if` statement syntax is not valid inside a JSX expression."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You covered the two most common patterns for dynamic UI in React: turning arrays into JSX with `.map()` + stable `key` props, and showing or hiding elements with `&&` or ternaries. These two tools appear in nearly every React component you will ever write.",
+      "bullets": [
+        "Use `.map()` to transform an array into JSX elements",
+        "Always add a `key` prop — prefer a stable data `id` over the array index",
+        "Use `condition && <El />` to render or render nothing",
+        "Use `condition ? <A /> : <B />` to choose between two elements"
+      ],
+      "nextLessonId": "p3-s5-forms",
+      "nextLessonTitle": "Forms & controlled inputs"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "p6-s6-build",
+  "phaseId": "phase-6",
+  "order": 6,
+  "slug": "build",
+  "title": "Ship: deploy your app publicly",
+  "canDo": "ship a polished app to a public URL",
+  "estMinutes": 120,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "Vercel Docs",
+      "url": "https://vercel.com/docs/frameworks/frontend/vite",
+      "license": "public",
+      "reviewed": "2026-06-23",
+      "topic": "Deploying a Vite app to Vercel — environment variables, build settings"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Your full-stack app authenticates users, reads and writes data through Supabase, and enforces Row Level Security. It works on your laptop. But 'works on my machine' is not a portfolio. The moment you paste a real URL into a message and someone else signs up, uses your app, and it just works — that is the moment it becomes real. This session is about crossing that line: tightening every rough edge, making the UI behave properly in every state, and pushing the whole thing to a public Vercel URL that will still be running next month."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "ship a polished app to a public URL",
+      "estMinutes": 120,
+      "md": "**By the end of this session you will be able to:** add loading, empty, and error states everywhere in your app; render at least one chart for a data summary; pass a basic accessibility check (labels, alt text, keyboard nav, contrast); write a couple of tests; write a clean README; deploy to Vercel with `VITE_SUPABASE_PUBLISHABLE_KEY` set; and share a public URL where a brand-new user can sign up and use the full app without hitting a single crash or blank screen."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**What separates a demo from a product is how it handles the edges.**\n\nEvery async operation in your app has four possible states: idle, loading, data, and error. A polished app renders something intentional for all four — a spinner, a friendly empty message, an inline error. Accessibility is not a bonus feature: labels, alt text, sufficient colour contrast, and keyboard focus management are required for real users and for automated audits. A chart turns raw data into insight — even a simple bar chart showing item counts adds genuine value. Tests (even two or three) prove you can refactor safely. A README lets anyone clone and run the project. And Vercel makes deployment a three-minute operation once your code is on GitHub — push, import, set one env var, done."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The Vercel Vite deployment guide covers connecting a GitHub repo, configuring the Vite build preset, and setting environment variables in the Vercel dashboard — everything you need to go from local to live.",
+      "url": "https://vercel.com/docs/frameworks/frontend/vite",
+      "source": "Vercel Docs",
+      "label": "Vercel — Deploy a Vite app (env vars, build settings)"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip — `VITE_` prefix is mandatory for browser env vars.** Vite only exposes variables to your frontend bundle if their name starts with `VITE_`. Set `VITE_SUPABASE_PUBLISHABLE_KEY` (not `SUPABASE_KEY`, not `ANON_KEY`) in the Vercel Environment Variables panel under Settings → Environment Variables. Your Supabase URL needs the same treatment: `VITE_SUPABASE_URL`. After adding or changing env vars, trigger a fresh deployment — Vercel does not hot-reload env changes into existing builds."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "Take your Phase 5 full-stack notes app (or any app from this course) and make it production-ready, then deploy it to a public Vercel URL.\n\nYour finished app must:\n\n1. **Loading / empty / error states** — every data-fetching operation shows a loading indicator while in flight, a friendly empty message when there is no data, and a user-readable error message when something goes wrong. No blank screens, no raw error objects rendered to the DOM.\n2. **A chart** — use a charting library (Recharts, Chart.js via react-chartjs-2, or Nivo) to visualise at least one piece of data from your app (e.g. note count over time, items by category, or a simple summary stat with a bar or pie chart).\n3. **Accessibility pass** — every form input has an associated `<label>`; every `<img>` has a meaningful `alt` attribute; interactive elements are reachable by keyboard (Tab + Enter/Space); text has at least 4.5:1 contrast ratio against its background.\n4. **Two tests** — write at least one unit test (e.g. a pure function or a component render test with Vitest + Testing Library) and at least one integration-style check (e.g. that a form submits and calls the expected handler).\n5. **Clean README** — the repo root has a `README.md` covering: what the app does, how to run it locally (env vars needed, install + dev command), and the live URL.\n6. **Deployed on Vercel** — push your code to GitHub, import the repo into Vercel, set `VITE_SUPABASE_PUBLISHABLE_KEY` and `VITE_SUPABASE_URL` in Environment Variables, deploy, and confirm the live URL works end-to-end.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough of the deployment process, one is just one click away.",
+      "definitionOfDone": "A public Vercel URL where you can open an incognito window, sign up as a brand-new user, use the full app (create, read, and interact with data), see at least one chart, and never hit a blank screen, a raw error, or a broken layout. The GitHub repo has a README and passing tests (`npm test` exits 0 locally).",
+      "hints": [
+        "**Start with polish: states and accessibility.** Go through every `useEffect` or Supabase query in your app and add a `loading` boolean and an `error` state. Render a `<p>Loading...</p>` (or a spinner) while loading, an `<p className=\"error\">...</p>` on error, and an empty-state message when the array is length 0. Then open your app and Tab through every interactive element — if focus skips something or a label is missing, fix it now. Run the browser's built-in accessibility checker (Chrome DevTools → Lighthouse → Accessibility) and address any red or amber issues before moving on.",
+        "**Add a chart and write your tests.** Install Recharts (`npm install recharts`) and pick one data array you already fetch — count items by a category field and pass the result as the `data` prop to a `<BarChart>`. For tests, create a `src/__tests__/` folder, install `vitest` and `@testing-library/react` if not already present, and write: (1) a test that renders your main list component with mock data and asserts the items appear, and (2) a test that fires a form submit and checks your handler was called. Run `npm test` until both pass. Then write your README: one paragraph about the app, the env vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`), and the `npm install && npm run dev` commands.",
+        "**Deploy to Vercel.** Push everything to a GitHub repo (public or private — both work). Go to vercel.com, click Add New → Project, import the repo. Vercel auto-detects Vite; leave the build command as `vite build` and the output directory as `dist`. Before hitting Deploy, open Settings → Environment Variables and add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` with the values from your Supabase project's API settings page. Click Deploy. When the build finishes, open the generated `.vercel.app` URL in an incognito window and walk through the full user journey — sign up, interact, check the chart, trigger an empty state and an error state. Copy the URL; that is your portfolio piece."
+      ],
+      "gatedSolution": true,
+      "solutionUrl": "https://www.youtube.com/watch?v=hAuyNf0Uk-w"
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just shipped a deployed, production-quality full-stack app. It handles every UI state, passes an accessibility audit, renders real data in a chart, has a test suite, and lives at a public URL anyone can visit. That is not a tutorial project — that is a portfolio piece.\n\nYou built it across six phases: HTML and CSS fundamentals, React components and state, TypeScript, async data fetching, Supabase authentication and RLS, and now deployment. The next stop is the Phase 6 quiz to lock in everything you learned about shipping.",
+      "bullets": [
+        "Loading / empty / error states are what separate a demo from a product — every async op needs all three",
+        "Accessibility is not optional: labels, alt text, keyboard nav, and contrast keep real users from being locked out",
+        "Vercel + Vite deployment is three minutes once your repo is on GitHub — the only gotcha is the VITE_ prefix on env vars",
+        "A README and a passing test run are the minimum bar for a project worth sharing"
+      ],
+      "nextLessonTitle": "Phase 6 quiz"
+    }
+  ]
+}

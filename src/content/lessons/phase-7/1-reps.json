@@ -1,0 +1,104 @@
+{
+  "id": "p7-s1-reps",
+  "phaseId": "phase-7",
+  "order": 1,
+  "slug": "reps",
+  "title": "Keep building",
+  "canDo": "build reps and escape tutorial hell",
+  "estMinutes": 30,
+  "fade": "light",
+  "sources": [
+    {
+      "name": "r/learnprogramming",
+      "url": "https://www.reddit.com/r/learnprogramming/",
+      "license": "CC-BY-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "community momentum and avoiding tutorial hell"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You can build full-stack React apps. You know components, state, hooks, routing, TypeScript, and a real backend with auth. That's not nothing — most people quit long before this point.\n\nHere's the uncomfortable truth: watching one more tutorial will not make you better. The only thing that makes you better now is building things, getting stuck, and figuring your way out. That friction *is* the learning."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build reps and escape tutorial hell",
+      "estMinutes": 30,
+      "md": "By the end of this session you will be able to describe why reps beat tutorials at this stage, recognise the signs of tutorial hell, and name one small project you will ship this week."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Reps beat tutorials.** A tutorial hands you the answer. A project forces you to find it. The moment you're genuinely stuck — not sure what to Google, not sure which hook to reach for — that's when your brain actually wires the skill in.\n\n**Tutorial hell** is the trap of watching course after course without ever shipping anything. It feels productive because you're absorbing information, but comprehension without application fades fast. The fix is simple: build something small you actually want to exist, even if it's rough.\n\n**Ship small, ship often.** A working to-do app beats a half-built social network. Finishing things trains the muscle of completion, gives you portfolio pieces, and creates moments where strangers (or future employers) can see your work.\n\n**Community keeps you going.** Momentum dies in isolation. Find one place to share progress and ask questions — even lurking a forum helps normalise the struggle."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "r/learnprogramming is the largest beginner-friendly programming community on the internet. Use it to get unstuck, share what you ship, and see that every developer — at every level — gets stuck regularly.",
+      "label": "r/learnprogramming — community",
+      "url": "https://www.reddit.com/r/learnprogramming/",
+      "source": "r/learnprogramming"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Pick a project that itches.** The best project idea is the one you're slightly annoyed doesn't exist yet — a habit tracker with your exact categories, a link saver that works the way you think, a quiz app for your favourite topic. Caring about the outcome means you'll push through the stuck moments instead of switching to another tutorial."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "You've finished a React + Supabase course and want to get better. What is the highest-value next step?",
+          "options": [
+            "Watch a second, more advanced course covering the same stack",
+            "Build a small app you actually want, get stuck, and figure it out",
+            "Re-read all your previous lesson notes until they feel solid",
+            "Wait until you feel confident enough to start a project"
+          ],
+          "answerIndex": 1,
+          "explanation": "Reps beat re-consumption. Building forces you to retrieve and apply knowledge under real conditions — that's where durable skill forms."
+        },
+        {
+          "question": "Which of these best describes 'tutorial hell'?",
+          "options": [
+            "Following a tutorial that contains a bug you can't fix",
+            "Watching or reading tutorials continuously without ever shipping a project of your own",
+            "Choosing a tutorial that is too advanced for your current level",
+            "Finishing a tutorial but not understanding every line of code"
+          ],
+          "answerIndex": 1,
+          "explanation": "Tutorial hell is the loop of consuming content without producing anything. It feels like learning but skips the application step where real skill is built."
+        },
+        {
+          "question": "Why is shipping small projects regularly better than waiting until a project is 'ready'?",
+          "options": [
+            "Small projects are easier to sell to employers than large ones",
+            "Shipping forces you to cut scope, trains completion, and creates visible work sooner",
+            "Large projects always introduce bugs that are impossible to debug alone",
+            "Finished small projects count more toward GitHub contribution graphs"
+          ],
+          "answerIndex": 1,
+          "explanation": "Finishing small things trains the completion muscle, produces portfolio pieces quickly, and gives you real feedback loops that waiting never does."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You have the skills. What you need now is reps — real projects where you own the decisions, hit the walls, and break through them. Keep the scope small so you actually finish. Ship early and often. Use a community like r/learnprogramming when you're stuck or want to share progress. Tutorial hell is solved by one thing: starting.",
+      "bullets": [
+        "Reps (building) outperform tutorials at this stage — application is where skill sticks",
+        "Tutorial hell = consuming without shipping; cure it by starting something small today",
+        "Ship small, finish things — completion is a skill that compounds",
+        "Community provides momentum, perspective, and help when you're stuck"
+      ],
+      "nextLessonId": "p7-s2-toolkit",
+      "nextLessonTitle": "Your toolkit going forward"
+    }
+  ]
+}

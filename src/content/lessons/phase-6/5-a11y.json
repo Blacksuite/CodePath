@@ -1,0 +1,119 @@
+{
+  "id": "p6-s5-a11y",
+  "phaseId": "phase-6",
+  "order": 5,
+  "slug": "a11y",
+  "title": "Accessibility basics",
+  "canDo": "make your app usable for everyone",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "W3C WAI",
+      "url": "https://www.w3.org/WAI/tips/developing/",
+      "license": "W3C Document License",
+      "reviewed": "2026-06-23",
+      "topic": "Accessibility tips for developers"
+    },
+    {
+      "name": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "Accessibility fundamentals"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You ship your portfolio project. It looks great — clean layout, smooth animations. Then someone tries to use it with only a keyboard and gets completely stuck. A screen-reader user hears \"button button button\" with no clue what any of them do. A person with low vision can't read the light-grey text on white. None of this is exotic edge-case territory — roughly 1 in 5 people have some form of disability that affects how they use the web. Accessibility (a11y) is not a bolt-on feature; it is the measure of whether your app actually works."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "make your app usable for everyone",
+      "estMinutes": 45,
+      "md": "By the end of this session you will be able to explain what accessibility means in practice, name the cheap wins that cover most real-world cases (semantic HTML, labels, alt text, keyboard focus, colour contrast), and identify the two primary reference sources — W3C WAI and MDN — you will consult when building accessible interfaces."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Accessibility means your app works for people regardless of how they interact with it** — keyboard only, screen reader, switch control, high-contrast mode, zoomed-in browser, and more.\n\nThe five cheap wins that cover the majority of real-world issues:\n\n1. **Semantic HTML.** Use `<button>` for buttons, `<nav>` for navigation, `<h1>`–`<h6>` for headings. A screen reader announces these roles automatically; a `<div onClick>` announces nothing.\n2. **Label every input.** Every `<input>` needs a `<label>` (or `aria-label`). Without it, screen readers announce only the input type — useless to a blind user.\n3. **Alt text on images.** `<img alt=\"a cat sitting on a keyboard\">` describes the image; `alt=\"\"` hides decorative images from screen readers (correct for purely decorative images).\n4. **Keyboard focus.** Every interactive element must be reachable by pressing Tab and activated by pressing Enter or Space. Never remove the browser's `:focus` outline without replacing it.\n5. **Colour contrast.** Text must have a contrast ratio of at least 4.5:1 against its background (WCAG AA). Use a contrast checker before shipping."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The W3C WAI developer tips page is the quickest overview of actionable accessibility practices — semantic markup, form labels, image alt text, interactive controls, and colour contrast, all in one short read.",
+      "label": "W3C WAI — Tips for Developing",
+      "url": "https://www.w3.org/WAI/tips/developing/",
+      "source": "W3C WAI"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The MDN Accessibility module is a thorough, practical guide that walks through what accessibility is, why it matters, HTML and CSS techniques, WAI-ARIA, and how to test — a solid reference you will return to repeatedly.",
+      "label": "MDN — Accessibility",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility",
+      "source": "MDN Web Docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Quick audit you can do right now.** Open your project and press Tab repeatedly without touching the mouse. Can you reach every button, link, and input? Can you activate each one with Enter or Space? If your focus indicator disappears or the tab order jumps around unpredictably, that is the first thing to fix. This keyboard-only walk-through costs two minutes and catches the most common failures."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does web accessibility (a11y) mean in practice?",
+          "options": [
+            "Making your app load faster for users on slow connections",
+            "Ensuring your app works for people regardless of how they interact with it, including keyboard, screen reader, and other assistive technologies",
+            "Adding high-contrast colour themes as an optional setting",
+            "Passing a Google Lighthouse performance score above 90"
+          ],
+          "answerIndex": 1,
+          "explanation": "Accessibility means your app is usable by people with a wide range of abilities and interaction methods — keyboard-only users, screen-reader users, people with low vision, and more."
+        },
+        {
+          "question": "Why do form inputs need a `<label>` element (or `aria-label`), and why does image alt text matter?",
+          "options": [
+            "Labels and alt text are only needed for legal compliance; sighted users benefit from neither",
+            "Without a label a screen reader can only announce the input type; without alt text it announces the filename — both leave blind users without useful information",
+            "Labels improve CSS styling; alt text is used by search engines but has no accessibility effect",
+            "They are optional when the placeholder attribute is present, which screen readers read equally well"
+          ],
+          "answerIndex": 1,
+          "explanation": "Screen readers rely on labels to describe what an input is for, and on alt text to describe images. Without them, users who cannot see the screen receive no useful information."
+        },
+        {
+          "question": "A user can reach your page's navigation links by pressing Tab, but the focus outline has been removed with `outline: none` in CSS and nothing replaces it. What is the problem?",
+          "options": [
+            "No problem — the element is still focusable, so keyboard navigation works correctly",
+            "The element is no longer in the tab order, so keyboard users skip it entirely",
+            "Keyboard users can reach the element but cannot tell which element is currently focused, making navigation unusable in practice",
+            "The outline removal only affects mouse users; screen readers are unaffected"
+          ],
+          "answerIndex": 2,
+          "explanation": "Removing the focus outline without a replacement means keyboard users lose the visible indicator of where focus is — they can still tab through elements, but they have no way to know which one is active."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "Accessibility is not an afterthought — it is the baseline that makes your app usable by everyone. The five cheap wins do the heavy lifting: **semantic HTML**, **labelled inputs**, **descriptive alt text**, **visible keyboard focus**, and **sufficient colour contrast**. You do not need to memorise every WCAG rule; you need to know the W3C WAI tips page and the MDN Accessibility module so you can look up the right guidance when you build. Start with the two-minute keyboard audit on every project you ship.",
+      "bullets": [
+        "Semantic HTML gives screen readers role information for free — use real `<button>`, `<nav>`, `<h1>`–`<h6>`",
+        "Every input needs a `<label>` or `aria-label`; every non-decorative image needs meaningful alt text",
+        "Keyboard users must be able to Tab to every interactive element and see which element is focused",
+        "Colour contrast of 4.5:1 minimum (WCAG AA) — verify with a contrast checker before shipping"
+      ],
+      "nextLessonId": "p6-s6-build",
+      "nextLessonTitle": "Build: Accessible, Production-Ready App"
+    }
+  ]
+}

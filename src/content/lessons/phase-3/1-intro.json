@@ -1,0 +1,113 @@
+{
+  "id": "p3-s1-intro",
+  "phaseId": "phase-3",
+  "order": 1,
+  "slug": "intro",
+  "title": "Why React & setup",
+  "canDo": "explain what React is for and create a Vite app",
+  "estMinutes": 45,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "React Quick Start"
+    },
+    {
+      "name": "Scrimba",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "Learn React (free course)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every time you click 'Like', filter a product list, or watch a chat message appear instantly — you are feeling React at work. Before React, developers wrote JavaScript that manually hunted down DOM nodes and patched them one by one. React flipped the model: *you describe what the UI should look like*, and React figures out the minimum set of DOM changes needed to get there. That shift — from imperative DOM surgery to declarative UI — is the single biggest idea in modern front-end development, and it is what this phase is about."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "explain what React is for and create a Vite app",
+      "estMinutes": 45,
+      "md": "By the end of this session you will be able to **explain what React is for** (declarative UI, component model) and **scaffold a working React project** with `npm create vite@latest`. The bulk of the learning happens inside the two curated resources below — this lesson is your guided entry point, not a replacement for them."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Three ideas to carry into the resources:**\n\n1. **Declarative vs imperative.** Imperative code says *how*: 'find this element, change its text, add this class.' Declarative code says *what*: 'the button label is the current count.' React re-renders only what changed.\n\n2. **Components as the unit of UI.** Every piece of the interface — a button, a nav bar, an entire page — is a function that returns JSX. Components compose like LEGO bricks.\n\n3. **Vite is the modern scaffold.** `create-react-app` is deprecated. The current standard is `npm create vite@latest`, choosing the React template. It gives you a fast dev server and an optimised build out of the box."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### react.dev — Quick Start\n\nThe official docs written by the React team. Read the **'Quick Start'** page (about 20 min). It introduces components, JSX, props, state, and event handlers with short, runnable examples. Come back here after you finish it.",
+      "url": "https://react.dev/learn",
+      "source": "react.dev",
+      "label": "Open react.dev Quick Start"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Scrimba — Learn React (free)\n\nScrimba's free interactive React course lets you edit code directly in the video. **Complete the first three screencasts** (roughly 25 min): they cover why React exists, JSX basics, and your first component. Pause, tinker, and come back when you hit the fourth video.",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "source": "Scrimba",
+      "label": "Open Scrimba Learn React"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Scaffold while you learn.** After the Scrimba intro, open a terminal and run:\n```\nnpm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev\n```\nLeave the dev server running in one tab and keep Scrimba open in another — edit `src/App.jsx` in real time as you watch."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "React was primarily created to solve which problem?",
+          "options": [
+            "Manually updating the DOM becomes error-prone and hard to maintain as UI grows",
+            "JavaScript had no way to make network requests before React",
+            "Browsers could not display HTML without a framework",
+            "CSS animations were too slow without virtual DOM diffing"
+          ],
+          "answerIndex": 0,
+          "explanation": "React's core motivation is making UI state management predictable by letting developers describe what the UI should look like rather than imperatively patching the DOM."
+        },
+        {
+          "question": "What is the key difference between declarative and imperative UI code?",
+          "options": [
+            "Declarative code runs faster because it skips the browser's rendering engine",
+            "Imperative code uses functions; declarative code uses classes",
+            "Declarative code describes the desired end state; imperative code lists the exact steps to reach it",
+            "Declarative code only works with TypeScript, not plain JavaScript"
+          ],
+          "answerIndex": 2,
+          "explanation": "Declarative UI (React's model) says 'show a button with this label when count > 0'; imperative UI says 'find the button element, set its textContent, call show()' — you manage every step yourself."
+        },
+        {
+          "question": "Which command is the current recommended way to start a new React project?",
+          "options": [
+            "npx create-react-app my-app",
+            "npm create vite@latest my-app -- --template react",
+            "npm init react my-app",
+            "npx react-scripts init my-app"
+          ],
+          "answerIndex": 1,
+          "explanation": "create-react-app is deprecated and no longer maintained. The modern approach is Vite, scaffolded with 'npm create vite@latest' using the React template."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You now understand *why* React exists (declarative > imperative for complex UIs), how components are the building blocks of every React app, and how to spin up a real project with Vite. In the next lesson you will go deeper into components — writing them, composing them, and passing data between them via props.",
+      "nextLessonId": "p3-s2-components",
+      "nextLessonTitle": "Components & Props"
+    }
+  ]
+}

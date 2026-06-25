@@ -1,0 +1,84 @@
+{
+  "id": "p0-s3-deploy",
+  "phaseId": "phase-0",
+  "order": 3,
+  "slug": "deploy",
+  "title": "Your first page online",
+  "canDo": "build and deploy a web page to a live URL",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Netlify Drop",
+      "url": "https://app.netlify.com/drop",
+      "license": "proprietary",
+      "reviewed": "2026-06-23",
+      "topic": "drag-and-drop static site deployment"
+    },
+    {
+      "name": "GitHub Pages quickstart",
+      "url": "https://docs.github.com/en/pages/quickstart",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "GitHub Pages deployment"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have written HTML. You have opened it in your browser. But right now it only lives on your laptop — nobody else can see it.\n\nThis session changes that. By the end you will have a real URL you can text to a friend or open on your phone. That moment — paste a link and watch it load somewhere else in the world — is the first thing most developers remember. Let's go get it."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "build and deploy a web page to a live URL",
+      "estMinutes": 60,
+      "md": "**By the end of this session you will be able to:** create an `index.html` file and deploy it to a public URL using Netlify Drop or GitHub Pages."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "A **static site** is just a folder of files — HTML, CSS, images — with no server code. Hosting providers like Netlify and GitHub will serve those files for you, for free, and hand you a public URL.\n\n**Netlify Drop** is the fastest path: drag your project folder onto a webpage and you get a live URL in seconds. No account required for a quick test, though a free account lets you keep the URL.\n\n**GitHub Pages** is the developer-standard path: push your code to a GitHub repository, flip one setting, and GitHub serves the site from your `main` branch. Either route ends at the same place — a URL that works anywhere in the world."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "label": "Netlify Drop — deploy in seconds",
+      "url": "https://app.netlify.com/drop",
+      "source": "Netlify Drop",
+      "md": "**Netlify Drop** — drag your project folder here and get a live URL instantly. No CLI, no config."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "label": "GitHub Pages quickstart",
+      "url": "https://docs.github.com/en/pages/quickstart",
+      "source": "GitHub Pages quickstart",
+      "md": "**GitHub Pages quickstart** — official guide to enabling Pages on any public repository. Takes about five minutes."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip — start with Netlify Drop.** If you just want a URL fast, skip GitHub for now. Drag your folder, copy the link, open it on your phone. You can always set up GitHub Pages later when you want version history too."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "**Your mission:** get a real page live on the internet.\n\n1. Create a folder called `my-first-site`.\n2. Inside it, create `index.html` with your name and the words \"learning to code\" somewhere on the page.\n3. Deploy it — choose one path:\n   - **Netlify Drop (fastest):** go to [app.netlify.com/drop](https://app.netlify.com/drop) and drag the whole folder onto the page.\n   - **GitHub Pages:** push the folder to a public GitHub repo, then go to Settings → Pages → set source to `main` branch → Save.\n4. Copy the public URL and open it on your phone.",
+      "definitionOfDone": "A public URL that shows your name and 'learning to code' — one you can open on your phone and share with anyone.",
+      "hints": [
+        "Create `index.html` with a basic HTML skeleton: `<!DOCTYPE html>`, `<html>`, `<head>` (with a `<title>`), and `<body>` containing an `<h1>` with your name and a `<p>` saying 'learning to code'.",
+        "For Netlify Drop: go to https://app.netlify.com/drop in your browser, then drag the entire `my-first-site` folder (not just the file) onto the drop zone. Wait a few seconds — a URL like `random-name.netlify.app` will appear.",
+        "For GitHub Pages: create a new public repository on github.com, push your folder contents (just `index.html` to start), then go to the repo Settings → Pages → under 'Branch' select `main` and click Save. Wait 1-2 minutes, then visit `https://<your-username>.github.io/<repo-name>`."
+      ],
+      "gatedSolution": false
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You just shipped something to the internet. That's not a small thing — it's the whole loop: write code, deploy, share a link. Everything from here builds on this loop.\n\nYou now have a live URL. You know what a static site is. And you have used a professional deployment tool that real developers use every day.\n\n**Phase 0 is complete.** You have set up your environment, written your first HTML, and put a page online. Next up: a short quiz to lock in what you've learned before Phase 1.",
+      "nextLessonTitle": "Phase 0 quiz"
+    }
+  ]
+}

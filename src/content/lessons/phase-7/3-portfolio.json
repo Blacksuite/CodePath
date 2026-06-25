@@ -1,0 +1,68 @@
+{
+  "id": "p7-s3-portfolio",
+  "phaseId": "phase-7",
+  "order": 3,
+  "slug": "portfolio",
+  "title": "Build 3 apps from scratch, then ship your portfolio",
+  "canDo": "build independent projects from a blank file and present them in a deployed portfolio",
+  "estMinutes": 4320,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "MDN – HTML semantics overview",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+      "license": "CC-BY-SA-2.5",
+      "reviewed": "2026-06-23",
+      "topic": "structuring a simple HTML page for a portfolio"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You have followed every guided build in this course. That is genuinely good — you know the patterns. But there is a gap between \"I can follow a tutorial\" and \"I can build my own apps,\" and the only thing that closes it is reps: sitting down with a blank file, a rough idea, and no solution tab to peek at. This session is those reps. You are going to build three apps of your own — not variations on the course projects, but distinct apps that each stretch a different muscle — and then collect them, plus anything else you have shipped, into a live portfolio. That portfolio, and the three repos behind it, is what turns \"I did a course\" into \"I build things.\""
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "md": "By the end of this session (which spans several weeks of real work, not 90 minutes) you will be able to **build a complete working app from scratch with no guided steps**, debug your own errors, look up your own docs, and only then use AI to *explain* what you found — not to write it for you. You will also have a **live portfolio** linking three of your own deployed apps.",
+      "canDo": "build independent projects from a blank file and present them in a deployed portfolio",
+      "estMinutes": 4320
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Why independent builds are the real work.**\n\nEvery tutorial, every guided project, every copy-paste session produces a version of you that has *seen* the solution. That version of you cannot pass a technical interview, cannot unblock a team, and cannot build the side project you actually want to build. Independent builds produce a different version of you: one who has hit a wall, searched the docs, formed a hypothesis, tested it, and either fixed the bug or asked a specific question — not \"why is this broken\" but \"I expected X because of Y, I got Z instead, here is what I tried.\"\n\nThree builds is enough to break the tutorial dependency. Each one should feel harder than the last. Each one should spend at least one full session stuck.\n\n**The stuck protocol (follow this every time).**\n1. Read the error message carefully — the answer is often in it.\n2. Re-read the relevant docs section (MDN, Supabase docs, React docs — not a tutorial, the official reference).\n3. Search the exact error message plus the technology name.\n4. Form a hypothesis, change one thing, test it.\n5. Only after all four steps: ask AI to *explain* what is happening — not to fix it for you.\n\nFollowing this protocol is what makes you a developer. Skipping to step 5 keeps you a tutorial follower.\n\n**AI as tutor, not ghostwriter.**\n\nThe rule is simple: if you cannot explain the code in your own words and reproduce it with the chat closed, you do not own it. The right uses of AI in this phase are: paste an error and ask *why* it happened; paste your finished code and ask for a review; ask it to explain a doc section you read but did not fully grasp. The wrong use is asking it to write a feature and copy-pasting the result. After AI explains something, close the chat and implement it yourself."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Tip: the AI review loop.**\n\nAfter you finish each feature, paste it into Claude or ChatGPT and ask: *\"Review this code. Point out anything confusing, any edge cases I missed, and any improvements — but do not rewrite it for me, just explain the issues.\"* Then fix the issues yourself. This is the highest-value use of AI in a learning context: senior-developer feedback on demand, but the understanding stays with you because you do the fixing."
+    },
+    {
+      "type": "nowYouTry",
+      "task": "**Build 3 of your own apps from scratch, then ship a portfolio.**\n\nWork through all three projects below in order. Each one must be built by you — no copying the course projects, no having AI write the code. Start with a blank repo every time.\n\n---\n\n**Project 1 — Frontend app consuming a public API (difficulty: medium)**\n\nIdea: a **GitHub user finder**. The user types a GitHub username, your app calls the GitHub REST API (`https://api.github.com/users/{username}`), and displays the user's avatar, name, bio, follower count, and a link to their profile. Bonus: list their public repos below.\n\nAlternative if you prefer: a **weather app** using the Open-Meteo API (free, no key required) — enter a city name, show today's forecast.\n\nDefinition of done: the app is deployed on Vercel, searches live data from a real public API, and handles the case where the username or city does not exist.\n\n---\n\n**Project 2 — Full-stack CRUD app with Supabase auth (difficulty: hard)**\n\nIdea: a **bookmark manager**. Users sign up, log in, and maintain a personal list of saved links (URL + title + optional note). They can add, view, and delete bookmarks. Each user only sees their own.\n\nAlternative: a **recipe box** — same pattern, different domain.\n\nDefinition of done: the app is deployed on Vercel with a real Supabase backend, row-level security is on so users cannot read each other's data, and auth (sign-up + sign-in + sign-out) works end to end.\n\n---\n\n**Project 3 — Your own invention (difficulty: your call)**\n\nBuild something you actually want to exist. It can be simple or ambitious. The only rules: it must be an idea you came up with yourself (not a course project, not a tutorial clone), and it must be deployed and linkable.\n\nDefinition of done: the app is live, does the thing you set out to build, and you can demo it to someone in under two minutes.\n\n---\n\n**After all three projects: build the portfolio page.**\n\nCreate a single-page portfolio (`index.html` or a React app) with a card for each project you have deployed — at minimum the three above plus any projects from this course you want to include. Each card needs: the project name, a one-line description of what it does, a screenshot or image, a link to the live app, and a link to the GitHub repo. Deploy the portfolio page itself so it has its own live URL.\n\n---\n\n**A note on timeline.** Each project should take at least a week of real work — evenings, weekends, genuine stuck sessions. If you finish in a few hours, the project was not ambitious enough or you leaned on AI too much. Three weeks of independent building is a reasonable minimum. The portfolio page itself is a day's work once the projects exist.",
+      "definitionOfDone": "Three of your own apps are deployed and publicly accessible — (1) a frontend app hitting a real public API, (2) a full-stack CRUD app with Supabase auth and row-level security, (3) something of your own invention — plus a live portfolio page that links all three (and any other course projects) with a screenshot and both a live URL and a GitHub repo link for each.",
+      "hints": [
+        "Project 1 (frontend + public API): plain `fetch()` is enough — no library. Fetch the data, check the response status (handle 404 / errors), put it in state, and render loading / error / done states. Deploy it to Vercel or Netlify.",
+        "Project 2 (full-stack with Supabase): start from the official Supabase React quickstart in the docs. Make a table, ENABLE Row Level Security and add a policy (auth.uid() = user_id), wire up signup/login, then CRUD. Test with two accounts so RLS is proven.",
+        "Project 3 (your own idea): scope it small enough to finish. When you get stuck — read the error, check the docs, console.log what you think is true, and only then ask AI to EXPLAIN (not write) it. Shipping it, bugs and all, is the rep that matters."
+      ],
+      "gatedSolution": false
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "You did not follow instructions to get these apps built. You made the decisions, hit the walls, debugged the errors, and shipped the results. That is the difference.\n\nA recruiter looking at your portfolio now sees three independent projects with live URLs and public repos — not three tutorial clones, but things you invented and built yourself. That is what \"junior developer\" actually means: someone who can take a blank repo and turn it into a deployed, working product.\n\nOn the AI front, keep the rule: **explain it, or you do not own it.** The developers who grow fastest are the ones who use AI to learn harder things sooner — not to avoid learning.\n\n**This completes the course.** You can build and ship your own full-stack React apps: components, state, routing, a database, auth, deployment, testing, and now a portfolio of real, independent work to prove it.",
+      "bullets": [
+        "Following tutorials teaches patterns; independent builds teach you to be a developer",
+        "The stuck protocol — error → docs → search → hypothesis → test → explain — is the core skill",
+        "Use AI to understand errors and get code reviewed, never to write the code for you",
+        "Three deployed apps of your own invention is what makes a portfolio credible",
+        "The portfolio page is one more deployed project — ship it the same way you shipped the others"
+      ],
+      "nextLessonTitle": "Phase 7 quiz"
+    }
+  ]
+}

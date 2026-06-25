@@ -1,0 +1,28 @@
+{
+  "id": "p1-s1-html",
+  "phaseId": "phase-1",
+  "order": 1,
+  "slug": "html",
+  "title": "HTML foundations",
+  "canDo": "structure a page with semantic HTML",
+  "estMinutes": 180,
+  "fade": "curated",
+  "sources": [
+    { "name": "freeCodeCamp — Responsive Web Design", "url": "https://www.freecodecamp.org/learn/responsive-web-design-v9", "license": "BSD-3-Clause / CC-BY-SA", "reviewed": "2026-06-23", "topic": "HTML" },
+    { "name": "MDN — HTML basics", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content", "license": "CC-BY-SA-2.5", "reviewed": "2026-06-23", "topic": "HTML reference" }
+  ],
+  "blocks": [
+    { "type": "prose", "role": "hook", "md": "Every website is HTML underneath — the skeleton that holds your content. Before anything looks good or *does* anything, it has to be structured. That's this session." },
+    { "type": "prose", "role": "objective", "canDo": "structure a page with semantic HTML", "estMinutes": 180 },
+    { "type": "prose", "role": "concept", "md": "**What to focus on** (don't memorise every tag — these are the ones you'll use daily):\n\n- Elements & nesting — how tags wrap content and sit inside each other.\n- The everyday tags: headings (`<h1>`–`<h6>`), `<p>`, `<a>`, `<img>`, lists (`<ul>`/`<li>`).\n- **Semantic** tags: `<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`, `<button>` — they describe *what* content is, which makes your page clearer and accessible." },
+    { "type": "prose", "role": "resource", "url": "https://www.freecodecamp.org/learn/responsive-web-design-v9", "source": "freeCodeCamp", "label": "▶ Do this: freeCodeCamp → Responsive Web Design. Complete these two projects in order, then come back:\n\n1. **Learn HTML by Building a Cat Photo App** — 69 guided steps. You build a real page with images, links, lists, and forms. This is the core HTML workout.\n2. **Learn HTML Forms by Building a Registration Form** — covers `<form>`, `<input>` types, labels, and `<fieldset>`. Stop after this project.\n\nSkip the CSS projects for now — those are in the next lesson." },
+    { "type": "prose", "role": "resource", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content", "source": "MDN", "label": "📖 Keep open as a reference whenever you forget a tag — MDN is the dictionary of the web." },
+    { "type": "prose", "role": "callout", "variant": "tip", "md": "You don't need to memorise tags. Learn the handful above, and look the rest up. Real developers Google tags constantly — that's normal." },
+    { "type": "quiz", "passThreshold": 0.7, "questions": [
+      { "question": "What is the main advantage of using semantic tags like `<header>`, `<nav>`, and `<main>` instead of `<div>` everywhere?", "options": ["They load faster because they are shorter to type", "They describe the purpose of the content, improving accessibility and SEO", "They automatically apply default styles from the browser", "They prevent elements from overlapping on the page"], "answerIndex": 1, "explanation": "Semantic tags communicate meaning to screen readers, search engines, and developers, whereas `<div>` is a generic grouping element with no inherent meaning." },
+      { "question": "Which tag should wrap the primary, unique content of a page — the content that is not repeated in headers, footers, or sidebars?", "options": ["<section>", "<article>", "<main>", "<div>"], "answerIndex": 2, "explanation": "`<main>` is intended for the dominant content of the document and should appear only once per page." },
+      { "question": "Why should you use `<button>` rather than a `<div>` with a click handler for interactive controls?", "options": ["A `<div>` cannot have a click event attached to it", "`<button>` is focusable, keyboard-operable, and announced as interactive by screen readers by default", "`<button>` renders faster in the browser paint cycle", "Browsers will throw a validation error if you use a clickable `<div>`"], "answerIndex": 1, "explanation": "`<button>` provides keyboard access (Enter/Space), correct ARIA role, and focus management for free; replicating this on a `<div>` requires significant extra work." }
+    ] },
+    { "type": "prose", "role": "recap", "md": "You can structure a page with semantic HTML. Next up: making it look good with CSS.", "nextLessonId": "p1-s2-css", "nextLessonTitle": "CSS foundations & the box model" }
+  ]
+}

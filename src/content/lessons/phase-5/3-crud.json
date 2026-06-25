@@ -1,0 +1,103 @@
+{
+  "id": "p5-s3-crud",
+  "phaseId": "phase-5",
+  "order": 3,
+  "slug": "crud",
+  "title": "Reading & writing data (CRUD)",
+  "canDo": "create, read, update and delete data from React",
+  "estMinutes": 90,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Supabase React Quickstart",
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "CRUD with Supabase client in React"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every app you have ever used — a to-do list, a habit tracker, a social feed — is mostly the same four operations playing on repeat: **Create, Read, Update, Delete**. Master CRUD and you can build the data layer of almost anything. Today you will wire those four operations directly from React into your Supabase database using the JavaScript client."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "create, read, update and delete data from React",
+      "estMinutes": 90,
+      "md": "By the end of this session you will be able to use the Supabase JavaScript client to query a table, insert a new row, update an existing row, and delete a row — and handle loading and error states for each operation."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**CRUD = Create · Read · Update · Delete** — the four verbs of persistent data.\n\nWith the Supabase JavaScript client, every operation starts the same way:\n\n```js\nsupabase.from('habits')   // pick the table\n```\n\nThen chain the right verb:\n\n| Goal | Chain |\n|------|-------|\n| Read all rows | `.select()` |\n| Insert a row | `.insert({ name: 'Exercise' })` |\n| Update a row | `.update({ done: true }).eq('id', 7)` |\n| Delete a row | `.delete().eq('id', 7)` |\n\nEvery call returns a Promise with `{ data, error }`. Always check both: show a spinner while the call is in flight (`loading` state) and show a message if `error` is set. Skipping these two states is the most common mistake beginners make."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Work through the official Supabase React Quickstart. It walks you through creating a project, adding the client library, and running your first `select()` — the foundation for everything else in this session.",
+      "label": "Supabase React Quickstart",
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
+      "source": "Supabase Docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Always use `.eq('id', row.id)` when updating or deleting.** Without a filter, Supabase will apply the change to *every* row in the table. The `.eq()` method is your WHERE clause — treat it as required, not optional."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What does CRUD stand for?",
+          "options": [
+            "Create, Read, Update, Delete",
+            "Copy, Rename, Upload, Download",
+            "Connect, Render, Use, Deploy",
+            "Cache, Reduce, Undo, Derive"
+          ],
+          "answerIndex": 0,
+          "explanation": "CRUD stands for Create, Read, Update, Delete — the four fundamental data operations almost every app is built on."
+        },
+        {
+          "question": "In the Supabase JS client, what does `.from('habits')` do?",
+          "options": [
+            "It creates a new table called 'habits'",
+            "It selects and returns all rows from the habits table immediately",
+            "It sets the target table for the query — you chain .select(), .insert(), .update(), or .delete() after it",
+            "It deletes the habits table from the database"
+          ],
+          "answerIndex": 2,
+          "explanation": "`.from('habits')` picks the table you want to work with; it does not execute anything on its own — you must chain a verb like `.select()` or `.insert()` next."
+        },
+        {
+          "question": "Why should you always manage loading and error states when making Supabase calls?",
+          "options": [
+            "Supabase throws an exception if you don't, crashing the app",
+            "It prevents the component from re-rendering",
+            "Network calls are async and can fail — without these states users see broken UIs or stale data with no feedback",
+            "It is only needed when using .delete(), not .select()"
+          ],
+          "answerIndex": 2,
+          "explanation": "Database calls are asynchronous and can fail due to network issues or permission errors. A loading state gives users feedback while they wait; an error state lets you show a useful message instead of a blank screen."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- CRUD stands for **Create, Read, Update, Delete** — the backbone of almost every app\n- Use `supabase.from('tableName')` to target a table, then chain `.select()`, `.insert()`, `.update().eq()`, or `.delete().eq()`\n- Every call returns `{ data, error }` — always handle both\n- Show a loading state while the call is in flight; show an error message if something goes wrong\n\n**Up next:** Authentication — controlling who can read and write your data.",
+      "bullets": [
+        "CRUD = Create · Read · Update · Delete",
+        "supabase.from('table').select() | .insert() | .update().eq() | .delete().eq()",
+        "Every async call needs loading + error state handling"
+      ],
+      "nextLessonId": "p5-s4-auth",
+      "nextLessonTitle": "Authentication"
+    }
+  ]
+}

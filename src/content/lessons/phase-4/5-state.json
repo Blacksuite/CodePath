@@ -1,0 +1,134 @@
+{
+  "id": "p4-s5-state",
+  "phaseId": "phase-4",
+  "order": 5,
+  "slug": "state",
+  "title": "Bigger state: useReducer",
+  "canDo": "manage complex state with useReducer",
+  "estMinutes": 60,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/reference/react/useReducer",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "useReducer API reference"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/scaling-up-with-reducer-and-context",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "scaling with reducer and context"
+    },
+    {
+      "name": "Zustand docs",
+      "url": "https://zustand.docs.pmnd.rs/",
+      "license": "MIT",
+      "reviewed": "2026-06-23",
+      "topic": "Zustand global state library"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You've been managing state with `useState` — one value, one setter. That works great for a counter or a text field. But what happens when a component needs to handle *add*, *toggle*, *delete*, and *reset* all at once? Four separate setters start to tangle. This session introduces `useReducer`: React's built-in tool for taming that complexity by centralising all your state changes in one place."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "manage complex state with useReducer",
+      "estMinutes": 60,
+      "md": "By the end of this session you will be able to replace a tangle of `useState` setters with a single `useReducer` and `dispatch` actions to update state predictably."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "`useReducer` is the upgrade path from `useState` when a component has several related state changes. Instead of calling `setItems`, `setLoading`, `setError` separately, you write one **reducer function** — a plain function that takes `(state, action)` and returns new state — and call `dispatch({ type: 'ADD_ITEM', payload: item })` to trigger it.\n\nThe pattern mirrors what you see in Redux, but `useReducer` is baked into React and needs no extra package. Key rules: the reducer must be a pure function, it must return *new* state (never mutate the existing state object), and every action should have a `type` string.\n\nFor **shared global state** across many components, Zustand is a lightweight library worth knowing — but reach for it only once `useReducer` + Context still feels like too much wiring. Most apps go further than you'd expect with just the built-ins."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Read the official API reference for `useReducer`.",
+      "label": "useReducer — React docs",
+      "url": "https://react.dev/reference/react/useReducer",
+      "source": "react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "See how to combine `useReducer` with Context to share state across a component tree.",
+      "label": "Scaling Up with Reducer and Context — React docs",
+      "url": "https://react.dev/learn/scaling-up-with-reducer-and-context",
+      "source": "react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "When your state truly needs to be global and shared by unrelated parts of the app, Zustand is the go-to lightweight library. Skim the Getting Started guide — you won't need it this phase, but it's good to know it exists.",
+      "label": "Zustand — Getting Started (only when needed)",
+      "url": "https://zustand.docs.pmnd.rs/",
+      "source": "Zustand docs"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Reducer purity is non-negotiable.** Never do `state.items.push(item); return state` — that mutates the existing object and React won't detect the change. Always return a brand-new object: `return { ...state, items: [...state.items, item] }`."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "You have three related state updates in one component: add an item, remove an item, and reset the list. Which approach best fits this situation?",
+          "options": [
+            "Three separate useState hooks, one per operation",
+            "useReducer with a reducer function and dispatched actions",
+            "useEffect to watch changes and sync state",
+            "A global Zustand store because there are multiple operations"
+          ],
+          "answerIndex": 1,
+          "explanation": "useReducer centralises multiple related state transitions into one reducer, which is cleaner than three separate setters and does not require an external library."
+        },
+        {
+          "question": "Your reducer receives `(state, action)` and needs to add an item to `state.items`. Which implementation is correct?",
+          "options": [
+            "state.items.push(action.payload); return state;",
+            "return { ...state, items: [...state.items, action.payload] };",
+            "state = { ...state, items: [...state.items, action.payload] };",
+            "dispatch({ ...state, items: [...state.items, action.payload] });"
+          ],
+          "answerIndex": 1,
+          "explanation": "Reducers must return a new state object without mutating the old one. Spreading state and spreading the items array creates fresh references React can detect."
+        },
+        {
+          "question": "Your app has a shopping-cart component that needs add, remove, and quantity-update actions. All cart state stays inside that one component. What should you reach for first?",
+          "options": [
+            "Zustand, because multiple actions means you need a global store",
+            "Redux Toolkit, because cart logic is complex",
+            "useReducer, because the state is local and there are several related actions",
+            "Three useState hooks and a custom hook to combine them"
+          ],
+          "answerIndex": 2,
+          "explanation": "useReducer is the right built-in tool for co-located complex state. Zustand or Redux are worth adding only when state genuinely needs to be shared across the whole app."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:** `useReducer` collects all the state transitions for a component into a single reducer function. You `dispatch` an action object with a `type` (and optional `payload`), and the reducer returns new state — never mutated. This keeps complex components readable and easy to test. Context can lift a reducer's state up to siblings; Zustand steps in for app-wide global state when that's still not enough.",
+      "bullets": [
+        "Use `useReducer` when a component has multiple related state changes",
+        "A reducer is `(state, action) => newState` — pure, no mutations",
+        "Call `dispatch({ type: 'ACTION' })` instead of individual setters",
+        "Zustand is the lightweight next step for shared global state — but you usually don't need it yet"
+      ],
+      "nextLessonId": "p4-s6-fetch",
+      "nextLessonTitle": "Fetching data with useEffect"
+    }
+  ]
+}

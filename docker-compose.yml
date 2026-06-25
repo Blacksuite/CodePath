@@ -1,0 +1,12 @@
+services:
+  portal:
+    build: .
+    container_name: codepath-portal
+    ports:
+      - "8080:8080"
+    volumes:
+      - codepath-data:/data   # progress survives container restarts
+    restart: unless-stopped
+
+volumes:
+  codepath-data:

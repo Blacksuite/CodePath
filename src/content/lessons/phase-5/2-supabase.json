@@ -1,0 +1,105 @@
+{
+  "id": "p5-s2-supabase",
+  "phaseId": "phase-5",
+  "order": 2,
+  "slug": "supabase",
+  "title": "Supabase & databases",
+  "canDo": "set up a Supabase project and a table",
+  "estMinutes": 75,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "Supabase",
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Use Supabase with React quickstart"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "Every app you have built so far forgets everything the moment you close the tab. State lives in the browser — refresh and it is gone. Real apps need a *persistent store* that survives reloads, works across devices, and lets multiple users share the same data. That store is a database, and Supabase gives you a production-grade PostgreSQL database, an auto-generated API, and a generous free tier — all running in your browser dashboard in minutes."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "set up a Supabase project and a table",
+      "estMinutes": 75,
+      "md": "By the end of this session you will be able to explain what a relational database table is, distinguish a primary key from a foreign key, create a Supabase project with a table, and connect to it from a React app using `@supabase/supabase-js`."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Relational databases store data in tables — think spreadsheets with rules.** Each table has named *columns* (e.g. `id`, `title`, `created_at`) and *rows*, where each row is one record. A **primary key** (`id`) is a column that uniquely identifies every row — no two rows share the same value. A **foreign key** links a row to a row in another table: for example, a `notes` table might have a `user_id` column that points to a row in the `users` table. That link is how relational databases connect data without duplicating it.\n\nSupabase wraps PostgreSQL — the same database used by GitHub and Shopify — with a friendly dashboard and an auto-generated REST API. You create a project, define a table with the Table Editor, then query it from your React app with the `@supabase/supabase-js` client.\n\n**Key from the dashboard:** Supabase calls it the **publishable key** (older tutorials call it the `anon` key). Store it in your `.env` file as `VITE_SUPABASE_PUBLISHABLE_KEY`. Never hard-code it in source files."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "Follow the official Supabase React quickstart. It walks you through creating a project, making a table, installing `@supabase/supabase-js`, initialising the client with your URL and publishable key, and running your first query — all in one page.",
+      "label": "Supabase — Use Supabase with React (quickstart)",
+      "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
+      "source": "Supabase"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Publishable key vs. anon key — same thing, new name.** Supabase recently renamed the key that appears in your dashboard from \"anon\" to \"publishable\". Older tutorials, blog posts, and even some Supabase examples still use `VITE_SUPABASE_ANON_KEY`. Both refer to the same value. For all new projects use `VITE_SUPABASE_PUBLISHABLE_KEY` so your naming stays consistent with the current dashboard."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "In a relational database, a *table* is best described as:",
+          "options": [
+            "A grid of rows and columns where each row is one record",
+            "A single value stored in the database",
+            "A JavaScript object saved to localStorage",
+            "A function that fetches data from an API"
+          ],
+          "answerIndex": 0,
+          "explanation": "A table organises data into columns (fields) and rows (individual records), like a structured spreadsheet."
+        },
+        {
+          "question": "A `notes` table has an `id` column and a `user_id` column. Which statement is correct?",
+          "options": [
+            "`id` is the primary key; `user_id` is a foreign key that links each note to a user",
+            "`user_id` is the primary key; `id` is a foreign key",
+            "Both `id` and `user_id` are primary keys",
+            "Foreign keys are only used in NoSQL databases"
+          ],
+          "answerIndex": 0,
+          "explanation": "The primary key (`id`) uniquely identifies each note; the foreign key (`user_id`) references the `users` table to associate the note with its owner."
+        },
+        {
+          "question": "When connecting a React app to Supabase, which environment variable name should you use for the public API key in a Vite project?",
+          "options": [
+            "VITE_SUPABASE_PUBLISHABLE_KEY",
+            "REACT_APP_SUPABASE_KEY",
+            "SUPABASE_SECRET_KEY",
+            "VITE_SUPABASE_SERVICE_ROLE_KEY"
+          ],
+          "answerIndex": 0,
+          "explanation": "Supabase now calls this the publishable key (previously 'anon' key). In Vite, env vars exposed to the browser must be prefixed with VITE_."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "bullets": [
+        "A relational database stores data in **tables** made of columns and rows",
+        "A **primary key** (`id`) uniquely identifies each row; a **foreign key** (`user_id`) links a row to a row in another table",
+        "Supabase wraps PostgreSQL with a dashboard and auto-generated API — free tier is generous",
+        "Connect from React with `@supabase/supabase-js`; store your URL and key in `.env` as `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`",
+        "Older docs call the public key the \"anon\" key — both refer to the same credential"
+      ],
+      "nextLessonId": "p5-s3-crud",
+      "nextLessonTitle": "CRUD with Supabase",
+      "md": "You now know what a relational database table is, how primary and foreign keys relate rows across tables, and how to stand up a Supabase project and connect it to React. Next up: **CRUD with Supabase** — reading, inserting, updating, and deleting rows from your app."
+    }
+  ]
+}

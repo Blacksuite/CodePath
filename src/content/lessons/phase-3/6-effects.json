@@ -1,0 +1,119 @@
+{
+  "id": "p3-s6-effects",
+  "phaseId": "phase-3",
+  "order": 6,
+  "slug": "effects",
+  "title": "useEffect & data",
+  "canDo": "use useEffect to sync with the outside world",
+  "estMinutes": 75,
+  "fade": "medium",
+  "sources": [
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "useEffect synchronization"
+    },
+    {
+      "name": "Josh Comeau",
+      "url": "https://www.joshwcomeau.com/react/common-beginner-mistakes/",
+      "license": "all-rights-reserved",
+      "reviewed": "2026-06-23",
+      "topic": "common useEffect mistakes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prose",
+      "role": "hook",
+      "md": "You've fetched data, saved to localStorage, set up a timer, or subscribed to a WebSocket — and your component broke in mysterious ways. Almost certainly, `useEffect` was involved. It is React's most misunderstood hook, not because it's complicated, but because it does one very specific job that's easy to confuse with other jobs. This session is about building the correct mental model before you touch the API docs."
+    },
+    {
+      "type": "prose",
+      "role": "objective",
+      "canDo": "use useEffect to sync with the outside world",
+      "estMinutes": 75,
+      "md": "By the end of this session you will be able to explain what useEffect is actually for, control when it re-runs using the dependency array, and write a cleanup function that prevents stale side-effects."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**useEffect runs after render to sync React with something outside React.**\n\nThat outside world includes: the browser DOM directly, `localStorage`, timers, network requests, and third-party subscriptions. React renders your UI as a pure function of state. `useEffect` is the escape hatch that lets you reach outside that bubble after each render commits to the screen.\n\n**The dependency array** is the second argument. It tells React *when* to re-run the effect:\n- No array → runs after every render.\n- `[]` → runs once, after the first render only.\n- `[value]` → runs after any render where `value` changed.\n\n**Return a cleanup function** when your effect sets something up that must be torn down — a timer, a subscription, an event listener. React calls the cleanup before the next run of the same effect, and before unmount.\n\n**You don't need useEffect for everything.** Derived values and event handlers don't need it."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Primary reading — react.dev\n\nRead the full **\"Synchronizing with Effects\"** page on react.dev. It covers the mental model, the dependency array, and cleanup functions with interactive examples. Plan 35–40 minutes. When you're done, come back here.",
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "source": "react.dev",
+      "label": "Synchronizing with Effects — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Bonus — Josh Comeau's mistake catalogue\n\n**\"Common Beginner Mistakes with React\"** by Josh Comeau calls out the exact pitfalls that trip up every developer learning `useEffect` — including misusing it for derived state and forgetting cleanup. Skim the useEffect sections (about 15 minutes). Return here for the quiz.",
+      "url": "https://www.joshwcomeau.com/react/common-beginner-mistakes/",
+      "source": "Josh Comeau",
+      "label": "Common Beginner Mistakes — Josh Comeau"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Go slow here.** `useEffect` is the hook most developers misuse first. If the dependency array feels fuzzy, re-read the \"Specifying reactive dependencies\" section on react.dev before the quiz. Confidence with the mental model is worth more than speed."
+    },
+    {
+      "type": "quiz",
+      "passThreshold": 0.7,
+      "questions": [
+        {
+          "question": "What is useEffect primarily designed for?",
+          "options": [
+            "Syncing React with things outside React after a render — like localStorage, timers, and network requests",
+            "Computing derived values from props and state during render",
+            "Replacing useState when you need more complex state logic",
+            "Preventing unnecessary re-renders by memoising component output"
+          ],
+          "answerIndex": 0,
+          "explanation": "useEffect runs after render to synchronise React with external systems; computing derived values during render doesn't need an effect at all."
+        },
+        {
+          "question": "What does passing an empty array [] as the dependency array do?",
+          "options": [
+            "Runs the effect after every single render",
+            "Runs the effect once after the first render, and never again",
+            "Disables the effect so it never runs",
+            "Runs the effect only when the component unmounts"
+          ],
+          "answerIndex": 1,
+          "explanation": "An empty dependency array tells React there are no reactive values to watch, so the effect runs exactly once — after the initial render."
+        },
+        {
+          "question": "You want to show a formatted price whenever the `amount` prop changes. Which approach is correct?",
+          "options": [
+            "Use useEffect to watch `amount` and set a `formattedPrice` state variable",
+            "Compute `formattedPrice` directly in the render function body — no effect needed",
+            "Wrap the calculation in useCallback to avoid recalculating it",
+            "Use useRef to store the formatted value and update it inside useEffect"
+          ],
+          "answerIndex": 1,
+          "explanation": "Derived values that depend only on props or state should be computed during render, not inside an effect — adding an effect here creates unnecessary state and an extra render cycle."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "role": "recap",
+      "md": "**What you covered:**\n\n- `useEffect` is for synchronising React with the *outside world* — not for computing values or handling events.\n- The dependency array controls when the effect re-runs: omit it (every render), `[]` (once), or `[values]` (when values change).\n- Return a cleanup function to tear down timers, subscriptions, or listeners before the next run.\n- Many beginner mistakes come from using `useEffect` where plain render-time computation would do.",
+      "bullets": [
+        "useEffect syncs React with the outside world after render",
+        "The dependency array controls when the effect re-runs",
+        "Return a cleanup function when setup must be torn down",
+        "You don't need useEffect for derived values or event handlers"
+      ],
+      "nextLessonId": "p3-s7-build",
+      "nextLessonTitle": "Build project"
+    }
+  ]
+}
