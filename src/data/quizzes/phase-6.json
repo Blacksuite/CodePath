@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-6",
+  "title": "Quality, Testing & Deploy",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "You set an environment variable named SECRET_KEY (no prefix) and read it with import.meta.env.SECRET_KEY in your React code. What happens?",
+      "options": [
+        "It works, because Vite exposes all env vars to your code",
+        "It is undefined, because only variables starting with VITE_ are exposed to your app's code",
+        "It throws a build error that stops the deploy",
+        "It works only in development but not in the production build"
+      ],
+      "answerIndex": 1,
+      "explanation": "Vite only exposes variables prefixed with VITE_ to your app's code; anything without that prefix shows up as undefined in the browser."
+    },
+    {
+      "id": "q2",
+      "question": "A teammate adds VITE_API_KEY to Vercel, redeploys, and says 'great, our secret is safe now.' Are they right?",
+      "options": [
+        "Yes, Vercel encrypts all environment variables so they stay hidden",
+        "Yes, the VITE_ prefix specifically hides the value from the browser",
+        "No, anything with the VITE_ prefix is baked into the JavaScript the browser downloads and can be read in dev tools",
+        "No, but only because they forgot to also set it in the local .env file"
+      ],
+      "answerIndex": 2,
+      "explanation": "The VITE_ prefix guarantees the value lands in code anyone can read, so it is fine for public keys like the Supabase publishable/anon key but never for a true secret."
+    },
+    {
+      "id": "q3",
+      "question": "Which Supabase key is designed to be public and safe to put in a VITE_SUPABASE_PUBLISHABLE_KEY variable that ends up in the browser bundle?",
+      "options": [
+        "The service-role key",
+        "The database admin key",
+        "The publishable key (older projects call it the anon key), protected by Row Level Security",
+        "Any key, since the VITE_ prefix encrypts it"
+      ],
+      "answerIndex": 2,
+      "explanation": "The Supabase publishable key (older projects' anon key) is designed to be public and is protected by Row Level Security, so it is safe in the browser; service-role or admin keys must never get the VITE_ prefix."
+    },
+    {
+      "id": "q4",
+      "question": "Clicking a link to /habits/3 inside your deployed app works, but refreshing on /habits/3 returns a 404. Why?",
+      "options": [
+        "Refreshing clears React Router's memory, so the route is lost",
+        "Refreshing makes the browser ask the server for a file at /habits/3, which doesn't exist, while clicking is handled in the browser by React Router with no server request",
+        "Vercel rate-limits repeated requests to the same path",
+        "The chart component fails to load on a hard refresh"
+      ],
+      "answerIndex": 1,
+      "explanation": "Clicking is handled entirely in the browser by React Router with no server request, but refreshing asks the server for /habits/3, which has no file, so without a rewrite you get a 404."
+    },
+    {
+      "id": "q5",
+      "question": "Which vercel.json fixes deep-link 404s for a single-page app by sending unknown paths to index.html?",
+      "options": [
+        "{ \"redirects\": [ { \"from\": \"/index.html\", \"to\": \"/(.*)\" } ] }",
+        "{ \"rewrites\": [ { \"source\": \"/(.*)\", \"destination\": \"/index.html\" } ] }",
+        "{ \"build\": { \"output\": \"index.html\" } }",
+        "{ \"routes\": [ { \"src\": \"/habits/3\", \"dest\": \"/index.html\" } ] }"
+      ],
+      "answerIndex": 1,
+      "explanation": "A rewrite rule mapping /(.*) to /index.html tells Vercel to serve index.html for any unrecognized path and let React Router decide what to show."
+    },
+    {
+      "id": "q6",
+      "question": "Why should you keep main always-deployable and build features on branches like add-charts?",
+      "options": [
+        "Because Vercel only deploys branches that are not main",
+        "Because Git refuses to merge unless main is clean",
+        "Because Vercel deploys main automatically, so keeping main working means half-done work never breaks your live site",
+        "Because feature branches run faster builds than main"
+      ],
+      "answerIndex": 2,
+      "explanation": "Vercel auto-deploys main, so keeping it always in a working state means your live site is never broken by half-finished work while feature branches let you experiment freely."
+    },
+    {
+      "id": "q7",
+      "question": "Your app shows a blank white screen for a second before habits appear. Which data-fetch state is missing and why does it matter?",
+      "options": [
+        "The empty state; users with no data assume the app crashed",
+        "The error state; a failed request needs a retry button",
+        "The loading state; rendering nothing during the fetch reads as 'broken' to users, while a spinner or skeleton signals the app is working",
+        "None; a brief blank screen is the expected loading behavior"
+      ],
+      "answerIndex": 2,
+      "explanation": "During the fetch you're rendering nothing instead of a loading indicator; a blank screen reads as broken, whereas a spinner or skeleton tells users the app is working."
+    },
+    {
+      "id": "q8",
+      "question": "Following React Testing Library's 'test how users use it' rule, which is the better test of a menu, and why?",
+      "options": [
+        "Checking 'the isOpen state is true after clicking,' because it inspects the component directly",
+        "Checking 'the menu is visible after clicking,' because it tests user-visible behavior and survives refactors of internal state",
+        "Checking that a specific CSS class is applied, because classes are stable",
+        "Both are equally good as long as they pass"
+      ],
+      "answerIndex": 1,
+      "explanation": "Testing that the menu is visible checks user-visible behavior, so it stays valid even if you rename or restructure internal state, while asserting on isOpen breaks on harmless refactors and proves nothing about the user experience."
+    }
+  ]
+}

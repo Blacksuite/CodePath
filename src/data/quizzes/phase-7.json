@@ -1,0 +1,67 @@
+{
+  "phaseId": "phase-7",
+  "title": "What's Next",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "According to the lesson, what is the single most important thing that carries you from 'I finished a course' to 'a developer who keeps building'?",
+      "options": [
+        "Watching more advanced tutorials",
+        "Reps — building things where nobody hands you the next line",
+        "Memorizing the names of 20 popular libraries",
+        "Waiting until you have time for one big project"
+      ],
+      "answerIndex": 1,
+      "explanation": "The lesson says the thing that carries you forward isn't another tutorial, it's reps — building things where nobody hands you the next line."
+    },
+    {
+      "id": "q2",
+      "question": "Per the learn-when-needed principle, what is the right trigger to finally learn Tailwind CSS?",
+      "options": [
+        "Everyone online says Tailwind is great",
+        "It's currently the most popular styling tool",
+        "You're sick of writing the same CSS and your stylesheets are a mess",
+        "A new project is starting and you want the latest tools"
+      ],
+      "answerIndex": 2,
+      "explanation": "The lesson states the annoyance — being sick of rewriting the same CSS with messy stylesheets — is the trigger, not the hype."
+    },
+    {
+      "id": "q3",
+      "question": "From the 'reach for this when…' menu, when should you reach for TanStack Query (React Query)?",
+      "options": [
+        "When manual fetch plus loading and caching state gets painful and repetitive across components",
+        "When you want routing, server rendering, and a backend in one framework",
+        "When you want the classic Node backend with the biggest tutorial pool",
+        "When hand-writing CSS keeps slowing you down"
+      ],
+      "answerIndex": 0,
+      "explanation": "The menu says to reach for TanStack Query when manual fetch plus loading and caching state is getting painful and repetitive across your components."
+    },
+    {
+      "id": "q4",
+      "question": "How does the lesson distinguish Hono from Express in the tool menu?",
+      "options": [
+        "Hono adds server rendering and routing in one framework; Express is styling-focused",
+        "Hono is a lightweight modern backend and a good first 'real backend'; Express is the classic Node backend with the biggest tutorial pool",
+        "Hono replaces React's data fetching; Express replaces your CSS",
+        "Hono is only for frontends; Express is only for databases"
+      ],
+      "answerIndex": 1,
+      "explanation": "The menu describes Hono as a lightweight, modern backend and good first 'real backend', and Express as the classic Node backend with the biggest tutorial pool."
+    },
+    {
+      "id": "q5",
+      "question": "What momentum tactic does the lesson recommend for surviving off-weeks and ADHD?",
+      "options": [
+        "Commit to one ambitious app and work on it for six months",
+        "Rely on willpower to push through the off-weeks",
+        "Ship something small every month and build in public",
+        "Add three new tools at once to stay challenged"
+      ],
+      "answerIndex": 2,
+      "explanation": "The lesson advises lowering the bar by shipping something small every month and building in public so the wins are visible and there's a tiny external deadline."
+    }
+  ]
+}

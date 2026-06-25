@@ -1,0 +1,79 @@
+{
+  "phaseId": "phase-0",
+  "title": "Setup & First Win",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What do you get for free when you install Node.js?",
+      "options": [
+        "VS Code, the code editor",
+        "npm, the package manager for installing libraries",
+        "A web browser with DevTools built in",
+        "A free GitHub account"
+      ],
+      "answerIndex": 1,
+      "explanation": "Installing Node.js also gives you npm, the package manager you use to install libraries and run project commands."
+    },
+    {
+      "id": "q2",
+      "question": "What is the difference between git and GitHub?",
+      "options": [
+        "Git is a website for sharing code; GitHub runs on your computer",
+        "They are two names for the exact same tool",
+        "Git is the version-control tool that runs locally and creates commits; GitHub is a website that hosts copies of git projects online",
+        "Git only works once you have signed up for GitHub"
+      ],
+      "answerIndex": 2,
+      "explanation": "Git is the version-control tool running locally that creates commits, while GitHub is a website hosting copies of git projects, and you can use git without ever touching GitHub."
+    },
+    {
+      "id": "q3",
+      "question": "You ran ls and don't see the file you expected. What two commands help you figure out what's going on?",
+      "options": [
+        "pwd to confirm which folder you're in, and ls to see what's actually there",
+        "git status and git push",
+        "code . and mkdir",
+        "node --version and npm --version"
+      ],
+      "answerIndex": 0,
+      "explanation": "Run pwd to confirm which folder you're standing in and ls to see what's actually there, since you're probably in the wrong directory."
+    },
+    {
+      "id": "q4",
+      "question": "Why can't you just leave the site running on your own laptop and send people the link?",
+      "options": [
+        "Laptops are physically unable to display HTML files",
+        "Your laptop isn't always on or publicly reachable, so you hand the files to a hosting service that stays on 24/7",
+        "Static pages are illegal to host at home",
+        "You need npm running in the background to serve any page"
+      ],
+      "answerIndex": 1,
+      "explanation": "Your laptop isn't always on or publicly reachable, so a hosting service runs a computer that stays on 24/7 to serve your files to anyone with the link."
+    },
+    {
+      "id": "q5",
+      "question": "Saving a file in VS Code is not the same as committing in git. What does saving the file actually do on its own?",
+      "options": [
+        "It uploads your changes to GitHub automatically",
+        "It creates a git commit save-point",
+        "It just writes the file to disk; git doesn't snapshot anything until you add and commit",
+        "It stages the file for the next push"
+      ],
+      "answerIndex": 2,
+      "explanation": "Saving a file just writes it to disk, and git doesn't snapshot anything until you run add and commit."
+    },
+    {
+      "id": "q6",
+      "question": "Your live URL shows nothing after deploying. What is a likely common mistake with your HTML file?",
+      "options": [
+        "You used <!DOCTYPE html> at the top of the file",
+        "You named the file index.htm, Index.html, or home.html instead of exactly index.html",
+        "You wrote the page in lowercase letters",
+        "You forgot to run node --version before deploying"
+      ],
+      "answerIndex": 1,
+      "explanation": "Hosts look for exactly index.html (all lowercase) as the default page, so names like index.htm, Index.html, or home.html cause the URL to show nothing."
+    }
+  ]
+}

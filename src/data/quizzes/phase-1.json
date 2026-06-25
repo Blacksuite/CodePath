@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-1",
+  "title": "HTML & CSS",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Which of the following is correctly nested HTML?",
+      "options": [
+        "<p><strong>text</p></strong>",
+        "<p><strong>text</strong></p>",
+        "<strong><p>text</strong></p>",
+        "<p>text<strong></p></strong>"
+      ],
+      "answerIndex": 1,
+      "explanation": "You must close the inner tag before the outer one, so <strong> closes before <p>."
+    },
+    {
+      "id": "q2",
+      "question": "You're adding a clickable 'Submit' control. Which element should you use and why?",
+      "options": [
+        "<div>, because it's the most flexible generic box",
+        "<span>, because it stays inline with the text",
+        "<button>, because it's keyboard-focusable and announces itself to screen readers",
+        "<a>, because all clickable things should be links"
+      ],
+      "answerIndex": 2,
+      "explanation": "A real <button> is keyboard-focusable, announces itself as a button, and fires on Enter/Space automatically."
+    },
+    {
+      "id": "q3",
+      "question": "In the CSS rule `.btn { color: red; }`, what does the selector `.btn` match?",
+      "options": [
+        "The single element with id='btn'",
+        "The <btn> HTML tag",
+        "Every element with class='btn'",
+        "Only the first button on the page"
+      ],
+      "answerIndex": 2,
+      "explanation": "A dot selector like .btn matches every element with class='btn'; an id selector would use # instead."
+    },
+    {
+      "id": "q4",
+      "question": "From the inside out, what is the correct order of the four box-model layers?",
+      "options": [
+        "content, padding, border, margin",
+        "content, margin, border, padding",
+        "padding, content, margin, border",
+        "margin, border, padding, content"
+      ],
+      "answerIndex": 0,
+      "explanation": "The box model goes content, then padding, then border, then margin from the inside out."
+    },
+    {
+      "id": "q5",
+      "question": "You want space inside a button between its text and its edge. Which property do you use?",
+      "options": [
+        "margin, because it surrounds the box",
+        "padding, because it's space inside the box",
+        "border, because it frames the content",
+        "gap, because it spaces items evenly"
+      ],
+      "answerIndex": 1,
+      "explanation": "Padding is space inside the box between the content and the border; margin pushes other elements away on the outside."
+    },
+    {
+      "id": "q6",
+      "question": "In a default Flexbox row, which property centers items vertically?",
+      "options": [
+        "justify-content: center",
+        "flex-direction: column",
+        "align-items: center",
+        "gap: center"
+      ],
+      "answerIndex": 2,
+      "explanation": "align-items works on the cross axis, which is vertical when items flow in a row."
+    },
+    {
+      "id": "q7",
+      "question": "Used as `grid-template-columns`, what does `1fr 2fr` produce?",
+      "options": [
+        "Two columns of exactly 1px and 2px",
+        "Two equal-width columns",
+        "Two columns where the second is twice as wide as the first",
+        "One column split into two rows"
+      ],
+      "answerIndex": 2,
+      "explanation": "fr units split available space by ratio, so 1fr 2fr is a 1:2 split where the second column is twice as wide."
+    },
+    {
+      "id": "q8",
+      "question": "In mobile-first CSS, which media query type do you use to layer on changes as the screen grows, and why?",
+      "options": [
+        "max-width, because base styles target desktop and you shrink down",
+        "min-width, because base styles target mobile and you add room as the screen gets bigger",
+        "max-width, because mobile screens have a maximum size",
+        "min-width, because it disables the viewport meta tag"
+      ],
+      "answerIndex": 1,
+      "explanation": "Mobile-first uses min-width queries: base styles target mobile and changes layer on as the screen gets bigger."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-2",
+  "title": "JavaScript",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why does `const list = []; list.push(1);` run without error, even though `list` is declared with `const`?",
+      "options": [
+        "`const` only prevents reassigning the variable's binding; `push` changes the array's contents, not the binding",
+        "`const` arrays are automatically converted to `let` when you call a method on them",
+        "`push` is a special method that is allowed to override `const`",
+        "It actually throws an error, because `const` freezes the array completely"
+      ],
+      "answerIndex": 0,
+      "explanation": "`const` only stops you from repointing the label, like `list = somethingElse`; mutating the array's contents with `push` is still allowed."
+    },
+    {
+      "id": "q2",
+      "question": "What does `const f = (x) => { x * 2 };` return when called with `5`?",
+      "options": [
+        "10",
+        "undefined",
+        "5",
+        "It throws a syntax error"
+      ],
+      "answerIndex": 1,
+      "explanation": "The curly braces make the body a block, so without an explicit `return x * 2;` the function returns `undefined`."
+    },
+    {
+      "id": "q3",
+      "question": "What is the difference between `document.querySelector(\".day\")` and `document.querySelectorAll(\".day\")`?",
+      "options": [
+        "`querySelector` searches the head while `querySelectorAll` searches the body",
+        "They are identical; `querySelectorAll` is just an alias",
+        "`querySelector` returns the first matching element (or null); `querySelectorAll` returns a list of all matches",
+        "`querySelector` returns all matches while `querySelectorAll` returns only the first"
+      ],
+      "answerIndex": 2,
+      "explanation": "`querySelector` returns the first matching element (or null), while `querySelectorAll` returns a list of all matches that you loop over."
+    },
+    {
+      "id": "q4",
+      "question": "You want a day button to look 'done' when clicked and 'not done' when clicked again. Which `classList` method does that in one line?",
+      "options": [
+        "`element.classList.add(\"done\")`",
+        "`element.classList.remove(\"done\")`",
+        "`element.classList.replace(\"done\")`",
+        "`element.classList.toggle(\"done\")`"
+      ],
+      "answerIndex": 3,
+      "explanation": "`classList.toggle(\"done\")` adds the class if it is absent and removes it if present, flipping the state in one line."
+    },
+    {
+      "id": "q5",
+      "question": "In the Habit Tracker, why can't you attach a click listener directly to a delete button for a habit that hasn't been created yet?",
+      "options": [
+        "There is no element to attach to yet, so you delegate by listening on a parent that exists and catch the click as it bubbles up",
+        "New buttons are read-only until the page is refreshed",
+        "Listeners can only be attached inside the `<head>` before the body loads",
+        "JavaScript caps the number of listeners, so new buttons are skipped"
+      ],
+      "answerIndex": 0,
+      "explanation": "The button object doesn't exist yet, so event delegation listens on an always-present parent and handles the click when it bubbles up from the later-added child."
+    },
+    {
+      "id": "q6",
+      "question": "You want to delete the habit with `id === 3` from a `habits` array of objects without mutating the original. Which array method fits?",
+      "options": [
+        "`map`, because it transforms each habit into a new one",
+        "`forEach`, because it runs a function on every item",
+        "`filter`, keeping every habit whose id is not 3 in a new array",
+        "`find`, because it returns the first matching habit"
+      ],
+      "answerIndex": 2,
+      "explanation": "`habits.filter((h) => h.id !== 3)` keeps every habit except the one being deleted and returns a new array, leaving the original untouched."
+    },
+    {
+      "id": "q7",
+      "question": "Why do habits need `JSON.stringify` and `JSON.parse` when saving to and loading from localStorage?",
+      "options": [
+        "localStorage only holds strings, so `stringify` packs the array into a string and `parse` unpacks it back into a real array",
+        "They encrypt the data so other sites can't read it",
+        "They are only needed for numbers, not arrays or objects",
+        "localStorage requires every value to be a number, which JSON provides"
+      ],
+      "answerIndex": 0,
+      "explanation": "localStorage can only store strings, so `JSON.stringify` packs the array into a string to save and `JSON.parse` unpacks it back into a real array on load."
+    },
+    {
+      "id": "q8",
+      "question": "In one sentence, what is a promise in JavaScript?",
+      "options": [
+        "A function that always runs before the rest of the page loads",
+        "A placeholder for a value that isn't ready yet but will be (or will fail) later",
+        "A guaranteed value that fetch returns immediately and directly",
+        "A special kind of loop that repeats until data arrives"
+      ],
+      "answerIndex": 1,
+      "explanation": "A promise is an IOU for a value that arrives later (or fails), which is why you `await` things like `fetch` instead of getting data directly."
+    }
+  ]
+}

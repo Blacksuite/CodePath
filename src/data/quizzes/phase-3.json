@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-3",
+  "title": "React",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What does it mean that React is 'declarative', and why does it reduce bugs compared to the Phase 2 manual-DOM approach?",
+      "options": [
+        "You describe what the UI should look like for some data, and React keeps the screen in sync — so you can't forget to update one of several places",
+        "You write step-by-step instructions telling the browser exactly which DOM nodes to change",
+        "You manually call document.querySelector to find and update each element when data changes",
+        "You write faster code because React skips rendering entirely"
+      ],
+      "answerIndex": 0,
+      "explanation": "Declarative means you describe the end result once and React syncs the screen to your data, so you can't forget to update one of several places like you could with imperative DOM code."
+    },
+    {
+      "id": "q2",
+      "question": "You want a component to update a value on screen. Which of these is the correct way to work with React?",
+      "options": [
+        "Reach for document.querySelector and set .innerHTML to 'help' React update faster",
+        "Change a piece of state with its setter, and let React re-render the UI",
+        "Mutate the DOM node directly so React doesn't have to re-render",
+        "Edit the component's props from inside the child component"
+      ],
+      "answerIndex": 1,
+      "explanation": "In React you change data (state) via its setter and never poke the DOM directly — the moment you reach for querySelector, ask what state should change instead."
+    },
+    {
+      "id": "q3",
+      "question": "Why must props be treated as read-only inside a component?",
+      "options": [
+        "Because props are slower to read than state",
+        "Because React deletes props after the first render",
+        "Because props are owned by the parent and data flows one way (parent → child); a child mutating props would break React's model of who owns what",
+        "Because props can only hold strings, never objects"
+      ],
+      "answerIndex": 2,
+      "explanation": "Props are owned by the parent and flow one way; if a child mutated them the parent wouldn't know and the UI could fall out of sync — a child that needs to change something uses state or a callback prop."
+    },
+    {
+      "id": "q4",
+      "question": "Which line correctly attaches a click handler that increments count using the functional updater?",
+      "options": [
+        "onClick={handleClick()}",
+        "onClick={count++}",
+        "onClick={() => setCount(c => c + 1)}",
+        "onClick={setCount(count + 1)}"
+      ],
+      "answerIndex": 2,
+      "explanation": "You pass a function (not a call) to onClick, and the functional updater setCount(c => c + 1) avoids working off a stale value; writing handleClick() with parentheses would call it during render."
+    },
+    {
+      "id": "q5",
+      "question": "Why does React need a stable, unique `key` on each item in a mapped list?",
+      "options": [
+        "Keys are required syntax or .map() throws an error",
+        "Keys give each item a stable identity across re-renders so React can tell what was added, removed, or moved and keep each row's state attached to the right data",
+        "Keys set the sort order of the list",
+        "Keys make the list render without calling .map()"
+      ],
+      "answerIndex": 1,
+      "explanation": "Keys give each item a stable identity so React updates only what changed; using the array index in a list that can reorder or delete can attach the wrong state to the wrong row."
+    },
+    {
+      "id": "q6",
+      "question": "In a controlled input, where does the text actually 'live', and what does the loop look like?",
+      "options": [
+        "In the DOM; React reads it back only when the form submits",
+        "In a global variable that both the input and React share",
+        "In React state — value={text} shows the state and onChange={e => setText(e.target.value)} pushes each keystroke back into state",
+        "In localStorage, which the input reads on every keystroke"
+      ],
+      "answerIndex": 2,
+      "explanation": "State is the single source of truth: value displays the current state and onChange reports keystrokes back, so the box just shows whatever state currently is."
+    },
+    {
+      "id": "q7",
+      "question": "A form submits and the page reloads, resetting all state so it looks like 'nothing happened.' What's the most likely fix?",
+      "options": [
+        "Add e.preventDefault() as the first line of the submit handler",
+        "Remove the onChange handler from the input",
+        "Use the array index as the key for the list",
+        "Wrap the form in a useEffect with an empty dependency array"
+      ],
+      "answerIndex": 0,
+      "explanation": "Forgetting e.preventDefault() lets the browser's old default reload the page and reset state; adding it as the first line of the submit handler stops the reload."
+    },
+    {
+      "id": "q8",
+      "question": "When persisting habits to localStorage 'the React way', why load with the useState lazy initializer but save with useEffect?",
+      "options": [
+        "Both should use useEffect; the lazy initializer is just a style preference",
+        "Loading must happen before the first render (lazy initializer runs once to set the starting state), while saving is a side effect that should run after render whenever the data changes",
+        "useEffect can't read localStorage, so loading has to use useState",
+        "The lazy initializer saves data and useEffect loads it"
+      ],
+      "answerIndex": 1,
+      "explanation": "Loading needs the data on screen immediately (lazy initializer runs once for the starting state), while saving is a side effect that runs after render every time the data changes via useEffect with [habits]."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-4",
+  "title": "TypeScript & Routing",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "When does TypeScript catch a type error like passing a string where a boolean belongs?",
+      "options": [
+        "When a user clicks the button in production",
+        "While you write code (and at build time), before it runs",
+        "Only after the app has been deployed to a server",
+        "At runtime, the first time the function is called in the browser"
+      ],
+      "answerIndex": 1,
+      "explanation": "TypeScript checks types before the code runs — usually right in your editor — moving bug discovery from production to a red squiggle while you type."
+    },
+    {
+      "id": "q2",
+      "question": "Why does `useState<Habit | null>(null)` need an explicit type while `useState(0)` does not?",
+      "options": [
+        "`useState(0)` is invalid TypeScript and must always be annotated",
+        "Numbers can't be inferred but objects can",
+        "`useState(0)` gives TS enough info that it's a number, but `null` alone won't let you store a Habit later without the explicit type",
+        "Explicit types are only needed for strings, never numbers"
+      ],
+      "answerIndex": 2,
+      "explanation": "`useState(0)` infers a number, but `useState(null)` only tells TS it's null, so without `<Habit | null>` it would never let you store a habit there later."
+    },
+    {
+      "id": "q3",
+      "question": "What is the problem with writing `useState([])` with no type annotation?",
+      "options": [
+        "TS infers `never[]`, an array that can never hold anything, causing confusing errors when you add a real item",
+        "It throws a runtime error immediately",
+        "TS refuses to compile the file at all",
+        "Nothing — it's the recommended way to start an empty array"
+      ],
+      "answerIndex": 0,
+      "explanation": "`useState([])` infers `never[]`, so you should write `useState<Habit[]>([])` when an array starts empty."
+    },
+    {
+      "id": "q4",
+      "question": "Why must a custom hook's name start with `use`?",
+      "options": [
+        "It makes the function run faster at runtime",
+        "React's rules-of-hooks linter relies on the prefix to know the function contains hooks and enforce hook rules inside it",
+        "It's required for the function to be exported",
+        "Without it the hook returns undefined"
+      ],
+      "answerIndex": 1,
+      "explanation": "The `use` prefix lets React's rules-of-hooks linter know the function contains hooks and apply the hook rules; drop it and you lose that protection."
+    },
+    {
+      "id": "q5",
+      "question": "In the lesson's current React Router guidance, where should `BrowserRouter`, `Routes`, `Route`, `Link`, and `useParams` be imported from?",
+      "options": [
+        "\"react-router-dom\"",
+        "\"@react-router/core\"",
+        "\"react-router\"",
+        "\"v5.react-router\""
+      ],
+      "answerIndex": 2,
+      "explanation": "In React Router v8 the `react-router-dom` package was folded in, so everything used here imports from \"react-router\"."
+    },
+    {
+      "id": "q6",
+      "question": "What does the `:id` in `<Route path=\"/habit/:id\" />` do, and how do you read it inside the page?",
+      "options": [
+        "It's a CSS selector; you read it with `document.querySelector`",
+        "It's a URL parameter (a wildcard slot) that you read with `const { id } = useParams()`",
+        "It's a required query string read from `window.location.search`",
+        "It's a fixed path that only matches `/habit/id` literally"
+      ],
+      "answerIndex": 1,
+      "explanation": "`:id` is a URL parameter so `/habit/3` and `/habit/7` both match, and you read it inside the page with `const { id } = useParams()`."
+    },
+    {
+      "id": "q7",
+      "question": "What is the key rule a reducer function must follow when updating state?",
+      "options": [
+        "It should mutate state in place with `state.push(...)` for performance",
+        "It must call `setState` directly inside each case",
+        "It must return a new array/object each time and never mutate state in place",
+        "It must be defined inside the component body using useState"
+      ],
+      "answerIndex": 2,
+      "explanation": "Reducers must return a new value (e.g. `[...state, item]`, `state.map(...)`) and never mutate in place, or React's change detection breaks and the UI won't update."
+    },
+    {
+      "id": "q8",
+      "question": "After `const data = await res.json()`, what type is `data`, and who gives it a real shape?",
+      "options": [
+        "It's already typed correctly by `fetch`, so nothing more is needed",
+        "It's `any` — TS can't know what the network returned, so it's your job to assert the shape (e.g. `as Movie[]`)",
+        "It's `string`, and you parse it again manually",
+        "It's `never`, so you must check `res.ok` to fix it"
+      ],
+      "answerIndex": 1,
+      "explanation": "`res.json()` returns `any` because the network can't be type-checked, so you assert the shape (e.g. `as Movie[]`) based on the API's docs."
+    }
+  ]
+}

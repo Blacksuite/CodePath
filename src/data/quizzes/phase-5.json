@@ -1,0 +1,103 @@
+{
+  "phaseId": "phase-5",
+  "title": "Full-Stack with Supabase",
+  "passThreshold": 0.7,
+  "questions": [
+    {
+      "id": "q1",
+      "question": "In the full-stack mental model from the restaurant analogy, which part is responsible for storing your habits long-term?",
+      "options": [
+        "The frontend (the dining room)",
+        "The API (the waiter)",
+        "The database (the walk-in fridge)",
+        "The browser's localStorage"
+      ],
+      "answerIndex": 2,
+      "explanation": "The database is the walk-in fridge where data is stored permanently; the frontend just displays things and the API just shuttles requests back and forth."
+    },
+    {
+      "id": "q2",
+      "question": "What is the difference between a primary key and a foreign key?",
+      "options": [
+        "A primary key links two tables; a foreign key uniquely identifies a row in its own table",
+        "A primary key uniquely identifies a row within its own table; a foreign key holds the primary key of a row in another table",
+        "They are two names for the same column",
+        "A primary key is always text; a foreign key is always a number"
+      ],
+      "answerIndex": 1,
+      "explanation": "A primary key (e.g. habits.id) uniquely identifies a row within its own table, while a foreign key (e.g. habits.user_id) holds the primary key of a row in another table, creating a link between them."
+    },
+    {
+      "id": "q3",
+      "question": "When wiring up the Supabase client in your frontend, which key do you use, and what is the current name for it?",
+      "options": [
+        "The publishable key (older projects call it the anon key) — it is safe to ship publicly",
+        "The service_role key — it bypasses all security",
+        "The publishable key — it must be kept secret in a backend",
+        "The anon key — newer projects renamed it the service_role key"
+      ],
+      "answerIndex": 0,
+      "explanation": "The public publishable key (labeled anon in older projects) is meant to be public and safe to ship in the frontend; what keeps data private is Row Level Security, and the service_role/secret key must never go in frontend code."
+    },
+    {
+      "id": "q4",
+      "question": "After running an insert with the Supabase client, how do you know whether it actually worked?",
+      "options": [
+        "Wrap it in try/catch — Supabase throws on failure",
+        "Check the returned error from the destructured { data, error }; success means error is null",
+        "Check the HTTP status code manually",
+        "A successful insert always returns true"
+      ],
+      "answerIndex": 1,
+      "explanation": "Supabase does not throw on a failed request — every call returns { data, error }, so you check error yourself, and a successful insert has error === null."
+    },
+    {
+      "id": "q5",
+      "question": "Why is calling .delete() or .update() without an .eq() filter a dangerous common mistake?",
+      "options": [
+        "It throws a syntax error and the call fails",
+        "It only ever affects the first row in the table",
+        "With no filter the operation hits every row your permissions allow",
+        "Supabase silently ignores filterless writes"
+      ],
+      "answerIndex": 2,
+      "explanation": "Without a filter, the update or delete hits every row your permissions allow, so you should always filter to the exact id with .eq('id', ...)."
+    },
+    {
+      "id": "q6",
+      "question": "What is a session, and what does the supabase-js client do with it on each request?",
+      "options": [
+        "A copy of the database that the client caches locally and syncs on each request",
+        "A token proving the user is logged in; the client stores it and attaches it to every database request",
+        "The user_id column value, which the client writes into every new row",
+        "A password the client re-sends with each request to re-authenticate"
+      ],
+      "answerIndex": 1,
+      "explanation": "A session is a token proving the user is logged in; the supabase-js client stores it and attaches it to every database request so the backend knows who is asking."
+    },
+    {
+      "id": "q7",
+      "question": "You enabled RLS and now every select returns an empty array with no error. What is almost certainly wrong, and what is the fix?",
+      "options": [
+        "Your CRUD code is broken; rewrite the select query",
+        "RLS is on but you have no policies, so the table is locked; add policies scoped with auth.uid() = user_id",
+        "RLS is on and blocking you; the fix is to disable RLS",
+        "Your publishable key is wrong; swap in the service_role key"
+      ],
+      "answerIndex": 1,
+      "explanation": "Enabling RLS locks the table by default, so with no policies it correctly returns nothing; the fix is to add policies (e.g. using (auth.uid() = user_id)), never to disable RLS."
+    },
+    {
+      "id": "q8",
+      "question": "Why does every Supabase call need a loading state when a useState update does not?",
+      "options": [
+        "Supabase calls are slower only because of React re-renders",
+        "useState updates are async too, but Supabase disables them",
+        "Supabase calls are network requests over the internet that take real time and can fail, while a useState update is instant and local",
+        "Supabase requires a loading state for every call by API rule"
+      ],
+      "answerIndex": 2,
+      "explanation": "Supabase calls are network requests that go over the internet — they take real time and can fail — whereas a useState update is instant and local to the browser, which is why only the former needs loading and error states."
+    }
+  ]
+}
