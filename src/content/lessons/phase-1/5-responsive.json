@@ -5,18 +5,18 @@
   "slug": "responsive",
   "title": "Responsive design",
   "canDo": "make layouts adapt to any screen size",
-  "estMinutes": 90,
+  "estMinutes": 120,
   "fade": "curated",
   "sources": [
-    { "name": "Kevin Powell — Conquering Responsive Layouts (free course)", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "license": "free (account)", "reviewed": "2026-06-23", "topic": "responsive design" },
-    { "name": "MDN — Responsive design", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "license": "CC-BY-SA-2.5", "reviewed": "2026-06-23", "topic": "media queries" }
+    { "name": "MDN — Responsive design", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "license": "CC-BY-SA-2.5", "reviewed": "2026-06-26", "topic": "media queries, viewport meta, relative units (ordered teaching read)" },
+    { "name": "Kevin Powell — Conquering Responsive Layouts (free course)", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "license": "free (account)", "reviewed": "2026-06-26", "topic": "hands-on responsive practice (bounded subset)" }
   ],
   "blocks": [
     { "type": "prose", "role": "hook", "md": "Your page has to look right on a phone *and* a giant monitor. Responsive design is how one layout adapts to any screen — and it's a skill that instantly makes your work look professional." },
-    { "type": "prose", "role": "objective", "canDo": "make layouts adapt to any screen size", "estMinutes": 90 },
+    { "type": "prose", "role": "objective", "canDo": "make layouts adapt to any screen size", "estMinutes": 120 },
     { "type": "prose", "role": "concept", "md": "**What to focus on:**\n\n- **Mobile-first**: write your base styles for small screens, then *add* styles for bigger screens.\n- **Media queries**: `@media (min-width: 700px) { ... }` applies rules only above a certain width.\n- Relative units (`%`, `rem`, `fr`) over fixed pixels so things can flex.\n- The viewport `<meta>` tag (you'll see it on every page).\n\nThe big mindset shift: don't design for one screen and patch the rest — start simple and enhance." },
-    { "type": "prose", "role": "resource", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "source": "Kevin Powell", "label": "▶ Do this: Kevin Powell's free \"Conquering Responsive Layouts.\" It's structured as 21 short daily challenges — work through the first few now (that already covers everything in the quiz: mobile-first, media queries, relative units), then keep going a challenge a day as an ongoing habit. Don't try to finish all 21 in one sitting." },
-    { "type": "prose", "role": "resource", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "source": "MDN", "label": "📖 MDN's responsive-design page for the reference version of media queries and units." },
+    { "type": "prose", "role": "resource", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design", "source": "MDN", "label": "📖 Read this first: MDN's **\"Responsive design\"** page (~20 min). One clear article that covers all three ideas this lesson tests — the viewport `<meta>` tag, mobile-first `min-width` media queries, and relative units. Read it before the practice below." },
+    { "type": "prose", "role": "resource", "url": "https://courses.kevinpowell.co/conquering-responsive-layouts", "source": "Kevin Powell", "label": "▶ Then practice with Kevin Powell's free \"Conquering Responsive Layouts.\" It's a 21-day course — you don't do all of it now. **Do Days 1–3, then skip to Days 15–18** (~60–70 min total):\n\n- Days 1–3: percentages, em/rem units, max-width.\n- Days 15–18: intro to media queries, choosing breakpoints, the viewport meta tag, and the mobile-first approach.\n\nThat covers everything you need. Days 4–14 go deeper on Flexbox layouts — great optional practice to return to later. (You'll need to create a free account to watch.)" },
     { "type": "prose", "role": "callout", "variant": "tip", "md": "Test responsiveness by dragging your browser window narrow/wide, or open dev tools (F12) and toggle the device toolbar. Watch where the layout breaks — that's where a media query goes." },
     { "type": "quiz", "passThreshold": 0.7, "questions": [
       { "question": "In a mobile-first workflow, which type of media query do you use to apply styles for larger screens?", "options": ["@media (max-width: ...)", "@media (min-width: ...)", "@media (orientation: landscape)", "@media print"], "answerIndex": 1, "explanation": "Mobile-first means base styles target small screens, and `min-width` queries layer on enhancements as the viewport grows wider." },
