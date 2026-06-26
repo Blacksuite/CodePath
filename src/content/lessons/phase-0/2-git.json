@@ -5,9 +5,16 @@
   "slug": "git",
   "title": "Terminal & Git",
   "canDo": "use the terminal basics and track code with Git & GitHub",
-  "estMinutes": 90,
+  "estMinutes": 110,
   "fade": "light",
   "sources": [
+    {
+      "name": "The Odin Project — Setting Up Git",
+      "url": "https://www.theodinproject.com/lessons/foundations-setting-up-git",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "GitHub account, git config, SSH key setup"
+    },
     {
       "name": "Net Ninja — Git & GitHub Tutorial for Beginners",
       "url": "https://www.youtube.com/watch?v=3RjQznt-8kE",
@@ -16,11 +23,11 @@
       "topic": "Terminal basics, Git workflow, GitHub remote repos"
     },
     {
-      "name": "The Odin Project Foundations — Git",
+      "name": "The Odin Project Foundations — Git Basics",
       "url": "https://www.theodinproject.com/lessons/foundations-git-basics",
       "license": "CC-BY-NC-SA-4.0",
       "reviewed": "2026-06-23",
-      "topic": "Git setup, core commands, GitHub integration"
+      "topic": "Git core commands, GitHub integration — supplementary practice"
     }
   ],
   "blocks": [
@@ -33,7 +40,7 @@
       "type": "prose",
       "role": "objective",
       "canDo": "use the terminal basics and track code with Git & GitHub",
-      "estMinutes": 90,
+      "estMinutes": 110,
       "md": "By the end of this session you will be able to navigate your filesystem in the terminal (`cd`, `ls`, `mkdir`), initialise a Git repository, track changes with `git add` and `git commit`, push your code to GitHub with `git push`, pull updates with `git pull`, and check what's happening at any moment with `git status`."
     },
     {
@@ -42,29 +49,37 @@
       "md": "**Four ideas that unlock everything.**\n\n**The terminal** is just a text interface to your computer. `ls` lists files. `cd foldername` moves into a folder. `mkdir foldername` creates one. You only need those three to start.\n\n**Git = version control.** It lives on your machine and records snapshots of your code. Think of every `git commit` as a save point in a video game — you can always reload from there.\n\n**The 6 daily commands:** `git clone` (copy a repo), `git status` (what changed?), `git add .` (stage changes), `git commit -m \"message\"` (save a snapshot), `git push` (upload to GitHub), `git pull` (download latest).\n\n**GitHub ≠ Git.** Git is the tool; GitHub is a website where your repos live online. GitHub is where you share code, back it up, and collaborate."
     },
     {
+      "type": "prose",
+      "role": "resource",
+      "md": "## The Odin Project — Setting Up Git\n\n**Do this first (~20 min): creates your GitHub account, sets git config, and adds an SSH key so `git push` works.**\n\nWithout this step, `git push` will fail when you try it for the first time. The page walks you through creating a free GitHub account, running `git config` to set your name and email, and generating an SSH key so your machine can authenticate with GitHub.",
+      "url": "https://www.theodinproject.com/lessons/foundations-setting-up-git",
+      "source": "The Odin Project",
+      "label": "Do this first (~20 min): creates your GitHub account, sets git config, and adds an SSH key so `git push` works."
+    },
+    {
       "type": "video",
       "title": "Git & GitHub Tutorial for Beginners — Net Ninja",
       "url": "https://www.youtube.com/watch?v=3RjQznt-8kE",
       "source": "youtube",
       "startSeconds": 0,
       "minutes": 90,
-      "note": "Watch the full playlist (videos 1–12 cover everything above). Pause and follow along in your own terminal. Come back here when you're done."
+      "note": "This playlist (videos 1–12) is the backbone of this session — it covers ALL the daily commands including `git init`, `git clone`, `git add`, `git commit`, `git push`, and `git pull`. Pause and follow along in your own terminal. Come back here when you're done."
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "## Net Ninja — full Git & GitHub playlist\n\nThe video above is the first in the 12-part Net Ninja series. Use this link to access the complete playlist so you can continue through all 12 videos from one place.",
+      "md": "## Net Ninja — full Git & GitHub playlist (backbone)\n\nThe video above is the first in the 12-part Net Ninja series. This playlist is the backbone of the session — it covers ALL the daily commands you need (`git init`, `git clone`, `git add`, `git commit`, `git push`, `git pull`). Use this link to access the complete playlist so you can continue through all 12 videos from one place.",
       "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR",
       "source": "Net Ninja",
-      "label": "Git & GitHub Tutorial for Beginners — full playlist"
+      "label": "Git & GitHub Tutorial for Beginners — full playlist (backbone: all daily commands including git init and git pull)"
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "## The Odin Project — Git Basics\n\nOdin's written Git lessons are the best companion reference you'll find. After the video, read through the **\"Introduction to Git\"** and **\"Git Basics\"** sections. They reinforce the same commands with clear explanations and exercises you can run in your terminal.\n\nThe link below takes you directly to the Git Basics lesson in the Foundations path.",
+      "md": "## The Odin Project — Git Basics (supplementary practice)\n\nAfter finishing the Net Ninja playlist, use this page for extra practice and reference on `git clone`, `git add`, `git commit`, and `git push`. Odin's written explanations are a great complement if you want to reinforce a specific command with exercises you can run in your terminal.",
       "url": "https://www.theodinproject.com/lessons/foundations-git-basics",
       "source": "The Odin Project",
-      "label": "The Odin Project Foundations — Git Basics"
+      "label": "The Odin Project — Git Basics (supplementary practice for clone/add/commit/push after the Net Ninja playlist)"
     },
     {
       "type": "prose",

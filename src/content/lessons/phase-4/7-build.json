@@ -13,7 +13,7 @@
       "url": "https://www.themealdb.com/api.php",
       "license": "public-free",
       "reviewed": "2026-06-23",
-      "topic": "Recipe search API — free, no key required"
+      "topic": "Recipe search API — free — uses the public test key `1` embedded in the URL, no sign-up needed"
     },
     {
       "name": "react.dev",
@@ -24,10 +24,10 @@
     },
     {
       "name": "TypeScript docs",
-      "url": "https://www.typescriptlang.org/docs/handbook/2/objects.html",
+      "url": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
       "license": "Apache-2.0",
       "reviewed": "2026-06-23",
-      "topic": "Object types and interfaces"
+      "topic": "Everyday types — interfaces and type aliases"
     }
   ],
   "blocks": [
@@ -51,10 +51,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "**API reference — no sign-up needed**\n\nTheMealDB is a free recipe API. The search endpoint returns a JSON object with a `meals` array (or `null` when nothing matches).",
+      "md": "**API reference — free, public test key embedded in the URL, no sign-up needed**\n\nTheMealDB is a free recipe API that uses the public test key `1` in the URL path — you can see it in `v1/1/search.php`. The search endpoint returns a JSON object with a `meals` array (or `null` when nothing matches).",
       "url": "https://www.themealdb.com/api.php",
       "source": "TheMealDB",
-      "label": "TheMealDB API docs — free, no key required"
+      "label": "TheMealDB API docs — free, public test key in URL"
     },
     {
       "type": "prose",
@@ -64,7 +64,7 @@
     },
     {
       "type": "nowYouTry",
-      "task": "Create a new Vite + React + TypeScript project and build a **recipe search app** using TheMealDB (`https://www.themealdb.com/api/json/v1/1/search.php?s=QUERY` — free, no key needed).\n\nYour app must:\n\n- Define a `Meal` interface covering at least `idMeal`, `strMeal`, `strMealThumb`, and `strCategory`.\n- Have a **search form** (controlled input + button) that triggers a fetch when submitted.\n- Show a **loading indicator** while the request is in flight.\n- Render a **grid of `<MealCard>` components** when results arrive — each card shows the meal image, name, and category.\n- Show a friendly **empty message** when the API returns no matches.\n- Show a friendly **error message** when the fetch fails.\n- Contain **zero `any`** in your own source files — TypeScript strict mode must stay on.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
+      "task": "Create a new Vite + React + TypeScript project and build a **recipe search app** using TheMealDB (`https://www.themealdb.com/api/json/v1/1/search.php?s=QUERY` — free, public test key `1` is already embedded in the URL, no sign-up needed).\n\nYour app must:\n\n- Define a `Meal` interface covering at least `idMeal`, `strMeal`, `strMealThumb`, and `strCategory`.\n- Have a **search form** (controlled input + button) that triggers a fetch when submitted.\n- Show a **loading indicator** while the request is in flight.\n- Render a **grid of `<MealCard>` components** when results arrive — each card shows the meal image, name, and category.\n- Show a friendly **empty message** when the API returns no matches.\n- Show a friendly **error message** when the fetch fails.\n- Contain **zero `any`** in your own source files — TypeScript strict mode must stay on.\n\nGetting stuck is completely normal and expected — try it yourself first, and if you need a full guided walkthrough, one is just one click away.",
       "definitionOfDone": "Type a search term (try 'chicken'), see a loading state, then see real recipe cards from the API with image, name, and category. Search for gibberish — see the empty message. The TypeScript compiler reports zero errors and you have no `any` in your own files.",
       "hints": [
         "**Set up the fetch and types first.** Create a `Meal` interface and a `MealSearchResponse` type (`{ meals: Meal[] | null }`). Write an async `fetchMeals(query: string): Promise<Meal[]>` function that calls `fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + encodeURIComponent(query))`, casts the JSON with `as MealSearchResponse`, and returns `data.meals ?? []`. Verify it logs results before touching any React state.",

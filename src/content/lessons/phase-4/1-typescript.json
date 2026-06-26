@@ -5,7 +5,7 @@
   "slug": "typescript",
   "title": "TypeScript basics",
   "canDo": "add types to JavaScript to catch bugs early",
-  "estMinutes": 90,
+  "estMinutes": 120,
   "fade": "medium",
   "sources": [
     {
@@ -27,13 +27,13 @@
     {
       "type": "prose",
       "role": "hook",
-      "md": "You have been writing JavaScript, and it has been working — mostly. But have you ever called a function with the wrong argument type, got `undefined` back, and spent twenty minutes wondering why? TypeScript exists precisely for that moment. It is a *layer on top of JavaScript* that reads your code before it runs and highlights the mistake with a red squiggle right in your editor. The bug never makes it to the browser. Phase 4 starts here because every lesson that follows — typed React props, typed API responses, typed routes — builds on the vocabulary you are about to learn."
+      "md": "You have been writing JavaScript, and it has been working — mostly. But have you ever called a function with the wrong argument type, got `undefined` back, and spent twenty minutes wondering why? TypeScript exists precisely for that moment. It is a *layer on top of JavaScript* that reads your code before it runs and highlights the mistake with a red squiggle right in your editor. The bug never makes it to the browser. Phase 4 starts here because every lesson that follows — typed React props, typed API responses, typed routes — builds on the vocabulary you are about to learn. And here is the reassuring part: the JavaScript underneath is unchanged — TypeScript is just labels you add on top of the JS you already wrote."
     },
     {
       "type": "prose",
       "role": "objective",
       "canDo": "add types to JavaScript to catch bugs early",
-      "estMinutes": 90,
+      "estMinutes": 120,
       "md": "By the end of this session you will be able to **add basic types to variables, function parameters, and return values**, **describe object shapes with interfaces**, and **explain why `any` defeats the purpose of TypeScript**. The learning happens inside the two curated resources below — work through them in order, then come back for the quiz."
     },
     {
@@ -52,7 +52,7 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Net Ninja — TypeScript Tutorial playlist (YouTube, free)\n\nThe Net Ninja playlist gives you a clear talking-head walkthrough of the same concepts with live VS Code demos. Watch **videos 1–10** (~35 min). They cover project setup, basic types, objects, arrays, union types, and interfaces. Use this after the Total TypeScript exercises to solidify what you have seen interactively with a real editor workflow.",
+      "md": "### Net Ninja — TypeScript Tutorial playlist (YouTube, free)\n\nThe Net Ninja playlist gives you a clear talking-head walkthrough of the same concepts with live VS Code demos. Watch the following ten videos in order (~35 min):\n\n1. Intro & Setup\n2. Compiling TypeScript\n3. Type Basics\n4. Objects & Arrays\n5. Explicit Types\n6. Dynamic (any) Types\n7. Better Workflow & tsconfig\n8. Function Basics\n9. Type Aliases\n10. Function Signatures\n\n**Stop after video 10**; later videos cover Classes and the DOM, which are out of scope here. Use this after the Total TypeScript exercises to solidify what you have seen interactively with a real editor workflow.",
       "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI",
       "source": "Net Ninja",
       "label": "Open Net Ninja TypeScript playlist"

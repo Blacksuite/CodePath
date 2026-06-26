@@ -47,7 +47,7 @@
       "md": "**Vitest — Getting Started**\nThe official guide: install, config, and your first `test()` call. Start here to understand the test runner.",
       "url": "https://vitest.dev/guide/",
       "source": "Vitest",
-      "label": "Read the Vitest Getting Started guide, then come back."
+      "label": "Read the 'Adding Vitest' and 'Writing Tests' basics to understand the runner. The full project setup (jsdom, vite.config.ts) is in the lesson above — it's not on this page."
     },
     {
       "type": "prose",
@@ -55,7 +55,7 @@
       "md": "**React Testing Library — Introduction**\nExplains the guiding philosophy (test like a user), the query priority order, and how to render and assert on components.",
       "url": "https://testing-library.com/docs/react-testing-library/intro/",
       "source": "Testing Library",
-      "label": "Read the RTL intro, then come back."
+      "label": "Read 'The Problem' and 'This Solution' on the intro page for the testing philosophy. The query API (render, screen, getByRole, userEvent) is shown in the worked examples above."
     },
     {
       "type": "prose",

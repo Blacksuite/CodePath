@@ -23,13 +23,6 @@
       "topic": "Objects"
     },
     {
-      "name": "freeCodeCamp JavaScript Certification (v9)",
-      "url": "https://www.freecodecamp.org/learn/javascript-v9",
-      "license": "free",
-      "reviewed": "2026-06-25",
-      "topic": "Arrays and Objects"
-    },
-    {
       "name": "MDN",
       "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
       "license": "CC-BY-SA-2.5",
@@ -58,7 +51,7 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Read: Arrays on javascript.info\nThe best concise deep-dive on arrays — covers creation, indexing, `push`/`pop`, and iteration. Read the **Arrays** chapter, then come back.",
+      "md": "### Read: Arrays — javascript.info\nThe clearest concise guide to arrays — covers creation, indexing, `push`/`pop`, iteration, and more. Read the **Arrays** chapter, then practice with the tasks at the bottom of the page in your browser console. Come back when you're done.",
       "url": "https://javascript.info/array",
       "source": "javascript.info",
       "label": "javascript.info — Arrays"
@@ -66,18 +59,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Read: Objects on javascript.info\nCovers object literals, dot and bracket access, `for...in`, and nested objects. Read the **Objects** chapter, then come back.",
+      "md": "### Read: Objects — javascript.info\nCovers object literals, dot and bracket access, `for...in`, and nested objects. Read the **Objects** chapter, then practice with the tasks at the bottom of the page in your browser console. Come back when you're done.",
       "url": "https://javascript.info/object",
       "source": "javascript.info",
       "label": "javascript.info — Objects"
-    },
-    {
-      "type": "prose",
-      "role": "resource",
-      "md": "### Practice: freeCodeCamp JavaScript Certification (v9)\nWork through the **Basic Data Structures** section (Arrays and Objects) in the freeCodeCamp JavaScript Certification. Complete the interactive exercises, then come back to finish this lesson.",
-      "url": "https://www.freecodecamp.org/learn/javascript-v9",
-      "source": "freeCodeCamp",
-      "label": "freeCodeCamp — JavaScript Certification (v9)"
     },
     {
       "type": "prose",

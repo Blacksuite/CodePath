@@ -9,11 +9,32 @@
   "fade": "light",
   "sources": [
     {
-      "name": "The Odin Project",
-      "url": "https://www.theodinproject.com/lessons/foundations-installations",
+      "name": "The Odin Project — Text Editors",
+      "url": "https://www.theodinproject.com/lessons/foundations-text-editors",
       "license": "CC-BY-NC-SA-4.0",
       "reviewed": "2026-06-23",
-      "topic": "Installations — VS Code, Node.js, DevTools"
+      "topic": "Installing and configuring VS Code"
+    },
+    {
+      "name": "The Odin Project — Command Line Basics",
+      "url": "https://www.theodinproject.com/lessons/foundations-command-line-basics",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Terminal fundamentals"
+    },
+    {
+      "name": "The Odin Project — Installing Node.js",
+      "url": "https://www.theodinproject.com/lessons/foundations-installing-node-js",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Installing Node.js and npm"
+    },
+    {
+      "name": "The Odin Project — JavaScript Developer Tools",
+      "url": "https://www.theodinproject.com/lessons/foundations-javascript-developer-tools",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Browser DevTools — Console and Elements"
     }
   ],
   "blocks": [
@@ -32,21 +53,20 @@
     {
       "type": "prose",
       "role": "concept",
-      "md": "**VS Code** is a free code editor made by Microsoft — it highlights syntax, suggests completions, and integrates with Git. **Node.js** lets JavaScript run outside the browser; it also ships **npm** (Node Package Manager), which you will use to install libraries throughout this course. The current LTS in 2026 is **v24** — after installing, run `node --version` in a terminal and confirm it prints `v24.x.x`. **Browser DevTools** (open with F12 or right-click → Inspect) has two tabs you will use constantly: **Console** (runs JS, shows errors) and **Elements** (inspect and live-edit the page HTML/CSS). No code to write yet — follow the steps, verify each tool, move on."
+      "md": "**VS Code** is a free code editor made by Microsoft — it highlights syntax, suggests completions, and integrates with Git. **Node.js** lets JavaScript run outside the browser; it also ships **npm** (Node Package Manager), which you will use to install libraries throughout this course. Install the current LTS — after installing, run `node --version` in a terminal and confirm it installed. **Browser DevTools** (open with F12 or right-click → Inspect) has two tabs you will use constantly: **Console** (runs JS, shows errors) and **Elements** (inspect and live-edit the page HTML/CSS). No code to write yet — follow the steps, verify each tool, move on."
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "### The Odin Project — Installations\n\nThe Odin Project's Foundations path walks you through the full installation for your OS (macOS, Linux, or Windows/WSL). Complete every step in that section, then come back here for the quiz.\n\n**What to do:** open the link, pick your operating system, follow every installation step, then return.",
-      "url": "https://www.theodinproject.com/lessons/foundations-installations",
+      "md": "### The Odin Project — four pages to complete in order\n\nDo these four Odin pages in order, then stop — the next session covers Git.\n\n1. **[Text Editors](https://www.theodinproject.com/lessons/foundations-text-editors)** — install and configure VS Code\n2. **[Command Line Basics](https://www.theodinproject.com/lessons/foundations-command-line-basics)** — learn the terminal commands you'll use every day\n3. **[Installing Node.js](https://www.theodinproject.com/lessons/foundations-installing-node-js)** — install Node.js (current LTS) and npm\n4. **[JavaScript Developer Tools](https://www.theodinproject.com/lessons/foundations-javascript-developer-tools)** — open and use browser DevTools\n\nComplete every step on each page before moving to the next, then return here for the quiz.",
       "source": "The Odin Project",
-      "label": "Foundations — Installations (OS-specific)"
+      "label": "Do these four Odin pages in order, then stop — the next session covers Git."
     },
     {
       "type": "prose",
       "role": "callout",
       "variant": "tip",
-      "md": "**Quick verification checklist** — run these three commands in your terminal after the installs:\n\n```\nnode --version   # should print v24.x.x\nnpm --version    # should print 11.x.x or higher\ncode --version   # should print a VS Code version number\n```\n\nIf `code --version` errors on macOS, open VS Code, press **Cmd+Shift+P**, type `shell command`, and select **Install 'code' command in PATH**."
+      "md": "**Quick verification checklist** — run these three commands in your terminal after the installs:\n\n```\nnode --version   # should print the current LTS (run `node --version` to confirm it installed)\nnpm --version    # should print a version number\ncode --version   # should print a VS Code version number\n```\n\nIf `code --version` errors on macOS, open VS Code, press **Cmd+Shift+P**, type `shell command`, and select **Install 'code' command in PATH**."
     },
     {
       "type": "quiz",
@@ -75,22 +95,22 @@
           "explanation": "DevTools lets you inspect HTML/CSS in the Elements panel and run or debug JavaScript in the Console panel."
         },
         {
-          "question": "Which Node.js version should you install in 2026 to get the current Long-Term Support (LTS) release?",
+          "question": "Which Node.js release track should you install, and how do you verify it worked?",
           "options": [
-            "v16 (Gallium)",
-            "v18 (Hydrogen)",
-            "v20 (Iron)",
-            "v24 (current LTS)"
+            "The latest experimental release — it has the newest features",
+            "Any version — Node.js versions are all equivalent for beginners",
+            "The current LTS (Long-Term Support) release — verify with `node --version` in the terminal",
+            "The oldest stable version — it has the fewest bugs"
           ],
-          "answerIndex": 3,
-          "explanation": "The current LTS in 2026 is Node v24. After installing, `node --version` should print v24.x.x."
+          "answerIndex": 2,
+          "explanation": "Always install the current LTS release — it is stable, well-supported, and what most tutorials expect. After installing, run `node --version` in your terminal to confirm it installed correctly."
         }
       ]
     },
     {
       "type": "prose",
       "role": "recap",
-      "md": "Your machine now has VS Code, Node.js v24, and browser DevTools ready to go. That is the full foundation every project in this course will build on.\n\n**Next up:** version control with Git — so you never lose work and can share your code with the world.",
+      "md": "Your machine now has VS Code, Node.js (current LTS), and browser DevTools ready to go. That is the full foundation every project in this course will build on.\n\n**Next up:** version control with Git — so you never lose work and can share your code with the world.",
       "nextLessonId": "p0-s2-git",
       "nextLessonTitle": "Version control with Git"
     }

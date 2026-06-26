@@ -49,6 +49,12 @@
       "md": "**Come back here once you've finished the resource.** The quiz below takes about 5 minutes and locks in the three things that trip people up most."
     },
     {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Typing a custom hook makes its contract explicit.** When you add TypeScript to `useLocalStorage`, the signature looks like this:\n\n```ts\nfunction useLocalStorage<T>(key: string, initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {\n  // ... same body as before\n}\n```\n\nTyping the return value means every caller gets correct autocomplete — TypeScript knows the first element is your value of type `T` and the second is exactly the setter type React expects. You never have to wonder what the hook returns."
+    },
+    {
       "type": "quiz",
       "passThreshold": 0.7,
       "questions": [

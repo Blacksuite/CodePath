@@ -14,6 +14,27 @@
       "license": "Apache-2.0",
       "reviewed": "2026-06-23",
       "topic": "Supabase Auth signup, login, and session management in React"
+    },
+    {
+      "name": "Supabase JS Reference — getSession",
+      "url": "https://supabase.com/docs/reference/javascript/auth-getsession",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Reading the current auth session"
+    },
+    {
+      "name": "Supabase JS Reference — onAuthStateChange",
+      "url": "https://supabase.com/docs/reference/javascript/auth-onauthstatechange",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Subscribing to auth state changes in React"
+    },
+    {
+      "name": "Supabase JS Reference — signOut",
+      "url": "https://supabase.com/docs/reference/javascript/auth-signout",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "Signing a user out and clearing the session"
     }
   ],
   "blocks": [
@@ -41,6 +62,27 @@
       "url": "https://supabase.com/docs/guides/auth/passwords",
       "source": "Supabase",
       "label": "Password-based Auth — Supabase Docs"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The passwords guide covers signup and login, but it doesn't show you how to wire auth state into React. Read these three short JS reference pages too — they cover the three calls you need to keep your UI in sync with the real session.",
+      "label": "Wiring auth state in React — read these too",
+      "links": [
+        {
+          "label": "getSession",
+          "url": "https://supabase.com/docs/reference/javascript/auth-getsession"
+        },
+        {
+          "label": "onAuthStateChange",
+          "url": "https://supabase.com/docs/reference/javascript/auth-onauthstatechange"
+        },
+        {
+          "label": "signOut",
+          "url": "https://supabase.com/docs/reference/javascript/auth-signout"
+        }
+      ],
+      "source": "Supabase Docs"
     },
     {
       "type": "prose",

@@ -47,7 +47,7 @@
       "md": "**Vercel docs — Vite on Vercel**",
       "url": "https://vercel.com/docs/frameworks/frontend/vite",
       "source": "Vercel",
-      "label": "Read the quick-start section, then come back"
+      "label": "Read the quick-start section, then come back. For the GitHub import walkthrough, follow the in-app prompts (Add New → Project → Import Git Repository)."
     },
     {
       "type": "prose",
@@ -55,7 +55,7 @@
       "md": "**Vercel docs — Environment Variables**",
       "url": "https://vercel.com/docs/environment-variables",
       "source": "Vercel",
-      "label": "Focus on the dashboard UI and the VITE_ prefix note"
+      "label": "Focus on the dashboard UI — Production, Preview, and Development environments. The VITE_ prefix rule is explained in this lesson above."
     },
     {
       "type": "prose",

@@ -10,17 +10,17 @@
   "sources": [
     {
       "name": "react.dev",
-      "url": "https://react.dev/learn",
+      "url": "https://react.dev/learn/your-first-component",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "React Quick Start"
+      "topic": "Your First Component"
     },
     {
       "name": "Scrimba",
       "url": "https://scrimba.com/learn-react-c0e",
       "license": "free",
       "reviewed": "2026-06-23",
-      "topic": "Learn React (free course)"
+      "topic": "Learn React — Section 1 (React Basics, ReactFacts project)"
     }
   ],
   "blocks": [
@@ -44,24 +44,23 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### react.dev — Quick Start\n\nThe official docs written by the React team. Read the **'Quick Start'** page (about 20 min). It introduces components, JSX, props, state, and event handlers with short, runnable examples. Come back here after you finish it.",
-      "url": "https://react.dev/learn",
+      "md": "### react.dev — Your First Component\n\nThe official docs written by the React team. Read the **'Your First Component'** page (about 15 min). It explains what a component is, how to define one, and how React uses it to build a UI — without jumping ahead to props, state, or lists. Come back here after you finish it.",
+      "url": "https://react.dev/learn/your-first-component",
       "source": "react.dev",
-      "label": "Open react.dev Quick Start"
+      "label": "Your First Component — react.dev"
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Scrimba — Learn React (free)\n\nScrimba's free interactive React course lets you edit code directly in the video. **Complete the first three screencasts** (roughly 25 min): they cover why React exists, JSX basics, and your first component. Pause, tinker, and come back when you hit the fourth video.",
+      "md": "### Scrimba — Learn React Section 1\n\nScrimba's free interactive React course lets you edit code directly in the video. **Complete Section 1 of Scrimba's Learn React (React Basics — through the ReactFacts project). Stop when Section 2 (Travel Journal) begins.** Pause, tinker, and come back when you're done.",
       "url": "https://scrimba.com/learn-react-c0e",
       "source": "Scrimba",
       "label": "Open Scrimba Learn React"
     },
     {
       "type": "prose",
-      "role": "callout",
-      "variant": "tip",
-      "md": "**Scaffold while you learn.** After the Scrimba intro, open a terminal and run:\n```\nnpm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev\n```\nLeave the dev server running in one tab and keep Scrimba open in another — edit `src/App.jsx` in real time as you watch."
+      "role": "concept",
+      "md": "**Required: scaffold your project now.** Before your next session you need a real Vite project running locally. Open a terminal and run these commands in order:\n\n```\nnpm create vite@latest my-app -- --template react\nnpm install\nnpm run dev\n```\n\nVite will open `http://localhost:5173` in your browser. Leave the dev server running in one tab and keep Scrimba open in another — edit `src/App.jsx` in real time as you watch."
     },
     {
       "type": "quiz",

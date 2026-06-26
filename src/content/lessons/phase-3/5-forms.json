@@ -10,17 +10,31 @@
   "sources": [
     {
       "name": "react.dev",
+      "url": "https://react.dev/learn/responding-to-events",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Responding to Events — event handlers including e.preventDefault"
+    },
+    {
+      "name": "react.dev",
       "url": "https://react.dev/learn/reacting-to-input-with-state",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "controlled inputs and state-driven UI"
+      "topic": "Reacting to Input with State — state-machine UI design"
     },
     {
       "name": "react.dev",
       "url": "https://react.dev/reference/react-dom/components/input",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "input component reference"
+      "topic": "input component reference (look up, don't read first)"
+    },
+    {
+      "name": "Scrimba",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "Section 3 (Chef Claude) — controlled-input/form lessons"
     }
   ],
   "blocks": [
@@ -44,15 +58,28 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### 1 — Reacting to Input with State\n\nreact.dev's full guide: declarative vs. imperative UI, identifying visual states, and wiring state to inputs. Read through the examples and try the challenges at the bottom.",
-      "url": "https://react.dev/learn/reacting-to-input-with-state",
+      "md": "### 1 — Responding to Events (primary)\n\nRead this page first. It covers how event handlers work in React, how to pass them as props, and — critically — how `e.preventDefault()` stops the browser's default behaviour (like page reloads on form submit).\n\n**Estimated time:** 15 min",
+      "url": "https://react.dev/learn/responding-to-events",
       "source": "react.dev",
-      "label": "Reacting to Input with State"
+      "label": "Responding to Events — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**The controlled-input pattern — a worked example.**\n\nHere is the complete shape you will use any time you need a text input and a form submission:\n\n```jsx\nimport { useState } from 'react'\n\nfunction SearchForm() {\n  const [text, setText] = useState('')\n\n  function handleSubmit(e) {\n    e.preventDefault()       // stop the page from reloading\n    console.log('submitted:', text)\n  }\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={text}\n        onChange={(e) => setText(e.target.value)}\n      />\n      <button type=\"submit\">Search</button>\n    </form>\n  )\n}\n```\n\n- `value={text}` — React owns the displayed value; it always matches state.\n- `onChange={(e) => setText(e.target.value)}` — every keystroke updates state, keeping the two in sync.\n- `e.preventDefault()` inside `onSubmit` — without this the browser would POST the form and reload the page, wiping your app state."
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "### 2 — `<input>` component reference\n\nThe official React-DOM reference for `<input>`. Pay attention to the **controlled vs. uncontrolled** section and the full list of supported props (`value`, `defaultValue`, `onChange`, `checked`, etc.).",
+      "md": "### 2 — Reacting to Input with State\n\nRead this after the events page. It covers declarative vs. imperative UI and identifying visual states — useful context for building multi-step forms later.\n\n**Estimated time:** 20 min",
+      "url": "https://react.dev/learn/reacting-to-input-with-state",
+      "source": "react.dev",
+      "label": "Reacting to Input with State — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### 3 — `<input>` component reference (look up, don't read first)\n\nThe official React-DOM reference for `<input>`. Use this as a look-up when you need the exact name of a prop (`value`, `defaultValue`, `onChange`, `checked`, etc.) — you don't need to read it top-to-bottom.",
       "url": "https://react.dev/reference/react-dom/components/input",
       "source": "react.dev",
       "label": "React-DOM <input> reference"
@@ -60,10 +87,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### 3 — Scrimba: React Forms\n\nScrimba's hands-on interactive lesson on React forms. Code along in the embedded editor to reinforce the controlled-input pattern before the quiz.",
+      "md": "### 4 — Scrimba: Section 3 (Chef Claude) — forms\n\nWork through **Section 3 (Chef Claude) — the controlled-input/form lessons**. Code along in the embedded editor to reinforce the pattern before the quiz.",
       "url": "https://scrimba.com/learn-react-c0e",
       "source": "Scrimba",
-      "label": "Scrimba — Learn React (Forms module)"
+      "label": "Scrimba — Learn React (Section 3, Chef Claude forms)"
     },
     {
       "type": "prose",

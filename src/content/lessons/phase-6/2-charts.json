@@ -14,6 +14,13 @@
       "license": "public",
       "reviewed": "2026-06-23",
       "topic": "Recharts Getting Started"
+    },
+    {
+      "name": "Recharts — Installation",
+      "url": "https://recharts.github.io/en-US/guide/installation/",
+      "license": "public",
+      "reviewed": "2026-06-23",
+      "topic": "Installing Recharts"
     }
   ],
   "blocks": [
@@ -37,8 +44,16 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "Read the **Getting Started / Installation** section, install Recharts in your project, then come back.",
-      "label": "Recharts — Getting Started",
+      "md": "Install Recharts first via the installation page, then come back.",
+      "label": "Install Recharts first.",
+      "url": "https://recharts.github.io/en-US/guide/installation/",
+      "source": "Recharts"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The Getting Started page shows how chart components compose together using a LineChart example. The exact BarChart + ResponsiveContainer pattern the quiz tests is in the concept block above — you do not need to find it verbatim on this page.",
+      "label": "Recharts — Getting Started (shows component composition with a LineChart example)",
       "url": "https://recharts.github.io/en-US/guide/getting-started/",
       "source": "Recharts"
     },

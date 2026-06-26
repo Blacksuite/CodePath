@@ -10,10 +10,24 @@
   "sources": [
     {
       "name": "react.dev",
-      "url": "https://react.dev/learn/adding-interactivity",
+      "url": "https://react.dev/learn/state-a-components-memory",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "useState and event handling"
+      "topic": "State: A Component's Memory"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/queueing-a-series-of-state-updates",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Queueing a Series of State Updates"
+    },
+    {
+      "name": "Scrimba",
+      "url": "https://scrimba.com/learn-react-c0e",
+      "license": "free",
+      "reviewed": "2026-06-23",
+      "topic": "Section 3 (Chef Claude) — state and event-handling lessons"
     }
   ],
   "blocks": [
@@ -37,18 +51,26 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "Work through **Adding Interactivity** on react.dev. It covers responding to events, state as a snapshot, queueing state updates, and updating objects/arrays in state — all the ground you need for this phase.",
-      "url": "https://react.dev/learn/adding-interactivity",
+      "md": "### 1 — State: A Component's Memory\n\nRead this page on react.dev first. It explains what state is, how `useState` works, and why React re-renders when state changes — the foundation for everything else in this lesson.\n\n**Estimated time:** 20 min",
+      "url": "https://react.dev/learn/state-a-components-memory",
       "source": "react.dev",
-      "label": "Adding Interactivity — react.dev"
+      "label": "State: A Component's Memory — react.dev"
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "If you prefer a code-along format, use **Section 3: React State** in Scrimba's *Learn React* course (taught by Bob Ziroll). It is the third section of six — skip past Section 1 (Static Pages) and Section 2 (Data-Driven React) if you have already covered those, or work through the whole course in order. Section 3 is the single longest block (57 lessons, ~5 hours) and covers lifting state, controlled inputs, and re-renders — everything in this lesson and more. Use it alongside or instead of the react.dev reading, whichever format clicks better for you.",
+      "md": "### 2 — Queueing a Series of State Updates\n\nRead this page next. It explains why React batches updates and teaches the **functional updater form** (`setCount(prev => prev + 1)`) — the exact pattern the quiz asks about.\n\n**Estimated time:** 15 min",
+      "url": "https://react.dev/learn/queueing-a-series-of-state-updates",
+      "source": "react.dev",
+      "label": "Queueing a Series of State Updates — react.dev"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### 3 — Scrimba: Section 3 (Chef Claude)\n\nWork through **Section 3 (Chef Claude) — the state and event-handling lessons only; stop before form inputs (that's lesson 5)**. The interactive scrims let you code alongside the video.\n\n**Estimated time:** 30–40 min",
       "url": "https://scrimba.com/learn-react-c0e",
       "source": "Scrimba",
-      "label": "Learn React — Section 3: React State (Scrimba, Bob Ziroll)"
+      "label": "Learn React — Section 3 (Scrimba)"
     },
     {
       "type": "prose",

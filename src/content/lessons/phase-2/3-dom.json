@@ -48,7 +48,7 @@
       "source": "youtube",
       "startSeconds": 0,
       "minutes": 18,
-      "note": "Watch the full 18 minutes, then come back to test yourself with the quiz below."
+      "note": "Watch the full 18 minutes, then come back to test yourself with the quiz below. Note: the video sometimes uses `innerHTML` to inject content — this course favours `textContent` and `createElement` instead, but both are valid patterns."
     },
     {
       "type": "prose",

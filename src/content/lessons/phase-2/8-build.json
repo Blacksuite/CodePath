@@ -55,7 +55,7 @@
       "source": "youtube",
       "startSeconds": 0,
       "minutes": 20,
-      "note": "Watch this build-along first (~20 min) to see all the patterns in motion, then close the video and build your own version from scratch below."
+      "note": "Watch this build-along first (~20 min) to see all the patterns in motion, then close the video and build your own version from scratch below. Note: the video uses `innerHTML` and `data-*` attributes (e.g. `button.dataset.correct`) — valid patterns worth knowing, but the hints below use the simpler `createElement`\/index approach taught in this course."
     },
     {
       "type": "prose",
@@ -69,7 +69,7 @@
       "definitionOfDone": "All 5+ questions display one at a time. Selecting a right answer turns it green; a wrong answer turns it red and highlights the correct one. After the last question a score screen appears. Clicking Restart takes you back to question 1 with score reset to 0.",
       "hints": [
         "**Data + render pattern.** Start with a `questions` array: `const questions = [{ question: 'What does HTML stand for?', options: ['...','...','...','...'], correct: 0 }, ...]`. Write a `showQuestion(index)` function that sets the question text and calls `options.forEach` to create a button for each choice and appends them to a container. Call `showQuestion(0)` on load to verify things render before adding any click logic.",
-        "**Handle selection and feedback.** In your answer-button click handler, compare `clickedIndex === questions[currentIndex].correct`. Add a CSS class `correct` or `wrong` to the clicked button. If wrong, also add `correct` to the button at the right index. Then disable all answer buttons (`btn.disabled = true`) and show a hidden \"Next\" button. This prevents double-clicking and gives clear feedback.",
+        "**Handle selection and feedback.** In your answer-button click handler, compare `clickedIndex === questions[currentIndex].correct`. Add a CSS class `correct` or `wrong` to the clicked button. If wrong, also add `correct` to the button at the right index. Then disable all answer buttons at once — `document.querySelectorAll('.answer-btn').forEach(btn => btn.disabled = true)` — and show a hidden \"Next\" button. This prevents double-clicking and gives clear feedback.",
         "**Track state and show the final score.** Keep `let currentIndex = 0; let score = 0;` at the top. In the answer handler, increment `score` when correct. In the Next handler, increment `currentIndex`; if `currentIndex >= questions.length`, hide the quiz container and show a results div with `You scored ${score} / ${questions.length}`. Add a Restart button that resets both variables to 0 and calls `showQuestion(0)` again."
       ],
       "gatedSolution": true,

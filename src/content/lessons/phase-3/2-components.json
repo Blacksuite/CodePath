@@ -10,17 +10,45 @@
   "sources": [
     {
       "name": "react.dev",
-      "url": "https://react.dev/learn/describing-the-ui",
+      "url": "https://react.dev/learn/your-first-component",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "components, JSX, props"
+      "topic": "Your First Component"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/importing-and-exporting-components",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Importing and Exporting Components"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/writing-markup-with-jsx",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Writing Markup with JSX"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/javascript-in-jsx-with-curly-braces",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "JavaScript in JSX with Curly Braces"
+    },
+    {
+      "name": "react.dev",
+      "url": "https://react.dev/learn/passing-props-to-a-component",
+      "license": "CC-BY-4.0",
+      "reviewed": "2026-06-23",
+      "topic": "Passing Props to a Component"
     },
     {
       "name": "Scrimba",
       "url": "https://scrimba.com/learn-react-c0e",
       "license": "proprietary",
       "reviewed": "2026-06-23",
-      "topic": "components and props"
+      "topic": "Section 2 — Travel Journal (reusable components & props)"
     }
   ],
   "blocks": [
@@ -44,15 +72,15 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Primary resource — react.dev\n\nWork through the **\"Describing the UI\"** chapter. It covers: your first component, importing/exporting, JSX rules, passing props, and conditional/list rendering. Each page has interactive sandboxes — do the challenges.\n\n**Estimated time:** 60–70 min · Come back when you finish the chapter.",
-      "url": "https://react.dev/learn/describing-the-ui",
+      "md": "### Primary resource — react.dev (five pages, in order)\n\nRead these five pages from the react.dev docs. Each has interactive sandboxes — do the challenges at the bottom before moving on.\n\n1. [Your First Component](https://react.dev/learn/your-first-component) — define and render a component\n2. [Importing and Exporting Components](https://react.dev/learn/importing-and-exporting-components) — default vs named exports\n3. [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx) — JSX rules and gotchas\n4. [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces) — embedding expressions\n5. [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component) — the props pattern\n\n**Do NOT read the Conditional Rendering or Rendering Lists pages yet** — those are covered in Lesson 4 with the right context.\n\n**Estimated time:** 50–60 min · Come back when you've finished all five.",
+      "url": "https://react.dev/learn/your-first-component",
       "source": "react.dev",
-      "label": "Describing the UI — react.dev"
+      "label": "Your First Component — react.dev (start here)"
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Supplementary resource — Scrimba Learn React\n\nIf you want screencasted walkthroughs of the same ideas, jump to the **components** and **props** sections of the Scrimba Learn React course. The interactive scrims let you edit code inside the video — great for kinesthetic learners.\n\n**Estimated time:** 15–20 min · Pick this up after react.dev or instead of it.",
+      "md": "### Supplementary resource — Scrimba Learn React\n\nWork through **Section 2 (Travel Journal — reusable components & props)**. The interactive scrims let you edit code inside the video — great for kinesthetic learners. **Stop when Section 3 begins.**\n\n**Estimated time:** 15–20 min · Pick this up after react.dev or instead of it.",
       "url": "https://scrimba.com/learn-react-c0e",
       "source": "Scrimba",
       "label": "Learn React — Scrimba"

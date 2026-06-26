@@ -52,7 +52,7 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Bonus — Josh Comeau's mistake catalogue\n\n**\"Common Beginner Mistakes with React\"** by Josh Comeau calls out the exact pitfalls that trip up every developer learning `useEffect` — including misusing it for derived state and forgetting cleanup. Skim the useEffect sections (about 15 minutes). Return here for the quiz.",
+      "md": "### Bonus — Josh Comeau's React mistake catalogue\n\n**\"Common Beginner Mistakes with React\"** by Josh Comeau walks through approximately nine common React mistakes — including async effects, missing keys, abusing `useEffect` for derived state, and several others — with clear before/after examples. Skim the whole article (about 15 minutes). Return here for the quiz.",
       "url": "https://www.joshwcomeau.com/react/common-beginner-mistakes/",
       "source": "Josh Comeau",
       "label": "Common Beginner Mistakes — Josh Comeau"
@@ -61,6 +61,12 @@
       "type": "prose",
       "role": "concept",
       "md": "**Writing a data fetch — the pattern you'll use next session.** A very common effect is fetching data when a component first loads. The shape is always the same: an `async` function, `await` the request, and a `try/catch` so a failed network call shows an error instead of crashing the app.\n\n```jsx\nuseEffect(() => {\n  async function load() {\n    try {\n      const res = await fetch('https://api.example.com/items')\n      if (!res.ok) throw new Error('Request failed')\n      const data = await res.json()\n      setItems(data)\n    } catch (err) {\n      setError('Could not load data')\n    }\n  }\n  load()\n}, [])\n```\n\n- `async`/`await` lets you write the request top-to-bottom instead of nesting callbacks. `await` pauses inside `load()` until the request finishes.\n- `res.ok` is `false` for errors like 404 — `fetch` does *not* throw on those by itself, so you check it and `throw` yourself.\n- `res.json()` parses the response body into a JavaScript object or array.\n- `try/catch` catches a failed request (no network, bad URL, the `throw` above) so you can show a friendly message instead of a blank screen.\n\nThe exact same `async` + `await fetch` + `try/catch` shape works inside an event handler too (e.g. a search button) — you'll write it from scratch in the next build session."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Note on style:** react.dev's data-fetching example uses `.then()` chaining. The `async/await` + `try/catch` pattern shown above is fully equivalent — it's just written top-to-bottom instead of nested. That's the style you'll use in the build session."
     },
     {
       "type": "prose",

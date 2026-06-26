@@ -9,6 +9,7 @@
   "fade": "curated",
   "sources": [
     { "name": "javascript.info — Introduction to browser events", "url": "https://javascript.info/introduction-browser-events", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "addEventListener, event object" },
+    { "name": "javascript.info — Bubbling and capturing", "url": "https://javascript.info/bubbling-and-capturing", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "event bubbling, event.target vs event.currentTarget" },
     { "name": "javascript.info — Event delegation", "url": "https://javascript.info/event-delegation", "license": "CC-BY-NC-SA-4.0", "reviewed": "2026-06-23", "topic": "event delegation, event.target" }
   ],
   "blocks": [
@@ -33,14 +34,21 @@
       "role": "resource",
       "url": "https://javascript.info/introduction-browser-events",
       "source": "javascript.info",
-      "label": "▶ Do this first: javascript.info — \"Introduction to browser events\". Read the page and do the tasks at the bottom. Then come back."
+      "label": "▶ Step 1 of 3: javascript.info — \"Introduction to browser events\". Read the page and do the tasks at the bottom. Then come back."
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "url": "https://javascript.info/bubbling-and-capturing",
+      "source": "javascript.info",
+      "label": "▶ Step 2 of 3: javascript.info — \"Bubbling and capturing\". This is where `event.target` is taught — read carefully and run the examples. Then come back."
     },
     {
       "type": "prose",
       "role": "resource",
       "url": "https://javascript.info/event-delegation",
       "source": "javascript.info",
-      "label": "▶ Do this second: javascript.info — \"Event delegation\". This is the key pattern for dynamic UIs — read it slowly and run the examples. Come back when you're done."
+      "label": "▶ Step 3 of 3: javascript.info — \"Event delegation\". This is the key pattern for dynamic UIs — read it slowly and run the examples. Come back when you're done."
     },
     {
       "type": "prose",

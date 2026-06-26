@@ -16,11 +16,11 @@
       "topic": "drag-and-drop static site deployment"
     },
     {
-      "name": "GitHub Pages quickstart",
-      "url": "https://docs.github.com/en/pages/quickstart",
+      "name": "GitHub Pages — Creating a GitHub Pages site",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
-      "topic": "GitHub Pages deployment"
+      "topic": "GitHub Pages project site deployment"
     }
   ],
   "blocks": [
@@ -52,10 +52,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "label": "GitHub Pages quickstart",
-      "url": "https://docs.github.com/en/pages/quickstart",
-      "source": "GitHub Pages quickstart",
-      "md": "**GitHub Pages quickstart** — official guide to enabling Pages on any public repository. It walks you through creating the repo too. Takes about five minutes."
+      "label": "GitHub Pages — create any public repo, push your index.html, then Settings → Pages → Branch: main → Save; your site appears at https://<username>.github.io/<repo-name>. Stop once your site is live — skip the Jekyll theme sections.",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site",
+      "source": "GitHub Pages — Creating a GitHub Pages site",
+      "md": "**GitHub Pages** — create any public repo, push your `index.html`, then go to Settings → Pages → Branch: main → Save. Your site appears at `https://<username>.github.io/<repo-name>` within a minute or two. Stop once your site is live — skip the Jekyll theme sections."
     },
     {
       "type": "prose",
@@ -70,12 +70,12 @@
     },
     {
       "type": "nowYouTry",
-      "task": "**Your mission:** get a real page live on the internet.\n\n1. Create a folder called `my-first-site`.\n2. Inside it, create `index.html` with your name and the words \"learning to code\" somewhere on the page.\n3. Deploy it — choose one path:\n   - **Netlify Drop (fastest):** go to [app.netlify.com/drop](https://app.netlify.com/drop) and drag the whole folder onto the page.\n   - **GitHub Pages:** push the folder to a public GitHub repo, then go to Settings → Pages → set source to `main` branch → Save.\n4. Copy the public URL and open it on your phone.",
+      "task": "**Your mission:** get a real page live on the internet.\n\n1. Create a folder called `my-first-site`.\n2. Inside it, create `index.html` with your name and the words \"learning to code\" somewhere on the page.\n3. Deploy it — choose one path:\n   - **Netlify Drop (fastest):** go to [app.netlify.com/drop](https://app.netlify.com/drop) and drag the whole folder onto the page.\n   - **GitHub Pages:** create any public repo, push your `index.html`, then go to Settings → Pages → Branch: main → Save. Your site appears at `https://<username>.github.io/<repo-name>`.\n4. Copy the public URL and open it on your phone.",
       "definitionOfDone": "A public URL that shows your name and 'learning to code' — one you can open on your phone and share with anyone.",
       "hints": [
         "Create `index.html` with a basic HTML skeleton: `<!DOCTYPE html>`, `<html>`, `<head>` (with a `<title>`), and `<body>` containing an `<h1>` with your name and a `<p>` saying 'learning to code'.",
         "For Netlify Drop: go to https://app.netlify.com/drop in your browser, then drag the entire `my-first-site` folder (not just the file) onto the drop zone. Wait a few seconds — a URL like `random-name.netlify.app` will appear.",
-        "For GitHub Pages: create a new public repository on github.com, push your folder contents (just `index.html` to start), then go to the repo Settings → Pages → under 'Branch' select `main` and click Save. Wait 1-2 minutes, then visit `https://<your-username>.github.io/<repo-name>`."
+        "For GitHub Pages: create any public repo on github.com, push your `index.html`, then go to the repo Settings → Pages → Branch: main → Save. Wait 1-2 minutes and your site appears at `https://<username>.github.io/<repo-name>`. Stop once your site is live — skip the Jekyll theme sections."
       ],
       "gatedSolution": false
     },

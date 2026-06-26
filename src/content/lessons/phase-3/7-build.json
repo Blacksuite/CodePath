@@ -9,18 +9,18 @@
   "fade": "light",
   "sources": [
     {
-      "name": "YouTube — Build a Weather App with React",
-      "url": "https://www.youtube.com/watch?v=iTvNpQjsoQg",
-      "license": "YouTube / standard",
-      "reviewed": "2026-06-25",
-      "topic": "React weather app with public API — components, state, useEffect, fetch"
-    },
-    {
       "name": "Open-Meteo",
       "url": "https://open-meteo.com/en/docs",
       "license": "public-free",
       "reviewed": "2026-06-25",
-      "topic": "Free weather API — no key required"
+      "topic": "Free weather API — no key required (primary stable reference)"
+    },
+    {
+      "name": "YouTube — Build a Weather App with React (watch-along)",
+      "url": "https://www.youtube.com/watch?v=iTvNpQjsoQg",
+      "license": "YouTube / standard",
+      "reviewed": "2026-06-25",
+      "topic": "React weather app with public API — watch it, then close it and build your own from scratch"
     }
   ],
   "blocks": [
@@ -44,19 +44,19 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "**Free weather API — no sign-up needed**\n\nOpen-Meteo provides current and forecast weather worldwide with no API key. The geocoding API turns a city name into coordinates; the forecast API returns temperature, wind, and weather code.",
+      "md": "**Free weather API — no sign-up needed (primary reference)**\n\nOpen-Meteo provides current and forecast weather worldwide with no API key. The geocoding API turns a city name into coordinates; the forecast API returns temperature, wind, and weather code. Keep this tab open as your stable reference while you build.",
       "url": "https://open-meteo.com/en/docs",
       "source": "Open-Meteo",
       "label": "Open-Meteo API docs — free, no key required"
     },
     {
       "type": "video",
-      "title": "Build a Weather App with React (Perfect for Beginners)",
+      "title": "Build a Weather App with React (watch-along)",
       "url": "https://www.youtube.com/watch?v=iTvNpQjsoQg",
       "source": "youtube",
       "startSeconds": 0,
       "minutes": 25,
-      "note": "Watch this build-along to see how to wire a React app to a live weather API, then close the video and build your own version from scratch below. If the video uses a different weather API, that's fine — the React concepts are identical; just use the Open-Meteo URLs from the hints for your own build (no sign-up or key needed)."
+      "note": "Watch it, then close it and build your own from scratch. This is a watch-along, not a follow-along — resist the urge to code while the video plays. If the video uses a different weather API, that's fine — the React concepts are identical; just use the Open-Meteo URLs from the hints for your own build (no sign-up or key needed)."
     },
     {
       "type": "prose",

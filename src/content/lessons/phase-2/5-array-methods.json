@@ -9,11 +9,18 @@
   "fade": "medium",
   "sources": [
     {
+      "name": "javascript.info — Array methods",
+      "url": "https://javascript.info/array-methods",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-25",
+      "topic": "forEach, map, filter, find, reduce"
+    },
+    {
       "name": "freeCodeCamp",
       "url": "https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/",
       "license": "CC-BY-SA-4.0",
       "reviewed": "2026-06-23",
-      "topic": "map, filter, forEach"
+      "topic": "map, filter, reduce (optional extra practice)"
     },
     {
       "name": "MDN Web Docs",
@@ -44,10 +51,18 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "Read this freeCodeCamp article — it walks through `map`, `filter`, and `reduce` with clear before/after examples. Focus on the `map` and `filter` sections; skim `reduce` for now.",
+      "md": "### Read: Array methods — javascript.info\n\nThe most thorough free guide to array methods — covers `forEach`, `map`, `filter`, `find`, `reduce`, and more with runnable examples. This is the backbone reading for this lesson. Work through the page and try the tasks at the bottom in your browser console.",
+      "url": "https://javascript.info/array-methods",
+      "source": "javascript.info",
+      "label": "Array methods — javascript.info"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Extra practice (optional): freeCodeCamp article\n\nIf you want more worked examples of `map`, `filter`, and `reduce` specifically, this freeCodeCamp article has clear before/after comparisons. Note it does not cover `forEach` or `find`, so treat it as supplementary.",
       "url": "https://www.freecodecamp.org/news/javascript-map-reduce-and-filter-explained-with-examples/",
       "source": "freeCodeCamp",
-      "label": "JavaScript Map, Reduce, and Filter — Explained with Examples"
+      "label": "JavaScript Map, Reduce, and Filter — Explained with Examples (optional)"
     },
     {
       "type": "prose",

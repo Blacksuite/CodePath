@@ -9,11 +9,18 @@
   "fade": "medium",
   "sources": [
     {
-      "name": "javascript.info",
-      "url": "https://javascript.info/async",
+      "name": "javascript.info — Promise basics",
+      "url": "https://javascript.info/promise-basics",
       "license": "CC-BY-NC-SA-4.0",
-      "reviewed": "2026-06-23",
-      "topic": "Promises, async/await"
+      "reviewed": "2026-06-25",
+      "topic": "Promises — pending, fulfilled, rejected"
+    },
+    {
+      "name": "javascript.info — Async/await",
+      "url": "https://javascript.info/async-await",
+      "license": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-06-25",
+      "topic": "async functions, await expression"
     },
     {
       "name": "MDN Web Docs",
@@ -44,15 +51,23 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Read: Promises, async/await — javascript.info\n\nThe clearest written walkthrough of the whole async story, from callbacks through Promises to `async`/`await`. Read the **intro page and the first three chapters** (Promise basics, Promise chaining, async/await). Skip the advanced chapters for now — come back when you are writing your own.\n\n**Do this, then come back.**",
-      "url": "https://javascript.info/async",
+      "md": "### Read: Promise basics — javascript.info\n\nHow a Promise works — pending, fulfilled, rejected — and how to chain `.then()` and `.catch()`. Read for recognition, not memorisation; you'll write Promises from scratch later.\n\n**Do this first, then come back.**",
+      "url": "https://javascript.info/promise-basics",
       "source": "javascript.info",
-      "label": "Promises, async/await — javascript.info"
+      "label": "Promise basics — javascript.info"
     },
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Read: Fetching data from the server — MDN\n\nMDN's practical guide to network requests. Focus on the **fetch section** — it shows `fetch` returning a Promise, `.then()` chaining, and the equivalent `async`/`await` form side-by-side. Seeing both forms cements the connection.\n\n**Do this, then come back.**",
+      "md": "### Read: Async/await — javascript.info\n\nThe syntactic sugar that makes Promises readable. This is what the quiz tests — make sure you can recognise an `async` function and an `await` expression. Read for recognition, not memorisation.\n\n**Do this second, then come back.**",
+      "url": "https://javascript.info/async-await",
+      "source": "javascript.info",
+      "label": "Async/await — javascript.info"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "### Supplementary: Fetching data from the server — MDN\n\nA practical guide to network requests with `fetch`. Useful because it shows the `.then()` style side-by-side with `async`/`await` — seeing both forms cements the connection between Promises and the sugar on top.",
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests",
       "source": "MDN Web Docs",
       "label": "Fetching data from the server — MDN"

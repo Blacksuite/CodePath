@@ -10,7 +10,7 @@
   "sources": [
     {
       "name": "react.dev",
-      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "url": "https://react.dev/learn/synchronizing-with-effects#fetching-data",
       "license": "CC-BY-4.0",
       "reviewed": "2026-06-23",
       "topic": "fetching data inside useEffect"
@@ -44,10 +44,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "### Primary reading — react.dev\n\nRead the **\"Synchronizing with Effects\"** page on react.dev, focusing on the *\"Fetching data\"* section. It shows the correct async-function-inside-effect pattern, explains why cleanup matters for fetch, and covers the race-condition problem you will hit in real apps. Plan 35–40 minutes. Come back here when you're done.",
-      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "md": "### Primary reading — react.dev\n\nRead the **\"Synchronizing with Effects\"** page on react.dev, starting from the **\"Fetching data\"** heading (the anchor link below takes you directly there). It shows the correct async-function-inside-effect pattern, explains why cleanup matters for fetch, and covers the race-condition problem you will hit in real apps. Plan 35–40 minutes. Come back here when you're done.",
+      "url": "https://react.dev/learn/synchronizing-with-effects#fetching-data",
       "source": "react.dev",
-      "label": "Synchronizing with Effects — react.dev"
+      "label": "Synchronizing with Effects — Fetching data — react.dev"
     },
     {
       "type": "prose",
@@ -62,6 +62,12 @@
       "role": "callout",
       "variant": "mistake",
       "md": "**The most common fetch mistake: forgetting `res.ok`.**\n\nThis code looks correct but swallows every server error silently:\n\n```ts\nconst res = await fetch(url);\nconst data = await res.json(); // runs even on 404 or 500!\n```\n\nAlways guard it:\n\n```ts\nconst res = await fetch(url);\nif (!res.ok) throw new Error(`HTTP ${res.status}`);\nconst data = await res.json();\n```"
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Use `as` to tell TypeScript the shape of JSON at the network boundary.**\n\n`res.json()` returns `Promise<any>` because TypeScript cannot inspect a live HTTP response. You need to assert the type yourself at this one point — and only at this point:\n\n```ts\ninterface Meal {\n  idMeal: string;\n  strMeal: string;\n  strMealThumb: string;\n  strCategory: string;\n}\n\ntype MealSearchResponse = { meals: Meal[] | null };\n\nconst data = await res.json() as MealSearchResponse;\n```\n\n`as MealSearchResponse` is a **type assertion** — you are telling TypeScript \"trust me, this JSON has this shape\". Use `as` *only* at JSON/network boundaries where TypeScript genuinely cannot infer the shape. Once you've asserted the type here, it flows automatically through the rest of your component — so you won't need another `as` for this data. (You'll still meet `as` occasionally elsewhere, like narrowing a union or casting a DOM element — just don't reach for it to silence ordinary type errors.)"
     },
     {
       "type": "quiz",

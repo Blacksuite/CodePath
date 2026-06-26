@@ -23,8 +23,8 @@
       "topic": "scaling with reducer and context"
     },
     {
-      "name": "Zustand docs",
-      "url": "https://zustand.docs.pmnd.rs/",
+      "name": "Zustand — GitHub README (Getting Started)",
+      "url": "https://github.com/pmndrs/zustand",
       "license": "MIT",
       "reviewed": "2026-06-23",
       "topic": "Zustand global state library"
@@ -68,15 +68,21 @@
       "type": "prose",
       "role": "resource",
       "md": "When your state truly needs to be global and shared by unrelated parts of the app, Zustand is the go-to lightweight library. Skim the Getting Started guide — you won't need it this phase, but it's good to know it exists.",
-      "label": "Zustand — Getting Started (only when needed)",
-      "url": "https://zustand.docs.pmnd.rs/",
-      "source": "Zustand docs"
+      "label": "Zustand — GitHub README (Getting Started)",
+      "url": "https://github.com/pmndrs/zustand",
+      "source": "Zustand — GitHub README (Getting Started)"
     },
     {
       "type": "prose",
       "role": "callout",
       "variant": "tip",
       "md": "**Reducer purity is non-negotiable.** Never do `state.items.push(item); return state` — that mutates the existing object and React won't detect the change. Always return a brand-new object: `return { ...state, items: [...state.items, item] }`."
+    },
+    {
+      "type": "prose",
+      "role": "callout",
+      "variant": "tip",
+      "md": "**Type your reducer actions as a discriminated union.** Instead of leaving `action` untyped, define every possible action shape upfront:\n\n```ts\ntype Action =\n  | { type: 'ADD_ITEM'; payload: Item }\n  | { type: 'RESET' };\n```\n\nTypeScript then narrows correctly inside each `case` — in the `'ADD_ITEM'` branch it knows `action.payload` is an `Item`, and in the `'RESET'` branch it knows there is no `payload`. This catches typos in action type strings and missing payload fields at compile time."
     },
     {
       "type": "quiz",

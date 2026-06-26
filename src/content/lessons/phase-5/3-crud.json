@@ -13,7 +13,28 @@
       "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
       "license": "Apache-2.0",
       "reviewed": "2026-06-23",
-      "topic": "CRUD with Supabase client in React"
+      "topic": "read (select) with Supabase client in React"
+    },
+    {
+      "name": "Supabase JS Reference — insert",
+      "url": "https://supabase.com/docs/reference/javascript/insert",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "create — inserting rows with Supabase JS client"
+    },
+    {
+      "name": "Supabase JS Reference — update",
+      "url": "https://supabase.com/docs/reference/javascript/update",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "update — updating rows with Supabase JS client"
+    },
+    {
+      "name": "Supabase JS Reference — delete",
+      "url": "https://supabase.com/docs/reference/javascript/delete",
+      "license": "Apache-2.0",
+      "reviewed": "2026-06-23",
+      "topic": "delete — deleting rows with Supabase JS client"
     }
   ],
   "blocks": [
@@ -37,9 +58,30 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "Work through the official Supabase React Quickstart. It walks you through creating a project, adding the client library, and running your first `select()` — the foundation for everything else in this session.",
-      "label": "Supabase React Quickstart",
+      "md": "Work through the official Supabase React Quickstart. It walks you through creating a project, adding the client library, and running your first `select()` — the read foundation for everything else in this session.",
+      "label": "Supabase React Quickstart — read (select)",
       "url": "https://supabase.com/docs/guides/getting-started/quickstarts/reactjs",
+      "source": "Supabase Docs"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
+      "md": "The quickstart only shows `.select()`. Use these three short Supabase JS reference pages — one per write operation — to learn the exact call signatures for insert, update, and delete. Read all three before you write any write-side code.",
+      "label": "create / update / delete — Supabase JS Reference",
+      "links": [
+        {
+          "label": "insert",
+          "url": "https://supabase.com/docs/reference/javascript/insert"
+        },
+        {
+          "label": "update",
+          "url": "https://supabase.com/docs/reference/javascript/update"
+        },
+        {
+          "label": "delete",
+          "url": "https://supabase.com/docs/reference/javascript/delete"
+        }
+      ],
       "source": "Supabase Docs"
     },
     {

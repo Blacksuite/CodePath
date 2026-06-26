@@ -16,6 +16,13 @@
       "topic": "server-state fetching and caching"
     },
     {
+      "name": "Zustand GitHub",
+      "url": "https://github.com/pmndrs/zustand",
+      "license": "MIT",
+      "reviewed": "2026-06-26",
+      "topic": "lightweight global state management"
+    },
+    {
       "name": "Tailwind CSS docs",
       "url": "https://tailwindcss.com",
       "license": "Tailwind Docs",
@@ -73,6 +80,14 @@
     {
       "type": "prose",
       "role": "resource",
+      "md": "**Zustand** — lightweight global state.\n\nReach for it when `useReducer` + prop-drilling starts hurting and you want shared state without Context boilerplate. A store is a single function call: `create((set) => ({ count: 0, inc: () => set(s => ({ count: s.count + 1 })) }))`. `npm install zustand`.",
+      "url": "https://github.com/pmndrs/zustand",
+      "source": "Zustand GitHub",
+      "label": "Zustand — github.com/pmndrs/zustand"
+    },
+    {
+      "type": "prose",
+      "role": "resource",
       "md": "**Tailwind CSS** — utility-first CSS framework.\n\nReach for this when: hand-writing CSS is slowing down your UI iteration, you keep copying the same inline-style patterns, or you want a consistent design system without maintaining a custom stylesheet.\n\nInstead of naming classes and writing separate CSS, you compose small utility classes directly in JSX — `className=\"flex items-center gap-4 rounded-lg bg-blue-500 text-white p-3\"`. Fast to prototype, easy to keep consistent.",
       "url": "https://tailwindcss.com",
       "source": "Tailwind CSS docs",
@@ -81,7 +96,7 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "**Next.js** — full-stack React framework.\n\nReach for this when: you want file-based routing, server-side rendering (for SEO or faster first loads), and a backend API all living in one project without configuring them separately.\n\nNext.js wraps React with a convention-based structure: pages are files, API routes sit next to UI code, and server and client components give you fine-grained control over what renders where. It is the standard choice when a Vite SPA + separate backend starts feeling like too many moving parts.",
+      "md": "**Next.js** — full-stack React framework.\n\nReach for this when: you want file-based routing, server-side rendering (for SEO or faster first loads), and a backend API all living in one project without configuring them separately.\n\nNext.js wraps React with a convention-based structure: routes are folders with a `page.tsx` file inside (the App Router convention), so the file structure *is* the routing structure. API routes sit next to UI code, and server and client components give you fine-grained control over what renders where. It is the standard choice when a Vite SPA + separate backend starts feeling like too many moving parts.",
       "url": "https://nextjs.org",
       "source": "Next.js docs",
       "label": "Next.js — nextjs.org"

@@ -51,10 +51,10 @@
     {
       "type": "prose",
       "role": "resource",
-      "md": "## freeCodeCamp — JavaScript Certification (v9)\n\nThis is your **primary hands-on workout**. Complete these two projects in order:\n\n1. **Learn Introductory JavaScript by Building a Pyramid Generator** (109 steps) — covers variables (`let`/`const`), strings, numbers, functions, loops, and arrays. This is the foundation.\n2. **Learn Basic JavaScript by Building a Role Playing Game** (~168 steps) — reinforces functions, `if/else`, loops, and introduces objects and DOM basics.\n\nBoth projects teach by having you write real code step-by-step with instant feedback. Expect **4–5 hours** across these two projects at a comfortable beginner pace — break it into multiple sittings.\n\n**Stop after the Role Playing Game** — the next lesson covers arrays and objects in depth.",
+      "md": "## freeCodeCamp — JavaScript Certification (v9)\n\nThis is your **primary hands-on workout**. Complete the **Pyramid Generator** project first:\n\n1. **Learn Introductory JavaScript by Building a Pyramid Generator** (109 steps) — covers variables (`let`/`const`), strings, numbers, functions, loops, and arrays. This project teaches all the fundamentals you need for Phase 2. Expect **2–3 hours** at a comfortable beginner pace.\n2. **Learn Basic JavaScript by Building a Role Playing Game** (~168 steps) — *optional bonus*. A great project, but it introduces DOM manipulation (covered in a later lesson), so feel free to skip it for now and revisit after Lesson 3.\n\n**Stop after the Pyramid Generator** (or the Role Playing Game if you want the bonus challenge) — the next lesson covers arrays and objects in depth.",
       "url": "https://www.freecodecamp.org/learn/javascript-v9",
       "source": "freeCodeCamp",
-      "label": "Open freeCodeCamp JS curriculum — do this, then come back"
+      "label": "Open freeCodeCamp JS curriculum — start with the Pyramid Generator"
     },
     {
       "type": "prose",
