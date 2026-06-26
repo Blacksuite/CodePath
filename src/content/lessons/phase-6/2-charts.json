@@ -46,7 +46,7 @@
       "type": "prose",
       "role": "callout",
       "variant": "tip",
-      "md": "**Install once, use everywhere.** Run `npm install recharts` in your project root. Recharts ships its own TypeScript types — no `@types/recharts` needed. If you're on Vite and see a peer-dep warning about React 19, add `--legacy-peer-deps` and it resolves cleanly."
+      "md": "**Install once, use everywhere.** Run `npm install recharts` in your project root. Recharts ships its own TypeScript types — no `@types/recharts` needed. If you're on Vite and see a *peer dependency* warning about React 19, don't panic — it just means the library hasn't officially listed your exact React version yet. Re-run the install as `npm install recharts --legacy-peer-deps`; that flag tells npm to install anyway, and it works fine here."
     },
     {
       "type": "quiz",

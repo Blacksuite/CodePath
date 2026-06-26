@@ -56,7 +56,7 @@
       "source": "youtube",
       "startSeconds": 0,
       "minutes": 25,
-      "note": "Watch this build-along to see how to wire a React app to a live weather API, then close the video and build your own version from scratch below."
+      "note": "Watch this build-along to see how to wire a React app to a live weather API, then close the video and build your own version from scratch below. If the video uses a different weather API, that's fine — the React concepts are identical; just use the Open-Meteo URLs from the hints for your own build (no sign-up or key needed)."
     },
     {
       "type": "prose",

@@ -39,7 +39,7 @@
     {
       "type": "prose",
       "role": "concept",
-      "md": "**Vitest** is the test runner built for Vite projects. It picks up any file ending in `.test.ts` (or `.spec.ts`), runs your `describe`/`it`/`expect` blocks, and reports pass/fail — no separate config needed in a Vite app.\n\n**React Testing Library (RTL)** renders a component into a real-ish DOM and lets you query it the way a user would — by visible text, by ARIA role, by label text — not by CSS class or component internals. You fire events (`userEvent.click`) and then assert on what the user would see.\n\nThe guiding principle: **test behaviour, not implementation.** Don't test that a function was called or that a piece of state changed internally. Test that clicking \"Submit\" shows a success message. Test important logic (calculations, conditionals) and key interactions (form submit, button click). Don't chase 100 % coverage — a test that checks trivial rendering adds noise, not safety."
+      "md": "**Vitest** is the test runner built for Vite projects. It picks up any file ending in `.test.ts`/`.test.tsx` (or `.spec`), runs your `describe`/`it`/`expect` blocks, and reports pass/fail. It shares your Vite config, so setup is just a few lines (shown below).\n\n**React Testing Library (RTL)** renders a component into a real-ish DOM and lets you query it the way a user would — by visible text, by ARIA role, by label text — not by CSS class or component internals. You fire events (`userEvent.click`) and then assert on what the user would see.\n\nThe guiding principle: **test behaviour, not implementation.** Don't test that a function was called or that a piece of state changed internally. Test that clicking \"Submit\" shows a success message. Test important logic (calculations, conditionals) and key interactions (form submit, button click). Don't chase 100 % coverage — a test that checks trivial rendering adds noise, not safety."
     },
     {
       "type": "prose",
@@ -56,6 +56,11 @@
       "url": "https://testing-library.com/docs/react-testing-library/intro/",
       "source": "Testing Library",
       "label": "Read the RTL intro, then come back."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**Setup (do this once per project).** Install the tools and tell Vitest to use a browser-like DOM:\n\n```bash\nnpm install -D vitest @testing-library/react @testing-library/user-event @testing-library/jest-dom jsdom\n```\n\nIn `vite.config.ts`, add a `test` block:\n\n```ts\nexport default defineConfig({\n  plugins: [react()],\n  test: { environment: 'jsdom', globals: true, setupFiles: './src/setupTests.ts' }\n})\n```\n\nCreate `src/setupTests.ts` with one line so matchers like `toBeInTheDocument()` work: `import '@testing-library/jest-dom'`. Then add `\"test\": \"vitest\"` to the `scripts` in `package.json` and run `npm test`.\n\n**A complete first test** — render a component and assert on what the user sees:\n\n```tsx\nimport { render, screen } from '@testing-library/react'\nimport { TodoList } from './TodoList'\n\nit('shows the items it is given', () => {\n  render(<TodoList items={['Buy milk']} />)\n  expect(screen.getByText('Buy milk')).toBeInTheDocument()\n})\n```\n\n**An interaction test** — fire a real click and check a handler ran. `vi.fn()` makes a fake function you can assert on; `userEvent` simulates real typing/clicking:\n\n```tsx\nimport { render, screen } from '@testing-library/react'\nimport userEvent from '@testing-library/user-event'\nimport { vi } from 'vitest'\n\nit('calls onAdd when the form is submitted', async () => {\n  const onAdd = vi.fn()\n  render(<AddForm onAdd={onAdd} />)\n  await userEvent.type(screen.getByRole('textbox'), 'New task')\n  await userEvent.click(screen.getByRole('button', { name: /add/i }))\n  expect(onAdd).toHaveBeenCalledWith('New task')\n})\n```\n\nThat `vi.fn()` + `userEvent` pattern is exactly the \"integration-style check\" the ship task asks for."
     },
     {
       "type": "prose",

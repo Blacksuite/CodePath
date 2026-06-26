@@ -27,7 +27,7 @@
     {
       "type": "prose",
       "role": "hook",
-      "md": "You have written HTML. You have opened it in your browser. But right now it only lives on your laptop — nobody else can see it.\n\nThis session changes that. By the end you will have a real URL you can text to a friend or open on your phone. That moment — paste a link and watch it load somewhere else in the world — is the first thing most developers remember. Let's go get it."
+      "md": "In a moment you'll write a tiny web page and open it in your browser. But a file on your laptop only lives there — nobody else can see it.\n\nThis session changes that. By the end you will have a real URL you can text to a friend or open on your phone. That moment — paste a link and watch it load somewhere else in the world — is the first thing most developers remember. Let's go get it."
     },
     {
       "type": "prose",
@@ -55,13 +55,18 @@
       "label": "GitHub Pages quickstart",
       "url": "https://docs.github.com/en/pages/quickstart",
       "source": "GitHub Pages quickstart",
-      "md": "**GitHub Pages quickstart** — official guide to enabling Pages on any public repository. Takes about five minutes."
+      "md": "**GitHub Pages quickstart** — official guide to enabling Pages on any public repository. It walks you through creating the repo too. Takes about five minutes."
     },
     {
       "type": "prose",
       "role": "callout",
       "variant": "tip",
       "md": "**Tip — start with Netlify Drop.** If you just want a URL fast, skip GitHub for now. Drag your folder, copy the link, open it on your phone. You can always set up GitHub Pages later when you want version history too."
+    },
+    {
+      "type": "prose",
+      "role": "concept",
+      "md": "**The smallest possible web page.** You only need a handful of tags to make a real page. Create a file called `index.html` and put this in it:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>My First Site</title>\n  </head>\n  <body>\n    <h1>Your Name</h1>\n    <p>learning to code</p>\n  </body>\n</html>\n```\n\nThat's the whole skeleton: `<!DOCTYPE html>` tells the browser this is a modern HTML page, the `<head>` holds information you don't see directly (like the tab `<title>`), and the `<body>` holds everything you *do* see — here a big `<h1>` heading and a `<p>` paragraph. Double-click the file to open it in your browser. You'll go much deeper on HTML in Phase 1 — this is just enough to get your first page online."
     },
     {
       "type": "nowYouTry",
